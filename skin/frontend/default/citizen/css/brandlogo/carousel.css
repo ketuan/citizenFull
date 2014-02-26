@@ -1,0 +1,115 @@
+.wrap_logo_brand{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    float: left;
+    background: #333;
+}
+#carousel_container{
+    position: relative;
+    width: 980px;
+    margin: 0 auto;
+}
+#carousel_inner {
+    float:left; /* important for inline positioning */
+    width:980px; /* important (this width = width of list item(including margin) * items shown */
+    overflow: hidden;  /* important (hide the items outside the div) */
+    /* non-important styling bellow */
+    /*background: #F0F0F0;*/
+    position: relative;
+
+}
+
+#carousel_ul {
+    position:relative;
+    left:-210px; /* important (this should be negative number of list items width(including margin) */
+    list-style-type: none; /* removing the default styling for unordered list items */
+    margin: 0px;
+    padding: 0px;
+    width:9999px; /* important */
+    /* non-important styling bellow */
+    padding-bottom:10px;
+}
+
+#carousel_ul li{
+    float: left; /* important for inline positioning of the list items */
+    width:120px;  /* fixed width, important */
+    /* just styling bellow*/
+    padding:0px;
+    /*height:110px;*/
+    /*background: #000000;*/
+    margin-top:10px;
+    margin-bottom:10px;
+    /*margin-left:6px;
+    margin-right:5px;*/
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+#carousel_ul li img {
+    margin-bottom:-4px; /* IE is making a 4px gap bellow an image inside of an anchor (<a href...>) so this is to fix that*/
+    /* styling */
+    cursor:pointer;
+    cursor: hand;
+    border:0px;
+}
+#right_scroll, #left_scroll{
+    top:56px;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url("../../images/home-controller-brand-arrows.png") no-repeat 0 -32px;
+    position: absolute;
+}
+#right_scroll{
+    background-position: 0 0;
+}
+#left_scroll:hover{
+    background-position: 0px -96px;
+}
+#right_scroll:hover{
+    background-position: 0px -64px;
+}
+#left_scroll{
+    left: -79px;
+}
+#right_scroll{
+    right: -79px;
+}
+#right_scroll a,#left_scroll a{
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+.carosel_title
+{
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    
+    
+}
+div.viewAllBrand{
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 28px;
+}
+a#BrandLink {
+    font-family: georgia;
+    font-size: 18px;
+    letter-spacing: 3px;
+    padding-right: 25px;
+    color: #ffffff;
+    background: url(../../images/home-link-arrow2.png) right 5px no-repeat;
+}
+a#BrandLink:hover{
+    text-decoration: underline;
+}
+
+
+

@@ -1,0 +1,23 @@
+* Sm Sport v 1.0.0
+
+- release beta
+
+- remove images license, replace images by placehold.it 
+
+* Sm Sport v 1.0.1
+
+- fix bug image category overlap detail product
+
+* Sm Sport v 1.0.2
+
+- fix bug in minicart pro when hover crazy minicart pro
+
+- fix bug can't sub date in blog module
+
+- add more type product in links in menu FOOTBALL: grouped product, configurable product, virtual product, bundle product, downloadable product
+
+- replace 4 product in block New Product by 4 product have type as grouped product, configurable product, virtual product, downloadable product
+
+- add video slide to module dynamicslideshow in demo page
+
+- fix bug can't addtocart by ajax of module sm cartpro in detail product page and wishlist page

@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Sm_Sport>
+			<version>1.0.0</version>
+			<title>MagenTech.com</title>
+			<link><![CDATA[http://www.magentech.com/]]></link>
+		</Sm_Sport>
+	</modules>
+	<global>
+		<helpers>
+		  <sport>
+			<class>Sm_Sport_Helper</class>
+		  </sport>
+		</helpers>
+		<models>
+		  <sport>
+			<class>Sm_Sport_Model</class>
+		  </sport>
+		</models>
+		<!--
+	    <events>
+	        <controller_action_postdispatch_catalog_product_view>
+	            <observers>
+	                <sport>
+	                    <type>model</type> 
+	                    <class>sport/observer</class>
+	                    <method>saveProductVisitHistory</method>
+	                </sport>
+	            </observers>
+	        </controller_action_postdispatch_catalog_product_view>
+	    </events>	-->			
+	</global>
+	<adminhtml>
+        <translate>
+            <modules>
+                <Sm_Sport>
+                    <files>
+                        <default>Sm_Sport.csv</default>
+                    </files>
+                </Sm_Sport>
+            </modules>
+        </translate>
+	</adminhtml>	
+ 	<default>
+		<sport_cfg module="sport">
+			<general>
+				<showcpanel>1</showcpanel>
+				<color>tomato</color>
+				<body_background_color>#FFF</body_background_color>
+				<body_background_image>6</body_background_image>
+				<body_link_color>#666</body_link_color>
+				<body_text_color>#666</body_text_color>
+				<header_background_color>#f3734f</header_background_color>
+				<header_background_image>6</header_background_image>
+				<footer_background_color>#353535</footer_background_color>
+				<footer_background_image>6</footer_background_image>
+				<menu_styles>1</menu_styles>
+				<google_font>Questrial</google_font>
+				<google_font_targets>
+						#yt_tab_products .yt-tab-navi li a:hover, 
+						#yt_tab_products .yt-tab-navi li.active, 
+						li.selected a.subhead, 
+						.block-layered-nav dt,
+						#review-form h4, 
+
+						.social h4, 
+						.block-newsletter label, 
+						.promotions p, 
+						#yt_sidenav li a.subhead, 
+
+						h1#logo a span, ul.yt-tab-navi li a, 
+						ul.yt-tab-navi li.active a, 
+						.yt-product-detail .product-name, 
+						.product-name a, 
+						.popup-box a.link-wishlist,
+						 
+						.header-nav-container-home ul#nav li.level0 > a, 
+						.header-nav-container-home ul#nav li.level1 > a, 
+
+						.sm_megamenu_wrapper_vertical_menu ul.sm_megamenu_menu li div div.sm_megamenu_title a, 
+						.sm_megamenu_wrapper_horizontal_menu .sm_megamenu_head_item .sm_megamenu_title > span,
+						.sm_megamenu_lv1 .sm_megamenu_nodesc .sm_megamenu_title, 
+						.sm_megamenu_content h2.product-name a, 
+
+						.login-quick .more-actions a, 
+						.block-title h3,
+						.ytc_background_theme1 .ytc-content-slickslider .content-box .block-title a ,
+
+						.block-wrapper.custom-type .block-custom  .block-title,
+						.page-title h1,
+						.col-left .block-title strong,
+						.breadcrumbs li,
+						.col-left h1,
+						.bottom-footer .block-title,
+						.top-footer .title,
+
+						.link-wishlist,
+						.link-compare,
+						.bottomsl1-wrap .block-title,
+						.add-review button.button,
+						.actions input.submit-repl,
+						.block-address .block-title,
+						.btn-cart, .btn-contact, .button.register-button,
+						#product-options-wrapper.product-options span.label-option,
+						.moretext,
+						#sm_slideshow .dynamicslideshow-container .custom-title a,
+						input,
+						button,
+
+						.f-base
+				</google_font_targets>
+				<body_font_size>14px</body_font_size>
+				<body_font_family>Questrial</body_font_family>
+			</general>
+			<catalog_images>
+				<white_border_image_display>1</white_border_image_display>
+				<white_border_image_background_color>#FFF</white_border_image_background_color>
+				
+				<catalog_product_view_list_image_type>small_image</catalog_product_view_list_image_type>
+				<catalog_product_view_list_image_width>250</catalog_product_view_list_image_width>
+				<catalog_product_view_list_image_height>167</catalog_product_view_list_image_height>
+				
+				<catalog_product_view_grid_image_type>small_image</catalog_product_view_grid_image_type>
+				<catalog_product_view_grid_image_width>250</catalog_product_view_grid_image_width>
+				<catalog_product_view_grid_image_height>167</catalog_product_view_grid_image_height>
+				
+				<catalog_product_view_media_image_type>image</catalog_product_view_media_image_type>
+				<catalog_product_view_media_image_width>400</catalog_product_view_media_image_width>
+				<catalog_product_view_media_image_height>267</catalog_product_view_media_image_height>
+				
+				<catalog_product_view_media_default_image_type>image</catalog_product_view_media_default_image_type>
+				<catalog_product_view_media_default_image_width>600</catalog_product_view_media_default_image_width>
+				<catalog_product_view_media_default_image_height>400</catalog_product_view_media_default_image_height>
+				
+				<catalog_product_view_media_thumbnail_image_type>thumbnail</catalog_product_view_media_thumbnail_image_type>
+				<catalog_product_view_media_thumbnail_image_width>120</catalog_product_view_media_thumbnail_image_width>
+				<catalog_product_view_media_thumbnail_image_height>80</catalog_product_view_media_thumbnail_image_height>
+				
+				<catalog_product_list_related_image_type>small_image</catalog_product_list_related_image_type>
+				<catalog_product_list_related_image_width>100</catalog_product_list_related_image_width>
+				<catalog_product_list_related_image_height>100</catalog_product_list_related_image_height>
+				
+				<catalog_product_list_upsell_image_type>small_image</catalog_product_list_upsell_image_type>
+				<catalog_product_list_upsell_image_width>150</catalog_product_list_upsell_image_width>
+				<catalog_product_list_upsell_image_height>100</catalog_product_list_upsell_image_height>
+				
+				<checkout_cart_crosssell_image_type>thumbnail</checkout_cart_crosssell_image_type>
+				<checkout_cart_crosssell_image_width>150</checkout_cart_crosssell_image_width>
+				<checkout_cart_crosssell_image_height>100</checkout_cart_crosssell_image_height>
+				
+				<checkout_cart_item_default_image_type>thumbnail</checkout_cart_item_default_image_type>
+				<checkout_cart_item_default_image_width>150</checkout_cart_item_default_image_width>
+				<checkout_cart_item_default_image_height>100</checkout_cart_item_default_image_height>
+			</catalog_images>
+		</sport_cfg>
+	</default> 
+</config> 

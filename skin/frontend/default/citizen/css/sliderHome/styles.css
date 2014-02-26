@@ -1,0 +1,121 @@
+/*main.min.css*/
+.no_margin {
+    margin: 0!important;
+}
+.row {
+    clear: both;
+    float: left;
+    margin: 0;
+    width: 100;
+}
+
+.cont-linkloc {
+    margin: 0 !important;
+}
+.bd-default{border:1px solid #828483}
+/*/main.min.css*/
+
+/*design.min.css*/
+.cont-linkloc {
+    padding: 0;
+}
+.cont-slideshow ul li,.servicereview-header div.absoluteimg{position:absolute}
+.cont-slideshow{height:420px;display:block;position:relative;margin:5px 0}
+.cont-slide-controller{
+    position:absolute;
+    bottom:10px;
+    left:0;
+    text-align: center;
+    width: 100%;
+}
+.cont-slide-controller li{position:relative!important;background:#212121;color:#fff;margin-right:1px;width:154px;text-align:center;padding:5px 4px}
+.cont-slide-controller li.last{width:155px;margin-right:0}
+.cont-slide-controller li.selected{background-color:#BFD229;color:#212121}
+.homesllider{width:978px;clear:both;float:left;margin:5px 0}
+.homesllider h2{background:#212121;color:#BFD229;text-transform:uppercase;margin:0;padding:10px}
+
+/*design.min.css*/
+
+/*homepage new css*/
+/* Slider - SC */
+.cont-slideshow {
+    margin:0;
+    border:none !important;
+    width:100%;
+    height:auto !important;
+}
+#SliderContainer {
+    min-height:375px;
+}
+#SliderContainer li {
+    width: 100%;
+    z-index:9;
+}
+#SliderContainer li img {
+    width: 100%;
+}
+
+.ajx-basketsummary {
+    z-index: 10;
+}
+
+
+/* Slider Controllers - SC */
+/*.cont-slide-controller {
+    width:100%;
+    bottom:10px;
+    z-index:8;
+    margin: auto;
+    overflow: visible;
+    padding: 0 0px 15px 0px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    min-width: 908px;
+}*/
+.cont-slide-controller > div {
+    margin: auto;
+    overflow: visible;
+    padding: 0 0px 15px 0px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    min-width:908px;
+}
+
+.cont-slide-controller li {
+    background-color: #000000;
+    display: inline;
+    float: none !important;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 13px;
+    margin-right: 10px;
+    padding: 10px 25px;
+    position: relative !important;
+    width: auto !important;
+    overflow:visible;
+}
+.cont-slide-controller li:hover {
+    background-color: #BFD229;
+    color:#000;
+}
+.cont-slide-controller li.selected {
+    background: url("../../images/home-controller-arrow.png") no-repeat scroll center -11px #FFFFFF;
+    color: #000;
+}
+.cont-slide-controller li.selected:hover {
+    background-color: #FFFFFF;
+}
+.cont-slide-controller li div.Arrow {
+    height: 11px;
+    left: 0;
+    position: absolute;
+    top: -11px;
+    width: 100%;
+    display:none;
+}
+.cont-slide-controller li.selected div.Arrow {
+    display:block;
+}
+
+/*homepage new css*/

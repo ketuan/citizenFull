@@ -1,0 +1,28 @@
+<?xml version="1.0"?>   
+<layout version="1.0">
+	<default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>sm/slider/css/style.css</stylesheet></action>
+            <!--<action method="addCss"><stylesheet>sm/slider/css/general.css</stylesheet></action>-->
+        </reference>
+    </default>
+	<slider_index_index>
+		<reference name="root">
+			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+		</reference>	
+        <reference name="head">
+            <action method="addCss"><stylesheet>sm/slider/css/style.css</stylesheet></action>
+            <action method="addCss"><stylesheet>sm/slider/css/general.css</stylesheet></action>
+        </reference>	
+		<reference name="content">
+			<block type="slider/list" name="slider.list.theme">
+			<!--	<action method="setConfig">
+					<name>
+						<theme>theme1</theme>						
+					</name>
+				</action>-->
+			</block>
+		</reference>
+	</slider_index_index>	
+</layout>   
+	

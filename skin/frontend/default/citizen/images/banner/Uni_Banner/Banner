@@ -1,0 +1,92 @@
+
+UNICODE MAGENTO EXTENSIONS:
+===========================
+
+Multiple Banner Extension
+=========================
+
+Multiple Banners Extension allows you to design sliding banners. 
+The Administrator can also add various Images/Html which are show-cased on the Front End as banner,
+and has an extensive number of options like Banner width, Banner height, Banner Animation, and many other setting modifying the Banner display.
+
+FEATURES:
+=====================
+
+To maximize profits, you should do everything you can to make sure your customers complete the purchase.
+
+* The Front End of the Banners Extension show-cases a stylish Banner to advertise your products.
+* A slide-show can be played in the banner to attract customers to your Magento Store.
+* Details of the images/html are also displayed.
+* Apply multiple effects and options for frontend banner.
+* Configurable in your Magento admin panel.
+
+Tech Specification :
+===================
+Compatible: 1.3
+            1.4.0.1, 1.4.1.1, 1.4.2.0,
+            1.5.0.0, 1.5.1.0,
+            1.6.0.0, 1.6.1.0, 1.6.2.0,
+            1.7.0.0, 1.7.0.2
+
+How to configure the Multiple Banner Extension ?
+================================================
+
+After installing Multiple Banner Extension, 
+1. Go to Admin -> System -> Configuration -> Unicode Systems Extensions (at the left), 
+    You will find a tab called “Banner Setting”. By clicking the tab, you can configure the 
+    Banner Setting.
+
+    Banner Setting :-
+        1. Time Delay 
+        2. Auto Play 
+        3. Top Link 
+
+2. Go to Admin -> Banner    
+
+    You will find 3 sub menus "Manage Banner", "Manage Banner Groups", "Setting"
+
+    Manage Banner: You can add new or edit existing banner item and add it to Banner groups.
+    Banner Information:
+        * Title
+        * Web Url 	
+        * Type 	
+        * Image 	
+        * Content 	
+        * Sort Order 	
+        * Status
+
+    Manage Banner Groups : You van add new or edit existing baner.
+    Banner Group Information:
+        * Banner Group Name
+        * Banner Group Code
+        * Banner Width [in px]
+        * Banner Height [in px]
+        * Banner Animation
+        * Pre-Defined Banner Effects
+        * Custom Banner Effects	
+        * Display Title
+        * Display Content
+        * Target
+        * Status
+
+To use banner in your CMS pages use:
+
+{{block type="banner/banner" name="banner.home" banner_group_code="home_banner" template="unibanner/banner.phtml"}}
+
+NOTE: Here banner_group_code value i.e. home_banner will be replaced with the banner group code you created.
+
+General Fixes: / Common Issues :
+================================
+“Access Denied” in Administration Panel
+
+If you come across “Access Denied “ / “404 Error” message when trying to access the
+Multiple Banner Extension after installation, please follow the below steps:
+Go to Admin->System->Permission->Roles, edit the role then save and
+log-out. Log-in again in your admin panel after clearing your browser cache.
+
+
+
+
+              
+
+

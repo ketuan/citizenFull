@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MP_Product>
+            <active>true</active>
+            <codePool>community</codePool>		
+        </MP_Product>
+    </modules>
+</config> 

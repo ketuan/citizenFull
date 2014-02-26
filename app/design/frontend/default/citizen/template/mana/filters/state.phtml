@@ -1,0 +1,42 @@
+<?php
+/**
+ * @category    Mana
+ * @package     Mana_Filters
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<?php
+/**
+ * Category layered navigation state
+ *
+ * @see Mage_Catalog_Block_Layer_State
+ */
+?>
+<?php $_filters = $this->getActiveFilters() ?>
+<?php if(!empty($_filters)): ?>
+<div class="searchFilters filters-mode">
+    <?php //if (!Mage::helper('mana_core')->isMageVersionEqualOrGreater('1.7')) : ?>    
+        <a href="<?php echo $this->getClearUrl();?>" class="filterClearBtn vMiddle">
+            <span class="filterTitle"></span>
+            <span class="clearAllIcon"></span>        
+        </a>
+    <?php //endif; ?>    
+    <span class="vHeight">
+    	<ul>
+			<?php foreach ($_filters as $_filter): ?>
+            <?php if ($_html = $this->getValueHtml($_filter)) : ?>
+                <?php echo $_html ?>
+            <?php else : ?>
+                <li>
+                    <a href="<?php echo $_filter->getRemoveUrl() ?>" title="<?php echo $this->__('Remove This Item') ?>"><?php echo $this->stripTags($_filter->getLabel()) ?><span></span></a>
+                    <div class="displayNone"><?php echo $this->__($_filter->getName()) ?></div> 
+                </li>
+            <?php endif; ?>
+            <?php endforeach; ?>
+            <li class="lastBlankLine"></li>
+        </ul>
+    </span>
+</div>
+<div class="pageNumberArrowDown"><span class=""></span></div>
+<?php endif; ?>

@@ -1,0 +1,18 @@
+<?php
+	$storeId = Mage::app()->getStore()->getId();
+	$collection = Mage::getModel('catalog/product')->getCollection()
+				->addStoreFilter($storeId)
+				->addAttributeToSelect('id')
+				->addAttributeToSort('id','ASC')
+				->addAttributeToFilter('visibility',4)
+				->addAttributeToFilter('feature_product',0);
+	$i = 0;
+	$access_token = $_REQUEST["access_token"];		
+	foreach ($collection as $_product) {
+	    $token_url=$this->getBaseUrl()."mp_product/index/imguploader/prodId/".$_product->getId()."?access_token=$access_token";
+		//echo $token_url;
+	    $response = file_get_contents($token_url); 
+		echo $response; 
+
+//		if($i++>=50)break;
+	} ?>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * IPA - MP
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * It is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   MP
+ * @package    MP_OrderCancel
+ * @copyright  Copyright (c) 2011 IPA Soft (yumba.soft@gmail.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ --> 
+<config>
+    <modules>
+        <MP_CancelledOrder>
+            <version>0.1.0</version>
+        </MP_CancelledOrder>
+    </modules>
+    <frontend>
+        <routers>
+            <mp_cancelledorder>
+                <use>standard</use>
+                <args>
+                    <module>MP_CancelledOrder</module>
+                    <frontName>cancelledorder</frontName>
+                </args>
+            </mp_cancelledorder>
+        </routers>
+		<layout>
+		    <updates>
+		        <mp_cancelledorder>
+		            <file>cancelledorder.xml</file>
+		        </mp_cancelledorder>
+		    </updates>
+		</layout>
+    </frontend>
+    <global>
+        <blocks>
+            <mp_cancelledorder>
+                <class>MP_CancelledOrder_Block</class>
+            </mp_cancelledorder>
+        </blocks>
+        <rewrite>
+            <mp_cancelledorder>
+				<!-- be sure to have only # at the end or the source -->
+				<from><![CDATA[#^/sales/order/cancel/(.*)#]]></from>
+				<to><![CDATA[/cancelledorder/order/cancel/$1]]></to>
+            </mp_cancelledorder>
+        </rewrite>		
+        <helpers>
+            <cancelledorder>
+                <class>MP_CancelledOrder_Helper</class>
+            </cancelledorder>            
+        </helpers>
+    </global>
+</config>

@@ -1,0 +1,794 @@
+/**
+
+/* = Custom scroll bar 
+----------------------------------------------------------------------------------------------------*/ 
+#searchLeftMenu {
+	
+}
+#searchLeftMenu .top {
+	background: url(../images/omg/bgLeftMenu.png) no-repeat -209px bottom;
+	_background: url(../images/omg/bgLeftMenu.gif) no-repeat -209px bottom;
+	padding-bottom: 10px;
+}
+#searchLeftMenu .bottom {
+	background: url(../images/omg/bgLeftMenu.png) no-repeat 0 0;
+	_background: url(../images/omg/bgLeftMenu.gif) no-repeat 0 0;
+	padding-top: 18px;
+}
+#searchLeftMenu .middle {
+	background: url(../images/omg/bgLeftMenu.png) repeat-y -418px 0;
+	_background: url(../images/omg/bgLeftMenu.gif) repeat-y -418px 0;
+	padding: 0 10px 25px 10px;
+	min-height: 150px;
+	_height: 150px;
+}
+.productLeftMenuTitle {
+	font-size: 15px;
+	font-weight: bold;
+	padding: 19px 0 16px 10px;
+	text-transform:uppercase;
+}
+.refineResultTitle {
+	width: 170px;
+	height: 47px;
+	background: url(../images/omg/multiSelectionImages.gif) no-repeat left -450px;
+	margin-bottom: 10px;
+}
+.clearAllLink {
+	height: 12px;
+	position: relative;
+}
+.clearFloatNoHeight {
+	clear: both;
+	line-height: 0;
+	height: 0;
+	display: block;
+	overflow: hidden;
+	width: 0;
+	font-size: 0;
+}
+.clearAllIcon {
+	width: 59px;
+	height: 11px;
+	background: url(../images/omg/multiSelectionImages.gif) no-repeat right 0px;
+	display: block;
+	position: absolute;
+	right: 9px;
+	top: -3px;
+}
+.leftMenuBox{
+	opacity:1 !important;
+}
+#navResults .navCategory {
+	padding-bottom: 15px;
+}
+#navResults dl {
+	padding-top: 0;
+}
+#searchLeftMenu dl dt {
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 10px 0px;
+	border-top: 1px solid #4d4d4d;
+	border-bottom: 1px solid #4d4d4d;
+	color: #333333;
+	font-size: 1.2em;
+}
+#navResults dl dd.leftMenuList {
+	padding: 0;
+	padding-top:15px;
+	border-bottom: none;
+}
+#navResults dl dd {
+	padding-left: 3px;
+	background: none;
+}
+#searchLeftMenu dl dd {
+	padding: 2px 0 2px 16px;
+	margin-left: 0px;
+	font-size: 12px;
+	line-height: 14px;
+	background: url(../images/omg/LeftMenuImages.gif) no-repeat -1167px 3px;
+	overflow: hidden;
+}
+#searchLeftMenu.NVHPLeftMenuBox dl dd, #searchLeftMenu .secondaryNav dl dd {
+	padding: 0 4px 3px 0;
+}
+.categoryNavBox h4 {
+	font-weight: bold;
+}
+#categoryList a, .NVHPLeftMenuBox a, #searchLeftMenu .secondaryNav dd a {
+	padding: 4px 20px 3px 6px;
+	background: url(../images/omg/leftMenuListIcon.gif) no-repeat right center;
+	display: block;
+	font-weight: normal;
+	line-height: 14px;
+}
+.NVHPLeftMenuBox #NVHPBoxLeft a,
+.NVHPLeftMenuBox .NVHPLeftBanner a,
+.NVHPLeftMenuBox #NVHPBoxLeft a:hover,
+.NVHPLeftMenuBox .NVHPLeftBanner a:hover{
+    background:none;
+    padding:0;
+}
+.NVHPLeftMenuBox .line {
+	background: url(../images/omg/LeftMenuImages.gif) no-repeat 0 -20px;
+	height: 4px;
+	margin-top: 11px;
+}
+#searchLeftMenu dl dd ol{
+	float:left;
+}
+ol.category{
+	padding-left:0px !important;
+}
+#searchLeftMenu dl dd ol li {
+	float: left;
+	display: block;
+	padding: 2px 0px;
+	width: 100%;
+}
+#searchLeftMenu dl dd ol li a{
+	color: #333333;
+	font-size: 1.2em;
+	text-decoration: none;
+	float:left;
+	letter-spacing:1px;
+}
+#searchLeftMenu dl dd ol li a:hover{
+	text-decoration:underline;
+}
+#searchLeftMenu dl dd ol li.selected-ln-item a div{
+	font-weight:bold;
+	text-decoration:underline;
+}
+.darkBlueArrowLeftBtn, .blueArrowRightBtn{
+	background: url(../images/omg/arrowTextIcon.gif) no-repeat 0 0;
+	width: 9px;
+	height: 15px;
+}
+.blueArrowRightBtn
+{
+	background-position: right -100px;
+}
+
+.pager .pages div{
+	float:left;
+}
+.pager .pages div div span {
+	padding:0 5px;
+}
+.pager .pages div div a {
+	padding: 0 4px 0 3px;
+	color: #7B3043;
+	display: inline-block;
+	font-size:16px;
+}
+.pager .pages .current {
+	padding: 0 4px 0 3px;
+	font-weight:bold;
+	font-size:16px; 
+	display: inline-block;
+	color: black;
+	margin-top: 1px;
+}
+.pageBoxBgContent .limiter{
+	font-size:15px;
+	float:left;
+	color: #7B3043;
+}
+
+.searchFilters {
+	background: #F0F0F0 url(../images/omg/multiSelectionFilterBg.gif) repeat-y -672px 0;
+	width: 760px;
+	overflow: hidden;
+	margin-top: 2px;
+}
+.searchFilters .filterClearBtn {
+	width: 80px;
+	padding: 8px 0 3px 0;
+}
+.vMiddle, .vHeight {
+	display: table-cell;
+	_display: inline;
+	zoom: 1;
+	vertical-align: middle;
+	text-align: center;
+	overflow: hidden;
+}
+.searchFilters .filterClearBtn .filterTitle {
+	background: url(../images/omg/multiSelectionImages.gif) no-repeat 0 -50px;
+	width: 60px;
+	height: 15px;
+	display: inline-block;
+	cursor: pointer;
+}
+.clearAllIcon {
+	width: 59px;
+	height: 11px;
+	background: url(../images/omg/multiSelectionImages.gif) no-repeat right 0px;
+	display: block;
+	position: absolute;
+	right: 9px;
+	top: -3px;
+}
+.searchFilters .filterClearBtn .clearAllIcon {
+	background-position: right -50px;
+	cursor: pointer;
+	width: 61px;
+	height: 11px;
+	position: static;
+	display: inline-block;
+	margin: 5px 0 2px 3px;
+}
+.searchFilters .vHeight {
+	width: 672px;
+	text-align: left;
+	padding: 3px 0 0 0px;
+}
+.searchFilters ul {
+	display: inline-block;
+	_display: inline;
+	_zoom: 1;
+	background: url(../images/omg/multiSelectionFilterBg.gif) repeat-y 0 0;
+	width: 100%;
+}
+.searchFilters ul li {
+	padding: 0 10px 0 7px;
+	display: inline-block;
+}
+.searchFilters ul li a {
+	display: inline-block;
+	height: 31px;
+	line-height: 31px;
+	_padding: 4px 0 0 0;
+	_height: 26px;
+}
+.lastBlankLine {
+	height: 5px;
+	background-color: white;
+	margin-top: -4px;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+	width: 100%;
+	float: left;
+	position: relative;
+}
+.searchFilters ul li.lastBlankLine {
+	width: 100%;
+	height: 3px;
+	background: #F0F0F0;
+	padding: 0;
+	margin-top: -3px;
+}
+.displayNone {
+	display: none;
+}
+.searchFilters ul li a span {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	background: url(../images/omg/multiSelectionImages.gif) no-repeat right -100px;
+	vertical-align: middle;
+	margin: 0 0 3px 2px;
+}
+.pageNumberArrowDown, .pageNumberArrowUp, .lightGreyArrowDown, .lightGreyArrowUp {
+	height: 7px;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+	clear: both;
+	position: relative;
+}
+
+.pageNumberArrowDown span, .pageNumberArrowUp span, .lightGreyArrowDown span, .lightGreyArrowUp span {
+	display: block;
+	background: url(../images/omg/uberNavCartImages.gif) no-repeat 0 -700px;
+	height: 7px;
+	width: 18px;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+	position: absolute;
+}
+.pageNumberArrowDown span {
+	left: 40px;
+	background-position: 0 -707px;
+}
+.clearFloatNoHeight {
+	clear: both;
+	line-height: 0;
+	height: 0;
+	display: block;
+	overflow: hidden;
+	width: 0;
+	font-size: 0;
+}
+.dropDownSelect ul {
+	background: url(../images/omg/headerFooterImages.gif) no-repeat left -650px;
+	border: 1px solid #DDD;
+	padding: 4px 0 3px 0;
+	display: none;
+	width: 238px;
+	position: absolute;
+	margin: 0;
+	float: left;
+	z-index: 9;
+	max-height: 200px;
+	_height: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+#sortBy .dropDownSelect ul {
+	line-height: 25px;
+	width: 138px;
+}
+.dropDownSelect ul li {
+	width: inherit;
+	overflow: hidden;
+}
+/* JScrollPanel */
+.jspContainer{ 
+	overflow: hidden; 
+	position: relative; 
+} 
+.jspPane{ 
+	padding-left:0px !important;
+	position: absolute; 
+} 
+.jspVerticalBar{ 
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	width: 18px; 
+	height: 100%; 
+} 
+.jspHorizontalBar{ 
+	position: absolute; 
+	bottom: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 16px; 
+} 
+.jspVerticalBar *, 
+.jspHorizontalBar *{ 
+	margin: 0; 
+	padding: 0; 
+} 
+.jspCap{ 
+	display: none; 
+} 
+.jspHorizontalBar .jspCap{ 
+	float: left; 
+} 
+.jspTrack, 
+.jspVerticalBar .jspArrowUp, 
+.jspVerticalBar .jspArrowDown{ 
+	background-image: url(../images/omg/blueScrollBarBg.gif);
+	background-repeat:no-repeat; 
+	width:18px; 
+} 
+.jspTrack{ 
+	position: relative; 
+	background-position:-40px 0; 
+	background-repeat:repeat-y; 
+	cursor: pointer; 
+	height: 100%; 
+	top:20px;
+}
+.jspDrag{ 
+	position: absolute;
+	cursor: pointer;
+	overflow: hidden;
+	right: 0;
+	width: 18px;
+	background: url(../images/omg/blueScrollBarDrag.gif) no-repeat 0 center;
+} 
+.jspHorizontalBar .jspTrack, 
+.jspHorizontalBar .jspDrag{ 
+	float: left; 
+	height: 100%; 
+	background:url(../images/omg/blueScrollBarDragHorizon.gif) no-repeat scroll center 0 transparent;
+	overflow:hidden;
+	position:relative;
+} 
+.jspHorizontalBar .jspDragLeft, .jspHorizontalBar .jspDragRight{
+    background: url("../images/omg/blueScrollBarDragHorizon.gif") no-repeat scroll 0 0 transparent;
+    font-size: 0;
+    width: 4px;
+    line-height: 0;
+    overflow: hidden;
+    position: absolute;
+    height: 100%;
+}
+.jspHorizontalBar .jspDragRight{
+    background-position:right 0;
+    right:0px;
+}
+.jspHorizontalBar .jspTrack{
+    background:url(../images/omg/blueScrollBarBgHorizon.gif) 0 -42px;
+}
+.jspVerticalBar .jspArrowUp{ 
+	height:19px; 
+	background-position:-20px 0; 
+	display: block; 
+	position: absolute; 
+	z-index: 1; 
+	top: 0; 
+	right: 0; 
+	text-indent: -2000px; 
+	overflow: hidden; 
+	cursor:pointer; 
+} 
+.jspVerticalBar .jspArrowUp:hover{ 
+	background-position:-20px -20px; 
+} 
+.jspVerticalBar .jspArrowUp:active{ 
+	background-position:-20px -40px; 
+} 
+.jspVerticalBar .jspArrowDown{ 
+	height:19px; 
+	background-position:0 0; 
+	display: block; 
+	position: absolute; 
+	z-index: 1; 
+	bottom: 0; 
+	right: 0; 
+	text-indent: -2000px; 
+	overflow: hidden; 
+	cursor:pointer; 
+} 
+.jspVerticalBar .jspArrowDown:hover{ 
+	background-position:0 -20px; 
+} 
+.jspVerticalBar .jspArrowDown:active{ 
+	background-position:0 -40px; 
+} 
+.jspHorizontalBar .jspArrow{ 
+	width: 17px;
+	float: left; 
+	height: 100%; 
+	background:url(../images/omg/blueScrollBarBgHorizon.gif) -3px -2px;
+} 
+.jspHorizontalBar .jspArrow.jspArrowRight{
+	background-position:-3px -22px;
+}
+.jspVerticalBar .jspArrow:focus{ 
+	outline: none; 
+} 
+.jspCorner{ 
+	background: #eeeef4; 
+	float: left; 
+	height: 100%; 
+} 
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */ 
+* html .jspCorner{ 
+	margin: 0 -3px 0 0; 
+}
+
+ /* root element for scrollable */
+/*
+	root element for the scrollable.
+	when scrolling occurs this element stays still.
+*/
+.scrolldiv{
+	 width:180px;
+}
+.scrollable { 
+	/* required settings */
+	position:relative;
+	overflow:scroll;
+	height: 180px;
+	width:157px; 
+	float:left;
+	padding-left:6px;
+	border-bottom:1px solid #BABABA;
+	border-top:1px solid #BABABA;
+	/*overflow-y:scroll;*/
+}
+.unscroll {
+
+	/* required settings */
+	position:relative;
+	overflow:hidden; 
+	width:170px; 
+	float:left;
+	padding-left:0px;
+}
+.filter-item-list {line-height:15px; display:block;}
+.filter-item-list  em{color:#bbb;font-size:11px;padding-left:5px;}
+.filter-item-list .selected-ln-item,.filter-item-list .select-ln-item {float:left;background:none;
+} 
+.filter-item-list .selected-ln-item .selected-filter-item {
+	float:left;
+	text-align:left;
+}
+.filter-item-list .selected-ln-item .selected-filter-item span{
+	width:13px;
+	height:15px;
+	margin-right: 15px;
+	background:url(../images/omg/multiSelectionImages.gif) no-repeat 0px -37px;
+	display:inline-block;
+	vertical-align:middle;
+}
+.filter-item-list .select-ln-item a.selected span{
+	background:url(../images/omg/multiSelectionImages.gif) no-repeat 0px -37px;
+}
+.filter-item-list .select-ln-item a.selected{
+	font-weight:bold;
+	text-decoration:underline !important;
+}
+.filter-item-list .selected-ln-item .selected-filter-item:hover span{
+    background-position:0px 0px;
+}
+
+.filter-item-list .select-ln-item .select-filter-item {
+	float:left;
+	text-align:left;
+}
+.filter-item-list .select-ln-item .select-filter-item span{
+	width:13px;
+	height:15px;
+	margin-right: 15px;
+	background:url(../images/omg/multiSelectionImages.gif) no-repeat 0px 0px;
+	display:inline-block;
+	vertical-align:middle;
+}
+.filter-item-list .select-ln-item .select-filter-item:hover span{
+	background-position:0px -37px;
+}
+
+.filter-item-list .select-ln-item .non-select-filter-item {
+	float:left;
+	font-size: 1.2em;
+	letter-spacing: 1px;
+}
+.filter-item-list .select-ln-item .non-select-filter-item span{
+	width:13px;
+	height:15px;
+	margin-right: 15px;
+	background:url(../images/omg/multiSelectionImages.gif) no-repeat 0px 0px;
+	display:inline-block;
+	vertical-align:middle;
+}
+/*
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a extremely large width to accommodate scrollable items.
+	it's enough that you set width and height for the root element and
+	not for this element.
+*/
+.scrollable .items {
+	/* this cannot be too large */ 
+	position:absolute; 
+	clear:both;
+	
+}
+.unscroll .items {
+	/* this cannot be too large */
+ 
+	
+}
+
+div.div_arrow_scroll .scroll-handle{
+  border:0px red solid;
+  width:11px; 
+  margin-left:4px;
+  height:20px;
+  z-index:990;cursor:pointer;position:absolute; 
+  background-color:#58585A;
+ 
+}
+div.div_arrow_scroll .scroll-handle:hover{
+	background-color:red;
+}
+/* Global */
+.header-sublink, .cont-newsletter div ul li.clicklink, .cont-socialfeed div ul li.clicklink, .cont-proddetail h1, .cont-proddetail h2, .cont-label, .cont-login h1, .cont-login h2, .cont-nomemlogin h1, .cont-nomemlogin h2, .cont-register h1, .cont-register h2, .cont-store ul li h1, .menu-newsletter li.clicklink, .main-header h1, .main-filter li ul li.label, .cont-payment h2, .cont-preorder ul li h1, .cont-confirmation ul li h1 {
+text-transform: uppercase;
+}
+.col2-left-layout .col-left {
+	width:170px;
+}
+.col2-left-layout .col-left #menu{
+    border:1px solid #212121;
+}
+.col2-left-layout .col-main {
+	width:780px;
+	background:#fff;
+	padding:10px;
+}
+
+/* Category Page */
+.catalog-category-view .page {
+	width:980px;
+	margin:auto;
+}
+.catalog-category-view a {
+	color:#2C2C2C;
+}
+.catalog-category-view .col-left {
+	width:170px;
+}
+.catalog-category-view .col-main {
+	width:780px;
+	background:#fff;
+	padding:10px;
+}
+.catalog-category-view .breadcrumbs {
+	text-transform: uppercase;
+	display: table;
+	clear: both;
+	font-size: 11px;
+	line-height: normal;	
+}
+.catalog-category-view .breadcrumbs a{
+	color:#2C2C2C;
+}
+.catalog-category-view .category-description {
+	width: 740px;
+	padding: 20px;
+	background: url('../images/cat-banner-bg.jpg') repeat 0 0 #000;
+	float: left;
+}
+.catalog-category-view .category-description p{
+	color: #FFF;
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	font-weight: normal;
+	text-align: center;
+	width: 740px;
+	float: left;
+	font-size: 12px;
+	margin: 15px 0px 20px 0px;	
+}
+.catalog-category-view .category-description ul { width:720px; float:left; padding-left:20px;text-align:center; }
+.catalog-category-view .category-description ul li { float:left; width:144px; list-style:none; margin:0 !important; }
+.catalog-category-view .category-description ul li a { color:#BFD229; text-decoration:none; text-transform:uppercase; font-family:"Times New Roman", Times, serif; font-style:italic; }
+.catalog-category-view .category-description ul li a:hover { text-decoration:underline; color:#FFF; }
+.main-header{margin-bottom:10px;width:780px;text-transform:uppercase;position:relative;padding:10px 0 0;overflow:hidden;}
+.main-header p{text-transform:none;}
+.main-header div.absolute{display:block;position:relative;padding:10px;}
+.main-header div.absolute a{color:#fff!important;}
+.main-header div.absoluteimg{display:block;position:absolute;padding:0;}
+.main-header div.absolute h1{color:#BFD229;}
+.main-header div.absolute h1 {
+	color: #000 !important;
+	font-weight: normal;
+	margin: 0;
+	text-transform: none;
+	display:none !important;
+
+}
+.main-filter{background:url(../images/main-filter-bg.gif) repeat-x;width:780px!important;}
+.main-filter li{list-style:none;padding:3px 0;}
+.main-filter li ul li{float:left;list-style:none;padding:5px;}
+.main-filter li ul li select{margin-top:2px;border:1px solid #CCC;}
+.main-filter li ul li.button{padding:3px;}
+.main-filter li ul li.selected{margin:2px;padding:2px 3px;}
+.main-list{width:101%!important;padding:0;}
+.main-list li{list-style:none;width:191px;margin:0 5px 5px 0;padding:0;}
+.main-list li div{overflow:hidden;position:relative;padding:0;}
+.main-list li div:hover{border:1px solid #999;}
+.main-list li div p {padding: 0 10px 10px; margin:0!important;}
+.pfname{height:35px;overflow:hidden;max-width:170px!important;}
+.main-list li div span.main-swatch {padding: 6px 6px 2px; width: 178px; display:block; height:28px;}
+.main-list li div span.main-swatch a{padding-left:3px;padding-bottom:3px;}
+.main-list li div span.main-swatch img {border: 1px #ccc solid;width:10px;}
+.main-list li div span.imgprod{height:230px;}
+.main-list li div div.promo{position:absolute;right:0;}
+.main-list li div div.promo:hover{border:0;}
+.main-filter a {
+	color:#2C2C2C;
+}
+.bd-light {
+	border: 1px solid #CCC;
+}
+.col-left .links {
+	display:none;
+}
+.fw-bold {
+	font-weight: 700!important;
+}
+.fc-brand {
+	color: #BFD229!important;
+}
+.bd-default {
+	border: 1px solid #828483;
+}
+.bg-invert {
+	background-color: #212121;
+}
+.no_margin {
+	margin: 0!important;
+}
+.fs-xxlarge {
+	font-size: 20px;
+	line-height: normal;
+}
+.cont, .row .col.str {
+	overflow: hidden;
+}
+#menu {
+	width:170px;
+}
+/* Newsletter */
+.menu-newsletter{clear:both;float:left;margin:10px 0 0!important;padding:0;}
+.menu-newsletter li{padding:6px 10px;}
+.menu-newsletter li.title{text-transform:uppercase;padding:0;}
+.menu-newsletter li.label{text-decoration:underline;padding:5px 0;}
+.menu-newsletter li ul li{margin:2px 0;padding:0;}
+.menu-newsletter li ul li.button span{
+    text-indent: -9999px;
+    display: none;
+}
+.menu-newsletter input[type=text]{color:#666;font-size:11px;padding:3px;}
+.menu-newsletter input[type=image]{margin-left:2px;margin-right:0;}
+.menu-newsletter li{width:148px;}
+/*.menu-newsletter .button {background:url('../images/home_subscribe.gif') no-repeat;}*/
+/* for LeftMenu */
+.menu-title li{text-transform:uppercase;padding:5px 10px;}
+.menu-facet li ul.menu-checkbox li{background:url(../images/menu-filter-checkbox.gif) no-repeat 0 4px;padding:3px 15px;}
+.menu-facet li ul.menu-checkbox li.category-title{background:none;font-weight:700;margin-top:10px;padding:3px 10px 3px 0;}
+.menu-facet li ul.menu-checkbox li.category-title:hover{cursor:default;}
+.menu-facet li ul.menu-checkbox li.checked{background:url(../images/menu-filter-checkticked.gif) no-repeat 0 4px;padding:3px 15px;}
+.menu-facet li.fs-close{background:url(../images/menu-arrow-bg.gif) no-repeat scroll 0 4px transparent!important;}
+.menu-facet li.fs-close ul{display:none!important;}
+.menu-facet li.fs-open{background:url(../images/menu-arrow-down-bg.gif) no-repeat scroll 0 4px transparent!important;}
+.menu-category li,.menu-facet li{background:url(../images/menu-arrow-bg.gif) no-repeat 0 4px;padding:3px 10px;float:left;}
+.leftMenuBox a{color:white;}
+
+/* Footer */
+.footer a {
+	color: white;
+	text-align:left;
+}
+.footer-link li ul li {
+	text-align:left;
+}
+/* Product details */
+.product-view .box-up-sell {
+	width:auto;
+	border-bottom:0;	
+}
+.cont-infoblock {
+	width: 290px!important;
+}
+.product-options-bottom{
+	background:none;
+	border:0;
+}
+.add-to-cart button.button {
+	float: left;
+	background:url('../images/addtobasket.gif') no-repeat;
+}
+#addToBasket {
+	cursor: pointer;
+	height: 30px;
+	vertical-align: middle;
+}
+/* Footer */
+.footer li {
+	border:none;
+	background:none;
+}
+/* Viewed Product*/
+.block-viewed .block-title{
+	width:166px;
+}
+.block-viewed .block-title strong {
+	background:none;
+	padding-left:0px;
+}
+/* Footer Bar */
+div.bottom_bar {position: fixed; bottom: 0; left: 0; z-index: 999; width: 100%; height: 35px; background-color:#1e1e1e; opacity:0.90; filter:alpha(opacity=90); color:#ffffff; font-size:12px; border-top:1px solid #bfd229;}
+.bottom_bar_link { color:#ffffff !important; text-decoration:underline!important;}
+.bottom_bar_internal { width:980px; margin:auto; height:35px; color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:35px; }
+.bottom_bar_drome_div { float:left!important; width:24px; padding-top:6px; margin-left:100px; }
+.bottom_bar_left { float:left; width:450px; }
+.bottom_bar_icons { float:right; width:35px; padding-top:6px; }
+.recent-prodCell {display:block!important;}
+#RecentlyViewedTitle {margin-top:40px!important}
+div.bottom_bar {position: fixed; bottom: 0; left: 0; z-index: 999; width: 100%; height: 35px; background-color:#1e1e1e; opacity:0.90; filter:alpha(opacity=90); color:#ffffff; font-size:12px; border-top:1px solid #bfd229;}
+	img.header_images {margin-right:1px; float:left;}
+	img.header_images_last {float:left;}

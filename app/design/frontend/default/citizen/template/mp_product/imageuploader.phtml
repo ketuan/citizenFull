@@ -1,0 +1,92 @@
+<?php
+/*
+{
+    {
+      "id": "663672960315785", 
+      "name": "Bourjois", 
+    },  {
+      "id": "663666020316479", 
+      "name": "Kanebo", 
+    },  {
+      "id": "663666593649755", 
+      "name": "The Face Shop", 
+    },  {
+      "id": "663122890370792", 
+      "name": "Avene", 
+    },  {
+      "id": "663123017037446", 
+      "name": "Vichy", 
+    },  {
+      "id": "663123117037436", 
+      "name": "Chanel", 
+    },  {
+      "id": "663123243704090", 
+      "name": "Dior", 
+    },  {
+      "id": "663166017033146", 
+      "name": "Loreal", 
+    },  {
+      "id": "663166240366457", 
+      "name": "Javin", 
+    },  {
+      "id": "663169983699416", 
+      "name": "Yves Rocher", 
+    }  
+  }
+}
+{
+'1021'=>'663672960315785','999'=>'663666020316479','1053'=>'663666593649755','932'=>'663122890370792','Vichy'=>'663123017037446','1059'=>'663123117037436','1051'=>'663123243704090','1016'=>'663166017033146','1056'=>'663166240366457','1017'=>'663169983699416'
+*/
+?>
+<?php
+// Create our FB Application instance
+require_once('MP/Product/src/facebook.php');
+
+	$albums = array('1021'=>'663672960315785','999'=>'663666020316479','1053'=>'663666593649755');//,'932'=>'663122890370792','Vichy'=>'663123017037446','1059'=>'663123117037436','1051'=>'663123243704090','1016'=>'663166017033146','1056'=>'663166240366457','1017'=>'663169983699416');
+    $_helper = $this->helper('catalog/output');
+    $_product = Mage::registry('current_product');
+	$_product = $this->getProduct();
+	$_manu = $_product->getManufacturer(); 
+if($albums[$_manu] and !$_product->getFeatureProduct()) {	
+    $_taxHelper  = $this->helper('tax');  
+	$_regularPrice = $_taxHelper->getPrice($_product, $_product->getPrice(), $_simplePricesTax);
+ 	$_finalPrice = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
+
+	$album_id = $albums[$_manu];
+	$facebook = new Facebook(array(
+		'appId'  => '256278041179659', //EVA360 Apps
+		'secret' => '777ff2afccabfffdedfad42b7a6c8f0e',
+		'fileUpload' => true
+	));
+// Access token (previously got from https://developers.facebook.com/tools/access_token/)
+	$access_token= $_REQUEST["access_token"];
+	// Default params for all Graph API requests
+	$params = array(
+		'access_token' => $access_token
+	);
+
+	$fanpage = 'Eva360';// Fan page EVA360
+	// Get the page access token
+	$accounts = $facebook->api('/phuongmv/accounts', 'GET', $params);
+	$data = $accounts['data'];
+	foreach($data as $account) {
+		if( $account['id'] == $fanpage || $account['name'] == $fanpage )
+			$fanpage_token = $account['access_token'];
+	}
+	$_imageUrl = $this->helper('catalog/image')->init($_product, 'image');	
+	$realpath= str_replace("http://".$_SERVER['SERVER_NAME']."/",$_SERVER{'DOCUMENT_ROOT'},$_imageUrl);
+	$args = array(
+		'message' => 'Giá EVA360: '.number_format($_finalPrice,0,',','.') .' , Giá chính hãng:'.number_format($_regularPrice,0,',','.')."\n".'Chi tiết xem tại: '.substr($_product->getProductUrl(),0,-9),
+		'image' => '@'. $realpath,
+		'aid' => $album_id,
+		'no_story' => 1,
+		'access_token' => $fanpage_token // note, we use the page token here
+	);	
+	$photo = $facebook->api($album_id . '/photos', 'post', $args);
+	if( is_array( $photo ) && ! empty( $photo['id'] ) )
+		//echo 'Photo uploaded. Check it on Graph API Explorer. ID: ' . $photo['id'];
+	$_product->setFeatureProduct(1);
+	$_product->setFeatureProductReview($album_id.','.$photo['id']);
+	$_product->save();
+}
+	?>

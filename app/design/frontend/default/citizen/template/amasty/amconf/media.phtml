@@ -1,0 +1,90 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+?>
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<?php endif; ?>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+    <div class="productMediaBox" id="magiczoom">
+        <div class="magicZoomcontainer">
+            <div class="packNumber" id="PackSizeImg" style="display:none;"></div>
+            <div id="multiplePointTagged" class style="display:block;"></div>
+            <div id="pdpTop" class="vMiddle">
+                <a href="<?php echo $this->helper('catalog/image')->init($_product, 'image')?>" class="MagicZoomPlus" id="pdp" target="_blank" style="position:relative; display:inline-block;text-decoration:initial; outline:0px; margin:auto; width:530px; border:1px solid #ccc; visibility: visible; opacity:1;">
+                    <img itemprop="image" alt="<?php echo $_product->getName();?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(530,477)?>" width="530" height="477" style="opacity: 1;" rel="zoom-width:450px; zoom-height:477px">
+                    <span class="vHeight"></span>
+                    <div class="MagicZoomLoading" style="opacity: 0.75; display: none; overflow: hidden; position: absolute; visibility: hidden; z-index: 20; max-width: 530px; left: 135px; top: 195px;">Loading zoom..</div>
+                </a>
+            </div>
+            <div class="magicThumbBox">
+	            <button class="prev">&lt;&lt;</button>
+				<button class="next">&gt;&gt;</button>                
+                <div class="more-images">
+                    <ul id="alternativeImages" class="cont-altimage fc-invert">
+                        <?php foreach ($this->getGalleryImages() as $_image): ?>
+                            <li>
+                                <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()); ?>" rel="zoom-id:pdp" rev="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(530,477); ?>" class="selected MagicThumb-swap" style="outline: none;">
+                                  <span class="vMiddle">
+                                    <img alt="<?php echo $_product->getName();?>" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(90,81); ?>" width="89" height="79" style="border:1px solid #ccc;" />
+                                  </span>
+                                    <span class="vHeight"></span>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearFloatNoHeight"></div>
+            <style> #pdp .MagicZoomPup{margin-left:0px;}</style>
+        </div>
+    </div>
+<?php endif?>
+<!--<script type="text/javascript" src="<?php /*echo $this->helper('core/js')->getJsUrl().'jquery.jcarousel.min.js';*/?>"></script>-->
+<script type="text/javascript">
+    var $jmvp = jQuery.noConflict();
+    $jmvp(document).ready(function (){
+        initMagicZoomPlus();
+        MagicZoomPlus.refresh();
+        $jmvp(".more-images").jCarouselLite({
+            //animation: 'slow',
+			btnNext: ".next",
+			btnPrev: ".prev",
+            scroll: 1,
+			visible:4,
+			speed:2000,
+            wrap: 'circular'
+        });
+    })
+</script>

@@ -1,0 +1,91 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   design_default
+ * @package    Mage
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php 
+/**
+ * Top menu for store
+ *
+ * @see Mage_Catalog_Block_Navigation
+ */
+$_category=$this->getStoreCategories();
+$count_t=count($_category);
+?>
+<div class="menuwindow_top" >
+		<div class="topmenu">
+		
+	 <?php 
+	 	$i=0;
+		   foreach($_category as $item) {  
+		 
+		    $children = $item->getChildren();
+			$childrenCount = $children->count();
+			
+			?>
+			<div class="menuwindow" >
+		 
+		<div class="menubody" id="idmenubody"   onMouseOver="mnuMouseOver(this)" onMouseOut="mnuMouseOut(this)">
+			<div class="menu-left-item">
+			<ul>
+				<li class="mbitem_selected">New Arivals</li>
+				<li class="mbitem">Best Sellers</li>
+				<li class="mbitem">Sales</li>
+				<li class="mbitem">Gift Cards</li>
+			</ul>
+			</div>
+			<div class="menu-body-item">
+				<table cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+						<td style="padding-left:20px" width="48%">
+							Products						</td>
+						<td width="52%">
+						Brands						</td>
+					</tr>
+					 <tr>
+						<td>
+							<div style="width:150px; float:left;">qqqqqqqqqqq</div>
+							<div style="width:150px; float:left;">qqqqqqqqqqq</div>
+							<div style="width:150px; float:left;">qqqqqqqqqqq</div>
+							<div style="width:150px; float:left;">qqqqqqqqqqq</div>
+							<div style="width:150px; float:left;">qqqqqqqqqqq</div>
+							<div style="width:150px; float:left;">qqqqqqqqqqq</div>
+							<div style="width:150px; float:left;">qqqqqqqqqqq</div>
+							<div style="width:150px; float:left;">qqqqqqqqqqq</div>
+						</td>
+						<td>
+						fsdfsd
+						</td>
+					</tr>
+				</table>
+		 </div>
+		</div>
+		</div>
+			<?php			
+
+     	 $i++; break;} ?> 
+			<div class="menu-end">&nbsp;</div>
+		</div>
+		 
+		</div>

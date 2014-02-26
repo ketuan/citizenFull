@@ -1,0 +1,78 @@
+/**
+ * Easy Checkout - Magento Extension
+ *
+ * @package:     EasyCheckout
+ * @category:    EcommerceTeam
+ * @copyright:   Copyright 2012 EcommerceTeam Inc. (http://www.ecommerce-team.com)
+ * @version:     2.0.0
+ */
+
+#easycheckout-form-wrap .easy-step {
+    background:#ffffff;
+}
+#easycheckout-shipping-payment-step td.shipping-method,
+#easycheckout-shipping-payment-step td.payment-method {
+    background:#fff;
+}
+#easycheckout-form-wrap .easy-step h2 {
+    color:#000000;
+    font-size:14px;
+    font-weight:900;
+    text-transform:uppercase;
+    margin:0;
+}
+#easycheckout-form-wrap .easy-step h2 span {
+    color:#333;
+    font-weight:100;
+    text-transform:none;
+}
+#easycheckout-form-wrap .address-form-list .input-box input.input-text {
+    padding:3px;
+    /*width:252px;*/
+    background:url('../../../images/ecommerceteam/inputbg.gif') 0 0 no-repeat #fff;
+}
+#easycheckout-form-wrap .address-form-list .input-box input.readonly {
+    color:#969696;
+    background:url('../../../images/ecommerceteam/inputbg-readonly.gif') 0 0 no-repeat #e6e6e6;
+}
+
+#easycheckout-form-wrap .address-form-list .input-box select {
+    padding:2px;
+    background:url('../../../images/ecommerceteam/inputbg.gif') 0 0 no-repeat #fff;
+}
+#easycheckout-form-wrap .address-form-list .input-box .validation-failed {
+    border:1px solid #EB340A  !important;
+    background:url('../../../images/ecommerceteam/inputbg-error.gif') 0 0 no-repeat #fff !important;
+}
+#easycheckout-form-wrap #checkout-review-table thead th {
+    background:#eee;
+    border-bottom:1px solid #ddd  !important;
+}
+#easycheckout-form-wrap #checkout-review-table tfoot tr {
+    background:#eee !important;
+}
+#easycheckout-form-wrap #checkout-review-table tfoot tr td{
+    padding: 5px !important;
+}
+#easycheckout-form-wrap #checkout-review-table tfoot tr.first td {
+    background:url('../../../images/ecommerceteam/totalsbg.gif') 0 0 repeat-x #eee;
+}
+#easycheckout-form-wrap #checkout-review-table .even {
+    background:#fff !important;
+}
+#easycheckout-form-wrap button.btn-checkout-disabled span {
+    background:url("../../../images/ecommerceteam/btn_checkout.gif") no-repeat scroll 0 -40px transparent !important;
+}
+#easycheckout-form-wrap button.btn-checkout-disabled span span {
+    background:url("../../../images/ecommerceteam/btn_checkout.gif") no-repeat scroll 100% -40px transparent !important;
+}
+#easycheckout-shipping-payment-step td {
+    border:1px solid #ccc;
+
+}
+#easycheckout-form-wrap .discount-form {
+    padding: 5px 0;
+}
+h3.product-name{
+    color: #000000;
+}

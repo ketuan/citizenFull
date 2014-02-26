@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MP_Autoupsell>
+            <version>0.0.1</version>
+        </MP_Autoupsell>
+    </modules>
+
+    <global>
+        <blocks>
+            <mp_autoupsell>
+                <class>MP_Autoupsell_Block</class>
+            </mp_autoupsell>
+        </blocks>
+    </global>
+</config>

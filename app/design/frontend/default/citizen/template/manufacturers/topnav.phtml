@@ -1,0 +1,47 @@
+<?php
+/*$items = $this->getItems();
+foreach($items as $item){
+    echo $this->htmlEscape($item["m_name"]);
+}
+*/?>
+<ul class="fs-small no_border tran90">
+    <?php $_productCollection=$this->getAllManufacturers(); ?>
+   <!-- --><?php /*$_collectionSize = $_productCollection->count(); */?>
+    <?php if ( count($_productCollection) == 0 ) : ?>
+        <li class="left no_border">
+            <p class="text_1"><?php echo $this->__('No '.Mage::helper('manufacturers')->getMainHeadingText().' found!'); ?></p>
+        </li>
+    <?php else : ?>
+        <li>
+            <div class="row str no_border bg-invert dropwrapper">
+                <ul class="left col no-border">
+                    <?php $_collectionSize = count($_productCollection); ?>
+                    <?php $_qty = ceil($_collectionSize/6); ?>
+                    <?php $_columnCount = $_columnCount; $prev_row = ""; ?>
+                    <li class="left col no_border">
+                        <ul class="left col no_border">
+                            <?php $i=1;$j = 1; foreach ( $_productCollection as $_product ) : ?>
+                                <li>
+                                    <a href="<?php echo Mage::helper('manufacturers')->getUrl($_product['identifier']); ?>">
+                                        <?php echo $this->htmlEscape($_product["m_name"]);?>
+                                    </a>
+                                </li>
+                            <?php
+                                if($j%$_qty == 0){
+                            ?>
+                                    </ul>
+                                </li>
+                                <li class="left col no_border">
+                                    <ul class="left col no_border">
+                            <?php
+                                }
+                            ?>
+                        <?php $j++; endforeach; ?>
+                            </ul>
+                        </li>
+                </ul>
+            </div>
+        </li>
+        <br style="clear:both;" />        
+    <?php endif; ?>
+</ul>

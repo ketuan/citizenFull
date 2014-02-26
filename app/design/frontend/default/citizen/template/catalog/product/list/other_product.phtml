@@ -1,0 +1,54 @@
+<?php
+if ($_product) {
+    // get collection of categories this product is associated with
+    $categories =$_product->getCategoryCollection()
+        //  ->setPage(1, 1)
+        //->addFieldToFilter(‘level’,"3")
+        //->addFieldToFilter(‘parent_id’,"3")
+        ->setOrder("level")
+        ->load();
+
+    // if the product is associated with any category
+    if ($categories->count())
+        foreach ($categories as $_category)
+        {
+            $cur_category = Mage::getModel('catalog/category')->load($_category->getId());
+            ?>
+            <div style="clear:both">
+                <h2>Other products from :<?=$cur_category->getName()?></h2>
+            </div>
+            <?php
+            $products = Mage::getResourceModel('catalog/product_collection')
+                ->addCategoryFilter($_category)
+                ->addAttributeToSelect('small_image');
+
+            foreach ( $products as $productModel )
+            {
+                $_product = Mage::getModel('catalog/product')->load($productModel->getId());
+                $width=135; $height=135;
+                $_imageUrl =  $this->helper('catalog/image')->init($productModel, 'small_image')->resize($width, $height);
+                ?>
+                <div class="product-shop">
+                    <h5>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+                            <?php echo $this->htmlEscape($_product->getName())?>
+                        </a>
+                    </h5>
+                    <img src=<?=$_imageUrl ?> width="<?=$width?>" height="<?=$height?>"/>
+                    <?php echo $this->getPriceHtml($_product, true); ?>
+                    <?php if($_product->isSaleable()): ?>
+                        <button class="button" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+                    <?php else: ?>
+                        <div class="out-of-stock"><?php echo $this->__('Out of stock') ?></div>
+                    <?php endif; ?>
+                    <div class="clear"></div>
+                    <div class="description">
+                        <?php echo nl2br($_product->getShortDescription()); ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><small><?php echo $this->__('Learn More') ?></small></a>
+                    </div>
+                </div>
+            <?php
+            }
+        }
+}
+?>

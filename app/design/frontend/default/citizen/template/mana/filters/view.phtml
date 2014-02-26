@@ -1,0 +1,68 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+<?php if($this->canShowBlock()): ?>
+<div class="leftMenuBox productLeftMenuBox block2-layered-nav" >
+	<ul class="row menu-title no_margin">
+	    <li class="fc-brand fs-medium bg-invert">
+        	<a href="#" class="fc-brand"><?php if(Mage::registry('current_category')) echo Mage::registry('current_category')->getName();else echo $this->__('Search Results');?></a>
+        </li>
+        <li class="bd-invert col str no_margin">
+            <div id="searchLeftMenu" class="leftMenuList leftMenuBg">
+                <div>		
+                    <div id="categoryListMask" style="display:none;"></div>
+                    <div class="categoryNavBox">
+                        <div id="navResults">
+                            <?php //echo $this->getStateHtml() ?>
+                            <?php if($this->canShowOptions()): ?>
+                                
+                                <?php $_filters = $this->getFilters() ?>
+                                <?php foreach ($_filters as $_filter): ?>
+                                    <?php if($_filter->getItemsCount()): ?>                                        
+                                        <div class="navCategory">
+                                            <!--<dl id="narrow-by-list">                                                
+                                                <?php //if($_filter->getName()!='Category'):?><dt><span><?php echo $this->__($_filter->getName()) ?></span></dt><?php //endif?>-->
+                                                <dd class="leftMenuList"><?php echo $_filter->getHtml() ?></dd>
+                                            <!--</dl>-->
+                                        </div>
+                                    <?php endif;?>                                            
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<?php endif; ?>

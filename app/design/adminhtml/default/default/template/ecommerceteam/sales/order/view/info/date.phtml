@@ -1,0 +1,28 @@
+<?php
+/**
+ * Easy Checkout - Magento Extension
+ *
+ * @package     EasyCheckout
+ * @category    EcommerceTeam
+ * @copyright   Copyright 2012 EcommerceTeam Inc. (http://www.ecommerce-team.com)
+ * @version:    2.1.0
+ */
+
+/** @var $this Mage_Adminhtml_Block_Abstract */
+/** @var $order Mage_Sales_Model_Order */
+$order = $this->getOrder();
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head"><?php echo $this->__('Delivery Date') ?></h4>
+    </div>
+    <fieldset>
+        <?php
+            if ($formattedDate = $order->getData('delivery_date_formatted')) {
+                echo $formattedDate;
+            } else {
+                echo $this->__('Today');
+            }
+        ?>
+    </fieldset>
+</div>

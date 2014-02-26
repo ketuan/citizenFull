@@ -1,0 +1,128 @@
+.navbar { 
+	background:none !important;
+	border-bottom:none;
+}
+.cont-linkloc {
+	margin:0 !important;
+}
+.navbar ul li a {
+	padding:10px;
+}
+ul.navbar-drop li.selected a, .homeicon.selected {
+	color:#000;
+}
+.navbar ul li,.cont-reviewblock ul li,.cont-payment-header ul li{list-style:none;text-transform:uppercase}
+.navbar ul li.homeicon,.navbar ul li.homeicon a,.breadcrumb ul,.ajx-basketsummary ul li.info ul,.paymentsummary .th-desc ul li,.ajx-article ul li div.holder_CATEGORIES2 ul li{padding:0}
+.header-widget ul li.navbar-search ul,.main-accountblock li ul li div p{margin:5px 0}
+.header-widget ul li.navbar-search ul li,.cont-writereview ul li.ajx-captcha div,.cont-writereview ul li.ajx-captcha div.captcha ul li.reload img,.main-accountblock li ul{border:none}
+ul.navbar-drop,.cont-linkloc li,.cont-proddetail ul li,.cont-prodmore li,.cont-prodmore2 li,.cont-store ul li,.ajax-store ul li,.foter-linkloc li,.recentview ul li,.menu-block li,.main-keylook ul li,.main-account ul li,.main-accountblock li,.main-accountblock li ul li,.cont-payment-footer ul li,.sidebar-basket ul li,.cont-payment ul li,.cont-accountblock li,.cont-preorder ul li,.orderlist,.cont-confirmation ul li,.cont-cookie-content ul li{list-style:none}
+ul.navbar-drop li ul li div.dropwrapper ul li.header,.cont-alttxtlink a{font-weight:700}
+ul.navbar-drop li ul li div.dropwrapper ul li ul,ul.navbar-drop li ul li div.dropwrapper ul li ul li{border:none;margin:0;padding:0}
+ul.navbar-drop li:hover ul,ul.navbar-drop li.sfhover ul,ul.navbar-drop li.brand:hover ul,ul.navbar-drop li.brand.sfhover ul{left:auto}
+ul.navbar-drop{line-height:20px}
+ul.navbar-drop li a{color:#fff;font-weight:500;display:block}
+ul.navbar-drop li a:hover{background:#BFD229;text-decoration:none}
+ul.navbar-drop li:hover a{text-decoration:none;background:#212121}
+ul.navbar-drop li:hover ul li a{background:none;text-decoration:none;color:#FFF}
+ul.navbar-drop li:hover ul li a:hover{text-decoration:underline;color:#FFF}
+ul.navbar-drop li ul{position:absolute;z-index:999;left:-999em;display:table;border:none;margin-left:-1px;padding:0}
+ul.navbar-drop li ul li a{font-weight:400;padding:5px}
+ul.navbar-drop li ul li div{display:table;float:left;padding:10px}
+ul.navbar-drop li ul li div.dropwrapper ul{position:relative;border:none;margin:0;padding:0}
+ul.navbar-drop li ul li div.dropwrapper ul li{border:none;width:150px;margin:0;padding:0}
+ul.navbar-drop li.selected a,.homeicon.selected{background-color:#BFD229;color:#000000}
+ul.navbar-drop li.brand ul{margin-left:-256px;width:940px}
+ul.navbar-drop li.sale ul{margin-left:-677px;width:940px}
+ul.navbar-drop li.sale ul li div.dropwrapper ul li a.fc-brand{color:red!important}
+/* Mega Menu Styles - SC */
+
+ul.navbar-drop li:hover a {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+ul.navbar-drop > li > ul {
+	width:100%;
+	background:#ffffff;
+	opacity:1;
+	filter: alpha(opacity=100);
+	box-shadow:0 6px 5px 0 rgba(0, 0, 0, 0.3);
+}
+ul.navbar-drop li:hover ul, ul.navbar-drop li.sfhover ul, ul.navbar-drop li.brand:hover ul, ul.navbar-drop li.brand.sfhover ul {
+    left: 0;
+}
+ul.navbar-drop > li > ul > li {
+	float: none !important;
+    margin: 0 auto;
+    width: 980px;
+}
+ul.navbar-drop > li > ul > li > div {
+	background:none;
+	border:0;	
+}
+ul.navbar-drop li:hover ul li a {
+    color: #000000!important;
+
+}
+ul.navbar-drop li:hover ul li a.fc-brand {
+	border-bottom: 1px solid #000000;
+	margin-bottom: 10px;
+}
+ul.navbar-drop li.brand ul {
+    float: none !important;
+    margin: 0 auto;
+    width: 100%;
+}
+ul.navbar-drop li ul li div.dropwrapper ul li {
+    margin: 0 35px 0 0;
+	text-align:left;
+}
+ul.navbar-drop li.brand ul li div.dropwrapper ul li {
+    margin:0;
+}
+ul.navbar-drop li ul li div.dropwrapper ul li.Featured {
+    border-left: 1px solid #000000 !important;
+    margin: 0;
+    padding: 0 0 20px 35px;
+    width: 370px;
+}
+ul.navbar-drop li ul li div.dropwrapper ul li.Featured > a.Collections {
+    float: left;
+    padding-top: 20px;
+    width: 100%;
+}
+ul.navbar-drop li ul li div.dropwrapper ul li ul, ul.navbar-drop li ul li div.dropwrapper ul li ul li {
+	with: 100%;
+}
+.FDIMG01, .FDIMG02, .FDIMGGIFT {
+	position: absolute; 
+	top: 0px; 
+	right: 0px; 
+	height: 116px; 
+	width: 174px;
+}
+.FDIMG02 {
+	top: 126px;
+}
+
+/*KT*/
+#site_nav #main_nav_row #main_nav ul li.nav_item {
+	float: left;
+	height: 68px;
+}
+#site_nav #main_nav_row #main_nav ul li.nav_item>a {
+	display: block;
+	color: #94989c;
+	line-height: 68px;
+	font-size: 1.6em;
+	padding: 0 12px;
+	text-transform: uppercase;
+	font-family: UniversCondensed,Arial,Helvetica,sans-serif;
+	transition: background 200ms;
+	-moz-transition: background 200ms;
+	-webkit-transition: background 200ms;
+	-o-transition: background 200ms;
+}
+ul.navbar-drop li.brand ul li div.dropwrapper ul li {
+    margin: 0;
+}
+/*/KT*/

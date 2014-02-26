@@ -1,0 +1,28 @@
+<div class="clear"></div>
+<div class="wrap_collection">
+    <div id="collections-title">
+        <h2><span class="NAHead">Collections</span><span class="NAHeadSub"><a href="/all-collections/">View all Collections</a></span></h2>
+    </div>
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('collections')->toHtml(); ?>
+</div>
+<div class="collection_bottom">
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('collections_bottom')->toHtml(); ?>
+</div>
+
+<script type="text/javascript" src="<?php echo $this->helper('core/js')->getJsUrl().'accordion/liteaccordion.jquery.min.js';?>"></script>
+<script type="text/javascript" src="<?php echo $this->helper('core/js')->getJsUrl().'accordion/liteaccordion.jquery.js';?>"></script>
+<script>
+    var $kt = jQuery.noConflict();
+    $kt(document).ready(function() {
+        $kt('div#collections_slider').liteAccordion({
+                firstSlide : 1,
+                autoPlay : true,
+                containerWidth : 960,
+                containerHeight : 430,
+                headerWidth: 61,
+                slideSpeed : 300,
+                cycleSpeed : 6000
+        });
+    });
+</script>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('seo_link')->toHtml(); ?>

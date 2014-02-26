@@ -1,0 +1,48 @@
+<?php
+/**
+ * Manufacturers extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   FME
+ * @package    Manufacturers
+ * @copyright  Copyright 2010 © free-magentoextensions.com All right reserved
+ */
+?>
+<?php
+$_category = Mage::registry('current_category');
+$collection = $this->getCategoryManufacturers($_category->getId());
+$x = Mage::helper('manufacturers')->getFeaturedBlockLogoWidth();  
+$y = Mage::helper('manufacturers')->getFeaturedBlockLogoHeight(); 
+$color = Mage::helper('manufacturers')->getFeaturedBlockLogoBackgroundColor();
+?>
+<?php if (count($collection) != 0) : ?>
+<div class="page-title category-title">
+        <h1><?php echo $this->__('Category Brands'); ?></h1>
+</div>
+<div class="category-manufacturers">
+<ul id="catmanufacturers">
+	<?php $i=1; foreach ( $collection as $_feaManufacturers ) :
+	if($_feaManufacturers["m_logo"] != "") {
+	$imgPath = Mage::helper('manufacturers')->getResizedUrl($_feaManufacturers["m_logo"],$x,$y,$color);	
+	} else {			
+	$imageFile =  "manufacturers/files/n/i/no_image_available.jpg";
+	$imgPath = Mage::helper('manufacturers')->getResizedUrl($imageFile,$x,$y,$color);
+	}	
+	?>	
+	<li>
+	<a class="image" href="<?php echo Mage::helper('manufacturers')->getUrl($_feaManufacturers['identifier']); ?>" title="<?php echo $_feaManufacturers["m_name"]; ?>">
+	<img src="<?php echo $imgPath; ?>" alt="<?php echo $_feaManufacturers["m_name"]; ?>" />
+	<br /><span><?php echo $this->htmlEscape($_feaManufacturers["m_name"]) ?></span>
+	</a>
+	</li>
+	<?php endforeach ?>
+</ul>
+</div>
+<div style='clear:both;margin-bottom:20px;'></div>
+<?php endif; ?>
