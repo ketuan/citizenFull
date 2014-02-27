@@ -40,6 +40,9 @@ global $var_yttheme;
                 <div id="top_nav_row">
                     <div class="left"></div>
                     <div class="right">
+                    	<div class="social_link">
+							<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('social_link')->toHtml() ?>
+                        </div>
                         <?php echo $this->getChildHtml('topLinks') ?>
                     </div>
                 </div>
@@ -51,7 +54,11 @@ global $var_yttheme;
                          <?php echo $this->getChildHtml('topSearch') ?>
                     </div>
                     <ul id="nav_sub_links">
-                        
+                        <li>
+                        	<a href="<?php echo Mage::getUrl('customer/account/create'); ?>">
+                            	<?php echo $this->__('Registration'); ?>
+                            </a>
+                        </li>
                     </ul>
                 </div>
     		</div>

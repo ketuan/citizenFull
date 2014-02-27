@@ -27,7 +27,7 @@
 * { margin:0; padding:0; }
 
 body{
-    background: #000;
+    background-color: #434e5b;
     color: #2C2C2C;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
@@ -499,18 +499,74 @@ tr.summary-details-excluded { font-style:italic; }
     list-style: none;
     float: left;
     color: #fff;
-    padding: 0 5px;
-    background: url(../images/header-brand-sepa.gif) no-repeat right 4px;
+    padding: 0 8px;
+    background: url(../images/header-brand-sepa.gif) no-repeat right 12px;
     margin-top: 5px;
 }
+.links li.last{
+	background:none;
+}
 .links li a{
-    text-transform: uppercase;
-    font-size: 10px;
+    font-size: 12px;
     color: #ffffff;
 }
 .links li.first { padding-left:0 !important; }
 .links li.last_cur { background:none !important; padding-right:0 !important; }
 
+.social_link{
+	float: left;
+	line-height: 44px;
+}
+#site_nav #top_nav_row a{
+	color: #fff;
+	margin: 0 2px;
+	transition: all 200ms;
+	-moz-transition: all 200ms;
+	-webkit-transition: all 200ms;
+	-o-transition: all 200ms;
+}
+#site_nav #top_nav_row a.facebook, #site_nav #top_nav_row a.twitter, #site_nav #top_nav_row a.instagram, #site_nav #top_nav_row a.pinterest {
+	background: transparent url('../images/citizen/nav_social_icons-new.png') no-repeat;
+	width: 20px;
+	height: 20px;
+	text-align: left;
+	text-indent: -9999px;
+	display: block;
+	float: left;
+	margin: 12px 8px 0 0;
+}
+#site_nav #top_nav_row a.facebook {
+	background-position: left top;
+}
+#site_nav #top_nav_row a.twitter {
+	background-position: 35% 0%;
+}
+#site_nav #top_nav_row a.instagram {
+	background-position: 66% 0%;
+}
+#site_nav #top_nav_row a.pinterest {
+	background-position: 100% 0%;
+}
+#site_nav #top_nav_row a.facebook:hover{
+	background-position:left bottom;
+}
+#site_nav #top_nav_row a.twitter:hover{
+	background-position:35% 100%;
+}
+#site_nav #top_nav_row a.instagram:hover{
+	background-position:66% 100%;
+}
+#site_nav #top_nav_row a.pinterest:hover{
+	background-position:100% 100%;
+}
+#site_nav #top_nav_row a.contact {
+	font-size: 12px;
+	color: #ffffff;
+	float: left;
+	background: url(../images/header-brand-sepa.gif) no-repeat right 17px;
+	padding-right: 8px;
+	margin-right: 6px;
+}
 .link-cart { color:#dc6809 !important; font-weight:bold; }
 .link-wishlist { color:#dc6809 !important; font-weight:bold; }
 .link-reorder { font-weight:bold; color:#dc6809 !important; }
@@ -2115,7 +2171,6 @@ ul#alternativeImages{
 }
 #site_nav #top_nav_row {
 	height: 44px;
-	line-height: 44px;
 	padding: 0 0 0 15px;
 	color: #74838e;
 	font-size: 1.2em;
@@ -2140,6 +2195,8 @@ ul#alternativeImages{
 }
 #site_header ul.links{
     float:left;
+	height: 44px;
+	line-height: 33px;
 }
 #site_header .form-language{
     float:left;
@@ -2154,11 +2211,15 @@ ul#alternativeImages{
     background: url(../images/header-brand-sepa.gif) no-repeat left 9px;
 }
 #site_header .form-search{
-    padding: 4px;
-    display: block;
-    overflow: hidden;
-    padding-top: 10px;
-    text-align: left;
+    background-color: #32373c;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	height: 31px;
+	width: 223px;
+	padding: 0 0 0 8px;
+	margin: 18px 0 0;
+	overflow: hidden;
 }
 #header .form-search label{
     color: #BFD229!important;
@@ -2167,31 +2228,46 @@ ul#alternativeImages{
     margin-right: 15px;
 }
 #site_header .form-search input{
-
-    color: #666;
-    font-size: 11px;
-    padding: 2px;
-    width: 214px;
+	color: #70777e;
+	font-size: 1.2em;
+	line-height: 31px;
+	height: 31px;
+	background: none;
+	border: none;
+	padding: 0;
+	width: 180px;
+}
+#site_header .form-search .button{
+	border:none;
+	width:37px;
+	height:100%;
+	float: right;
 }
 #site_header .form-search .button span{
-    background: #BFD229;
-    color: #666;
-    font-size: 12px;
-    padding: 1px 5px;
-    border: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-left: 8px;
-
+    float: right;
+	background: transparent url('../images/citizen/site_search_cap.png') center center no-repeat;
+	width: 37px;
+	height: 100%;
+	display: block;
+	cursor: pointer;
+	border:none;
+	text-indent:-99999px;
+}
+#site_nav #main_nav_row #nav_sub_links li a {
+	background: transparent url('../images/citizen/nav_sub_link_bullet.png') 0 center no-repeat;
+	padding: 0 0 0 20px;
+	font-size: 12px;
+	color: #fff;
+	transition: all 200ms;
+	-moz-transition: all 200ms;
+	-webkit-transition: all 200ms;
+	-o-transition: all 200ms;
 }
 /*nav banner slider*/
 .cms-index-index .main-container .main .std{
 	width: 100%;
-	background-color: #05131f;
-	height: 582px;
 	position: relative;
-	min-width: 786px;
-	margin: 44px 0 0;	
+	margin: 44px 0 0;
 }
 /*/nav banner slider*/
 /*/----------header---------------*/
@@ -2215,7 +2291,6 @@ ul#alternativeImages{
 #featuredHome{
     width: 100%;
     float: left;
-    background-color: #333;
     margin: 0 !important;
 }
 #horizontal_carousel{
@@ -2225,7 +2300,7 @@ ul#alternativeImages{
 /*/FEATURE BRAND*/
 /*element same css*/
 .new_arrival,.collection{
-    width: 980px;
+    width: 1000px;
     margin: 0 auto !important;
     float: none;
 }
@@ -2234,9 +2309,10 @@ ul#alternativeImages{
 /*list arrival*/
 .new_arrival{
     position: relative;
+	overflow: hidden;
+	margin-top: -106px !important;
 }
 .new_arrival h2, #collections-title h2{
-    background: url("../images/home-arrivals-bg.gif") repeat-x scroll 0 29px transparent;
     color: #FFFFFF;
     padding: 12px 0 2px 0;
     margin: 0;
@@ -2244,7 +2320,6 @@ ul#alternativeImages{
     width: 100%;
 }
 h2 span.NAHead{
-    background-color: #000000;
     font-family: 'Oswald',Arial,Helvetica,sans-serif;
     font-size: 25px;
     font-weight: normal;
@@ -2259,49 +2334,75 @@ h2 span.NAHeadSub {
     font-weight: normal;
     padding-top: 2px;
     text-transform: none;
-    background-color: #000;
 }
 h2 span.NAHeadSub a {
     padding: 0 20px;
     background: url(../images/home-link-arrow.png) no-repeat right 5px;
-    border-right: 10px solid #000;
     color: #ffffff;
     font-size: 0.9em;
 }
 h2 span.NAHeadSub a:hover{
     text-decoration: underline;
 }
+h2 span.new_tit_bg{
+	display: block;
+	float: left;
+	width: 578px;
+	border-top: 2px dotted #ffffff;
+	margin-top: 16px;
+}
 .new_arrival_product li{
-    margin: 10px 5px;
-    width: 184px;
+	position:relative;
+	margin: 6px;
+	float: left;
+	width: 241px;
+	height: 320px;
+	background: transparent url('../images/citizen/watch_grid_ecodrive.jpg') center no-repeat;
+}
+.new_arrival_product li:first-child{
+	margin-left:0px;
+}
+.new_arrival_product li:last-child{
+	margin-right:0px;
+}
+.new_arrival_product li .new_img{
+	float: left;
+	width: 241px;
+	height: 320px;
+	text-align: center;
+	margin-top: 10px;
 }
 .new_arrival_product li a img{
     width: 184px;
 }
-.new_arrival_product li a span.arrival_brand{
-
-    display: block;
-    width: 100%;
-    margin-top:10px;
-    min-height: 15px;
+.new_arrival_product .new_content{
+	padding: 15px;
+	position: absolute;
+	bottom: 0;
+	width: 211px;
+	text-align: center;
 }
 .new_arrival_product h3.arrival_name{
-    font-weight: normal;
-    font-size: 1em;
-    color: #ffffff;
-    margin-bottom: 0px;
+   font-family: UniversCondensedBold,Arial,Helvetica,sans-serif;
+	text-transform: uppercase;
+	font-size: 18px;
+	margin: 0 0 3px;
+	line-height: 1.1em;
+	text-shadow: 1px 1px 3px #000;
 }
-.new_arrival_product h3.arrival_name:hover{
-    text-decoration: underline;
+.new_arrival .summary {
+	font-size: 14px;
+	color: #7d8082;
+	text-shadow: 1px 1px 3px #000;
 }
-.new_arrival_product span.arrival_brand, .new_arrival_product .price span.price{
-    color: #ffffff;
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
+.new_arrival .summary span{
+	color:#ffffff;
 }
-.new_arrival_product .price-box{
-    margin: 0px !important;
+.new_arrival .summary span.sub_title{
+	text-transform:uppercase;
+	background: url(../images/header-brand-sepa.gif) no-repeat left 4px;
+	margin-left: 1px;
+	padding-left: 7px;
 }
 .new_arrival .next, .new_arrival .prev{
     position: absolute;
@@ -2384,7 +2485,13 @@ h2 span.NAHeadSub a:hover{
     text-decoration: underline;
 }
 /*/list arrival*/
-
+/*Best seller product*/
+.bestSeller{
+	overflow:hidden;
+	width:1000px;
+	margin:0 auto;	
+}
+/*/best seller product*/
 /* FeaturedContent - SC */
 .collection_bottom{
     width: 980px;

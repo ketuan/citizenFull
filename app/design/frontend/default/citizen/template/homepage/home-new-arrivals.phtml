@@ -4,67 +4,34 @@ $_productCollection = Mage::getResourceModel('reports/product_collection')
 ->addAttributeToSelect('*')
 ->setVisibility(array(2,3,4))
 ->setOrder('created_at', 'desc');
-
 ?>
-<!--<div style="clear: both;"></div>
-
-<div id="block">
-    <div class="text">Recently Added Products
-        <a href="<?php /*echo $this->getUrl("recent_added"); */?>" class="link"> View more &#187; </a>
-    </div>
-</div>-->
 <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700,300">
-<div class="clear"></div>
 <div class="new_arrival">
     <h2>
         <span class="NAHead"><?php echo $this->__("NEW ARRIVALS"); ?></span>
+        <span class="new_tit_bg"></span>
         <span class="NAHeadSub"><a href="#"><?php echo $this->__("View all New Arrivals"); ?></a></span>
     </h2>
-    <button class="prev"><<</button>
-    <button class="next">>></button>
-    <div class="jcarousel auto">
-        <ul class="new_arrival_product" id="arrival_carousel">
-            <?php foreach($_productCollection as $_product) : ?>
-                <li>
-                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
-                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(184,171); ?>" width="184" height="171" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-                        <span class="arrival_brand">
-                            <?php
-                                echo $_product->getAttributeText('manufacturer');
-                            ?>
-                        </span>
+    <ul class="new_arrival_product" id="arrival_carousel">
+        <?php foreach($_productCollection as $_product) : ?>
+            <li>
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
+                    <div class="new_img">
+	                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(160,252); ?>" width="160" height="252" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                    </div>
+                    <div class="new_content">
                         <h3 class="arrival_name">
                             <?php echo $_product->getName(); ?>
                         </h3>
-                        <!--<p><?php /*echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') */?></p>-->
-                        <div class="price">
-                            <?php
-                                echo Mage_Catalog_Block_Product::getPriceHtml($_product, true)."<br/>";
-                            ?>
+                        <div class="summary">
+                            <span class="msrp">
+								<?php	echo number_format($_product->getPrice(),0);?>
+                            </span>
+                            <span class="sub_title"> <?php echo $_product->getSku(); ?></span>
                         </div>
-                    </a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
+					</div>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 </div>
-<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('new_arrival')->toHtml(); ?>
-<!--<script type="text/javascript" src="<?php /*echo $this->helper('core/js')->getJsUrl().'carousel/jquery-1.9.1.min.js';*/?>"></script>-->
-<script type="text/javascript" src="<?php echo $this->helper('core/js')->getJsUrl().'carousel/jquery.jcarousel.min.js';?>"></script>
-<script type="text/javascript">
-    var $kt = jQuery.noConflict();
-    $kt(document).ready(function() {
-        $kt(".jcarousel").jCarouselLite({
-            btnNext: ".next",
-            btnPrev: ".prev",
-            scroll: 5,
-            auto: 3000,
-            speed: 5000,
-            visible: 5
-        });
-        /*$kt(".auto .new_arrival_product").jCarouselLite({
-            auto: 800,
-            speed: 2000
-        });*/
-    });
-</script>

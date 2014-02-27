@@ -36,7 +36,7 @@ Default layout, loads most of the pages
         <reference name="top.links">
             <!--<block type="wishlist/links" name="wishlist_link" />
             <action method="addLinkBlock"><blockName>wishlist_link</blockName></action>-->
-			<action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>
+			<action method="addLink" translate="label title" module="wishlist"><label>My Wishlist</label><path>wishlist</path><title>My Wishlist</title><prepare>true</prepare><urlParams/><position>2</position></action>
         </reference>
 
         <!-- Mage_Wishlist -->

@@ -113,7 +113,7 @@ ul.navbar-drop li ul li div.dropwrapper ul li ul, ul.navbar-drop li ul li div.dr
 	display: block;
 	color: #94989c;
 	line-height: 68px;
-	font-size: 1.6em;
+	font-size: 16px;
 	padding: 0 12px;
 	text-transform: uppercase;
 	font-family: UniversCondensed,Arial,Helvetica,sans-serif;
@@ -121,6 +121,9 @@ ul.navbar-drop li ul li div.dropwrapper ul li ul, ul.navbar-drop li ul li div.dr
 	-moz-transition: background 200ms;
 	-webkit-transition: background 200ms;
 	-o-transition: background 200ms;
+}
+#site_nav #main_nav_row #main_nav ul li.nav_item>a:hover{
+	color:#ffffff;
 }
 ul.navbar-drop li.brand ul li div.dropwrapper ul li {
     margin: 0;
