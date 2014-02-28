@@ -38,7 +38,9 @@ global $var_yttheme;
                     </a>
                 </div>
                 <div id="top_nav_row">
-                    <div class="left"></div>
+                    <div class="left">
+						<?php echo $this->getChildHtml('store_language') ?>
+                    </div>
                     <div class="right">
                     	<div class="social_link">
 							<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('social_link')->toHtml() ?>

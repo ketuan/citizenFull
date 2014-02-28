@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'UniversCondensed';
+    src: url('universcondensed-webfont.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UniversCondensedBold';
+    src: url('universcondensedbold-webfont.woff');
+    font-weight: normal;
+    font-style: normal;
+}

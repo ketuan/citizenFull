@@ -59,11 +59,15 @@ $color = Mage::helper('manufacturers')->getFeaturedBlockLogoBackgroundColor();
                 $imgPath = Mage::helper('manufacturers')->getResizedUrl($imageFile,$x,$y,$color);
             }
         ?>
-        <li>
+        <li class="anim_border_wrap">
             <a class="image" style="text-decoration:none;" href="<?php echo Mage::helper('manufacturers')->getUrl($_feaManufacturers['identifier']); ?>" title="<?php echo $_feaManufacturers["m_name"]; ?>">
                 <img src="<?php echo $imgPath; ?>" alt="<?php echo $_feaManufacturers["m_name"]; ?>" />
                 <!--<br /><span><?php /*echo $this->htmlEscape($_feaManufacturers["m_name"]) */?></span>-->
             </a>
+            <div class="anim_border t" style="overflow: hidden;"></div>
+            <div class="anim_border b" style="overflow: hidden;"></div>
+            <div class="anim_border l" style="overflow: hidden;"></div>
+            <div class="anim_border r" style="overflow: hidden;"></div>
         </li>
         <?php if($i==4){ break; }?>
         <?php $i++; endforeach ?>

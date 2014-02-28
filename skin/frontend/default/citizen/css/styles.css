@@ -22,7 +22,7 @@
  * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-
+@import url("../font/font.css");
 /* Reset ================================================================================= */
 * { margin:0; padding:0; }
 
@@ -2128,6 +2128,87 @@ ul#alternativeImages{
 .guest-select {width:305px !important;}
 
 /*==============================*KT Add*==================================*/
+/*General*/
+.site_btn {
+	text-transform: uppercase;
+	font-family: UniversCondensed,Arial,Helvetica,sans-serif;
+	display: block;
+	background: #1e3445 url('../images/citizen/site_btn_icon.png') 10px top no-repeat;
+	color: #fff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 0 15px 0 32px;
+	height: 35px;
+	line-height: 35px;
+	text-decoration: none;
+	font-size: 1.3em;
+	white-space: nowrap;
+	-moz-box-shadow: 2px 2px 3px #0a0a0a;
+	-webkit-box-shadow: 2px 2px 3px #0a0a0a;
+	box-shadow: 2px 2px 3px #0a0a0a;
+	transition: all 200ms;
+	-moz-transition: all 200ms;
+	-webkit-transition: all 200ms;
+	-o-transition: all 200ms;
+}
+.site_btn:hover {
+	background-color: #2c4d66;
+	background-position: 10px bottom;
+}
+
+.heading {
+	font-family: UniversCondensed,Arial,Helvetica,sans-serif;
+	text-transform: uppercase;
+	color: #fff;
+	line-height: 32px;
+}
+
+.anim_border_wrap{
+	position:relative;
+}
+.anim_border{
+	position:absolute;
+	z-index:1;
+	background-color:#fff
+}
+.anim_border.t,.anim_border.b{
+	width:100%;
+	left:0;
+	height:0px;
+	transition: all 200ms;
+	-moz-transition: all 200ms;
+	-webkit-transition: all 200ms;
+	-o-transition: all 200ms;
+}
+.anim_border.l,.anim_border.r{
+	height:100%;
+	top:0;
+	width:0px
+	transition: all 200ms;
+	-moz-transition: all 200ms;
+	-webkit-transition: all 200ms;
+	-o-transition: all 200ms;
+}
+.anim_border.t{
+	top:0
+}
+.anim_border.b{
+	bottom:0
+}
+.anim_border.l{
+	left:0
+}
+.anim_border.r{right:0}
+.anim_border_wrap:hover .anim_border.t,
+.anim_border_wrap:hover .anim_border.b{
+	height:7px;
+}
+.anim_border_wrap:hover .anim_border.l, 
+.anim_border_wrap:hover .anim_border.r{
+	width:7px;
+}
+/*/General*/
 /*--------Header------*/
 #site_header {
 	background: transparent url('../images/citizen/site_header_bg.png') center bottom repeat-x;
@@ -2290,10 +2371,10 @@ ul#alternativeImages{
 	clear: both;
 }
 .manu_fea_tit h1{
-	font-family: 'Oswald',Arial,Helvetica,sans-serif;
+	font-family: UniversCondensed,Arial,Helvetica,sans-serif;
 	font-size: 25px;
 	font-weight: normal;
-	letter-spacing: 5px;
+	letter-spacing: 1px;
 	text-transform: uppercase;
 }
 .fc-default li a{
@@ -2341,10 +2422,13 @@ a#BrandLink {
 /*/element same css*/
 
 /*list arrival*/
+.content-shadow-top{
+	background: transparent url('../images/citizen/content_shadow.png') center 90px repeat-x;
+}
 .new_arrival{
     position: relative;
 	overflow: hidden;
-	margin-top: -106px !important;
+	margin-top: -90px !important;
 }
 .new_arrival h2, #collections-title h2{
     color: #FFFFFF;
@@ -2356,17 +2440,17 @@ a#BrandLink {
 	z-index: 100;
 }
 h2 span.NAHead{
-    font-family: 'Oswald',Arial,Helvetica,sans-serif;
+    font-family: UniversCondensed,Arial,Helvetica,sans-serif;
     font-size: 25px;
     font-weight: normal;
-    letter-spacing: 5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    padding: 0 10px;
+    padding: 0 10px 0 0;
     float: left;
 }
 h2 span.NAHeadSub {
     float: right;
-    font-family: Georgia,"Times New Roman",Times,serif;
+    font-family: UniversCondensed,Arial,Helvetica,sans-serif;
     font-weight: normal;
     padding-top: 2px;
     text-transform: none;
@@ -2384,9 +2468,29 @@ h2 span.NAHeadSub a:hover{
 h2 span.new_tit_bg{
 	display: block;
 	float: left;
-	width: 551px;
+	width: 629px;
 	border-top: 2px dotted #ffffff;
 	margin-top: 16px;
+}
+.content-shadow-wrap{
+	position: relative;
+	width: 1036px;
+	margin: 0 auto;
+}
+#home_content .content_shadow {
+	position: absolute;
+	top: 55px;
+	height: 150px;
+	width: 18px;
+	background: transparent url('../images/citizen/content_shadow_top.png') no-repeat;
+}
+#home_content .content_shadow.left {
+	left: 0px;
+	background-position: left top;
+}
+#home_content .content_shadow.right {
+	right: 0px;
+	background-position: right top;
 }
 .new_arrival_product li{
 	position:relative;
@@ -2395,6 +2499,26 @@ h2 span.new_tit_bg{
 	width: 241px;
 	height: 320px;
 	background: transparent url('../images/citizen/watch_grid_ecodrive.jpg') center no-repeat;
+	transition:all 200ms;
+	-moz-transition:all 200ms;
+	-webkit-transition:all 200ms;
+	-o-transition:all 200ms
+}
+.new_arrival_product li .border_active{
+	display:block;
+	width:227px;
+	height:306px;
+	border:0px solid #ffffff;
+	position:absolute;
+	top:0px;
+	left:0px;
+	transition:display 2000ms;
+	-moz-transition:display 2000ms;
+	-webkit-transition:display 2000ms;
+	-o-transition:display 2000ms;
+}
+.new_arrival_product li:hover .border_active{
+	border:7px solid #ffffff;
 }
 .new_arrival_product li:first-child{
 	margin-left:0px;
@@ -2536,101 +2660,148 @@ h2 span.new_tit_bg{
 	text-transform: uppercase;
 }
 /*/best seller product*/
-/* FeaturedContent - SC */
-.collection_bottom{
-    width: 980px;
-    margin: 0 auto;
-    overflow: hidden;
+/*Content-footer*/
+#home_content #content_footer{
+	height:91px;
+	background:transparent url('../images/citizen/home_content_footer_bg.png') center center repeat-x;
+	width:1000px;
+	margin:0 auto;
+	overflow:hidden;
+	padding:4px 0 10px
 }
-#FeaturedContent {
-    border-top: 1px solid #333333;
-    margin:30px 0;
-    padding: 30px 10px;
-    float: left;
+#home_content #content_footer .social,
+#home_content #content_footer .watch_ticker,
+#home_content #content_footer .view_all{
+	float:left;
+	height:100%
 }
-#FeaturedContent li {
-    margin-left:10px !important;
-    width:232px;
-    float: left;
+#home_content #content_footer .social,
+#home_content #content_footer .view_all{
+	width:250px
 }
-#FeaturedContent li:first-child {
-    margin:0 !important;
+#home_content #content_footer .social .content{
+	padding:10px 15px;
+	font-size: 11px;
+	color:#74838e;
 }
-#FeaturedContent li span {
-    font-family: Georgia,"Times New Roman",Times,serif;
-    padding-right:20px;
-    background: url(../images/home-link-arrow.png) no-repeat right 3px;
-    text-align:left;
-    font-size:13px;
-    margin-top:15px;
-    float:left;
-    color: #ffffff !important;
+#home_content #content_footer .social .content div{
+	margin:2px 0;
 }
-#FeaturedContent li:hover span {
-    text-decoration:underline;
+#home_content #content_footer .social .content .heading{
+	margin:2px 0 4px;
+	font-size:14px;
 }
-/*Seo link*/
-.fc-default .bg-invert{
-    border: none !important;
+#home_content #content_footer .watch_ticker{
+	width:498px;
+	border-left:1px dotted #49586b;
+	border-right:1px dotted #49586b
 }
-.bg-invert {
-    background-color:#292929;
-    border-top:1px solid #333333;
-    border-bottom:1px solid #333333;
+#home_content #content_footer .watch_ticker .ticker_item a{
+	display:block;
+	overflow:hidden;
+	height:91px;
+	color:#74838e
 }
-.cont-seolink {
-    margin: 0 auto;
-    padding: 20px;
-    text-align: left;
-    width: 940px;
+#home_content #content_footer .watch_ticker .ticker_item .fav_count,
+#home_content #content_footer .watch_ticker .ticker_item .img_wrapper,
+#home_content #content_footer .watch_ticker .ticker_item .info{
+	float:left
 }
-.cont-seolink h3 {
-    font-family: 'Oswald',Arial,Helvetica,sans-serif;
-    letter-spacing: 1px;
-    text-align: center;
-    text-transform: uppercase;
+#home_content #content_footer .watch_ticker .ticker_item .fav_count{
+	font-size:1.2em;
+	width:215px;
+	text-align:right;
+	overflow:hidden
 }
-.cont-seolink p {
-    width: 900px;
-    font-size:11px;
-    font-family: Tahoma, Geneva, sans-serif;
-    text-align:center;
-    color: #ffffff;
+#home_content #content_footer .watch_ticker .ticker_item .fav_count div{
+	background:url("../images/citizen/favorite_icon.png") no-repeat scroll left top transparent;
+	padding:0 0 0 20px;
+	float:right;
+	line-height:1.2em;
+	margin:37px 0 0 0;
+	max-width:136px;
+	font-size: 12px;
 }
-.cont-seolink p a{
-    color: #ffffff !important;
+#home_content #content_footer .watch_ticker .ticker_item .fav_count .count{
+	color:#fff;
+	font-weight:bold
 }
-.cont-seolink p a:hover {
-    color: #BFD229;
+#home_content #content_footer .watch_ticker .ticker_item .img_wrapper{
+	height:98%;
+	margin:2% 0 0;
+	width:70px;
 }
-/*/Seo link*/
-/*recently viewed*/
-.block-viewed{
-    width: 980px;
-    margin: 0 auto;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+#home_content #content_footer .watch_ticker .ticker_item .info{
+	text-transform:uppercase;
+	margin:25px 0 0
 }
-.block-viewed .block-title {
-    float: left;
-    margin-top: 30px;
+#home_content #content_footer .watch_ticker .ticker_item .info h4{
+	font-size:1.8em;
+	color:#fff;
+	font-family:UniversCondensedBold,Arial,Helvetica,sans-serif;
+	background:transparent url('../images/citizen/site_btn_icon.png') left -8px no-repeat;
+	padding:0 0 0 20px;
+	margin:0 0 5px
 }
-.block-viewed .block-title span{
-    font-family: 'Oswald',Arial,Helvetica,sans-serif;
-    letter-spacing: 1px;
-    text-align: center;
-    text-transform: uppercase;
-    color: #fff;
-    font-size: 1.1em;
+#home_content #content_footer .watch_ticker .ticker_item .info div{
+	font-size:1.2em
 }
-#recently-viewed-items li{
-    float:left;
+#home_content #content_footer .watch_ticker .ticker_item .img_wrapper img{
+	height:100%;
+	display:block;
+	margin:0 auto;
+	border:none
 }
-#recently-viewed-items img{
-    margin: 0px 0px 10px 10px;
+#home_content #content_footer .view_all{
+	display:table
 }
-/*/recently viewed*/
+#home_content #content_footer .view_all .content{
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center
+}
+#home_content #content_footer .view_all .content a{
+	text-decoration:none;
+	color:#fff;
+	text-transform:uppercase;
+	font-family:UniversCondensed,Arial,Helvetica,sans-serif;
+	padding:10px 10px 10px 25px;
+	background:transparent url('../images/citizen/site_btn_icon.png') left 2px no-repeat;
+	font-size: 14px;
+}
+#home_content #content_footer .view_all .content a:hover{
+	background-position:left -33px
+}
+.tablet #home_content .content_wrapper{
+	width:759px
+}
+.tablet #home_content #content_footer{
+	width:747px
+}
+.tablet #home_content #content_footer .social, 
+.tablet #home_content #content_footer .view_all{
+	width:190px
+}
+.tablet #home_content #content_footer .watch_ticker{
+	width:365px
+}
+.tablet #home_content #content_footer .watch_ticker .ticker_item .fav_count,
+.tablet #home_content #content_footer .watch_ticker .ticker_item .info{
+	float:right;
+	text-align:left;
+	width:265px
+}
+.tablet #home_content #content_footer .watch_ticker .ticker_item .fav_count div{
+	float:left;
+	line-height:15px
+}
+.tablet #home_content #content_footer .watch_ticker .ticker_item .img_wrapper{
+	margin:2% 15px 0
+}
+.tablet #home_content #content_footer .watch_ticker .ticker_item .info{
+	margin:0
+}
+/*/Content footer*/
 
 /**===========Product view===========**/
 .catalog-product-view .page{
@@ -3371,7 +3542,7 @@ a.btn-remove:hover{
 	padding:34px 0 135px;
 	overflow:hidden;
 	color:#fff;
-	font-size:1.2em
+	font-size:12px
 }
 .content_wrapper {
 	width: 1000px;
@@ -3402,53 +3573,170 @@ a.btn-remove:hover{
 	padding-bottom:4px;
 	background-position:10px 2px
 }
-.lc-FR #footer_content #footer_left .find_retailer:hover{background-position:10px -32px}#footer_content #footer_left .legal
-a{text-decoration:none;color:#fff;transition:all 200ms;-moz-transition:all 200ms;-webkit-transition:all 200ms;-o-transition:all 200ms}#footer_content #footer_left .legal a:hover{text-decoration:underline}#footer_content #footer_left .legal
-p{margin:15px
-0 0;font-size:0.95em;color:#94989c}#footer_content
-#footer_links{overflow:hidden}#footer_content #footer_links
-ul{float:left;width:130px;margin:0
-12px}#footer_content #footer_links ul
-li{margin:0
-0 10px}#footer_content #footer_links ul li
-a{color:#74838e;text-decoration:none;transition:color 200ms;-moz-transition:color 200ms;-webkit-transition:color 200ms;-o-transition:color 200ms}#footer_content #footer_links ul li a:hover{color:#fff}#footer_content #footer_links ul
-li.heading{font-size:1.3em;color:#fff;text-transform:uppercase;margin:0
-0 15px;font-family:UniversCondensed,Arial,Helvetica,sans-serif}#footer_content #footer_links
-ul.collections{width:145px}#footer_content #footer_links ul.collections li
-a{background:transparent url('/wp-content/themes/citizen/img/list_bullet_arrow.png') 0 -9px no-repeat;padding:0
-0 0 20px;font-size:1.2em;display:block}#footer_content #footer_links ul.collections li a:hover{background-position:0 -38px}#footer_content #footer_links ul.collections
-li.heading{padding:0}#footer_content #footer_links ul.collections li.heading
-a{background:none}.tablet #footer_content
-#footer_links{width:575px}#mfooter_content{padding:10px
-0 10px;overflow:hidden;color:#fff;font-size:1.2em;width:1000px;text-align:center;margin:0
-auto}#mfooter_content #mfooter_left,
-#mfooter_content
-#mfooter_links{float:left}#mfooter_content
-#mfooter_left{width:160px;margin:0
-30px 0 0;text-align:center}#mfooter_content #mfooter_left
-img{display:block;border:0;margin:0
-auto 15px}#mfooter_content #mfooter_left
-.find_retailer{width:109px;margin:0
-auto 15px}.lc-FR #mfooter_content #mfooter_left
-.find_retailer{white-space:normal;font-size:1.2em;line-height:normal;padding-top:1px;padding-bottom:4px;background-position:10px 2px}.lc-FR #mfooter_content #mfooter_left .find_retailer:hover{background-position:10px -32px}#mfooter_content #mfooter_left .legal
-a{text-decoration:none;color:#fff;transition:all 200ms;-moz-transition:all 200ms;-webkit-transition:all 200ms;-o-transition:all 200ms}#mfooter_content #mfooter_left .legal a:hover{text-decoration:underline}#mfooter_content #mfooter_left .legal
-p{margin:15px
-0 0;font-size:0.95em;color:#94989c}#mfooter_content
-#mfooter_links{overflow:hidden}#mfooter_content #mfooter_links
-ul{width:1000px;margin:0
-12px}#mfooter_content #mfooter_links ul
-li{margin:0
-0 20px 10px;display:inline}#mfooter_content #mfooter_links ul li
-a{color:#fff;text-decoration:none;transition:color 200ms;-moz-transition:color 200ms;-webkit-transition:color 200ms;-o-transition:color 200ms}#mfooter_content #mfooter_links ul li a:hover{color:#fff}#mfooter_content #mfooter_links ul
-li.heading{font-size:1.3em;color:#fff;text-transform:uppercase;margin:0
-0 15px;font-family:UniversCondensed,Arial,Helvetica,sans-serif}#mfooter_content #mfooter_links
-ul.collections{width:145px}#mfooter_content #mfooter_links ul.collections li
-a{background:transparent url('/wp-content/themes/citizen/img/list_bullet_arrow.png') 0 -9px no-repeat;padding:0
-0 0 20px;font-size:1.2em;display:block}#mfooter_content #mfooter_links ul.collections li a:hover{background-position:0 -38px}#mfooter_content #mfooter_links ul.collections
-li.heading{padding:0}#mfooter_content #mfooter_links ul.collections li.heading
-a{background:none}.tablet #mfooter_content
-#footer_links{width:575px}#newsletter_signup{color:#474a4e;width:450px;padding:25px
-0}
+.lc-FR #footer_content #footer_left .find_retailer:hover{
+	background-position:10px -32px
+}
+#footer_content #footer_left .legal a{
+	text-decoration:none;
+	color:#fff;
+	transition:all 200ms;
+	-moz-transition:all 200ms;
+	-webkit-transition:all 200ms;
+	-o-transition:all 200ms
+}
+#footer_content #footer_left .legal a:hover{
+	text-decoration:underline
+}
+#footer_content #footer_left .legal p{
+	margin:15px 0 0;
+	font-size:0.95em;
+	color:#94989c
+}
+#footer_content #footer_links{
+	overflow:hidden
+}
+#footer_content #footer_links ul{
+	float:left;
+	width:130px;
+	margin:0 12px
+}
+#footer_content #footer_links ul li{
+	margin:0 0 10px;
+	clear:both;
+	padding:0px;
+}
+#footer_content #footer_links ul li a{
+	color:#74838e;
+	text-decoration:none;
+	transition:color 200ms;
+	-moz-transition:color 200ms;
+	-webkit-transition:color 200ms;
+	-o-transition:color 200ms
+}
+#footer_content #footer_links ul li a:hover{
+	color:#fff
+}
+#footer_content #footer_links ul li.heading{
+	font-size:16px;
+	color:#fff;
+	text-transform:uppercase;
+	margin:0 0 15px;
+	font-family:UniversCondensed,Arial,Helvetica,sans-serif
+}
+#footer_content #footer_links ul.collections{
+	width:145px
+}
+#footer_content #footer_links ul.collections li a{
+	background:transparent url('../images/citizen/list_bullet_arrow.png') 0 -7px no-repeat;
+	padding:0 0 0 20px;
+	font-size:1.2em;
+	display:block
+}
+#footer_content #footer_links ul.collections li a:hover{
+	background-position:0 -38px
+}
+#footer_content #footer_links ul.collections li.heading{
+	padding:0
+}
+#footer_content #footer_links ul.collections li.heading a{
+	background:none
+}
+.tablet #footer_content #footer_links{width:575px}
+#mfooter_content{
+	padding:10px 0 10px;
+	overflow:hidden;
+	color:#fff;
+	font-size:1.2em;
+	width:1000px;
+	text-align:center;
+	margin:0 auto
+}
+#mfooter_content #mfooter_left,
+#mfooter_content #mfooter_links{float:left}
+#mfooter_content #mfooter_left{
+	width:160px;
+	margin:0 30px 0 0;
+	text-align:center
+}
+#mfooter_content #mfooter_left img{
+	display:block;
+	border:0;
+	margin:0 auto 15px
+}
+#mfooter_content #mfooter_left .find_retailer{
+	width:109px;
+	margin:0 auto 15px
+}
+.lc-FR #mfooter_content #mfooter_left .find_retailer{
+	white-space:normal;
+	font-size:1.2em;
+	line-height:normal;
+	padding-top:1px;
+	padding-bottom:4px;
+	background-position:10px 2px
+}
+.lc-FR #mfooter_content #mfooter_left .find_retailer:hover{
+	background-position:10px -32px
+}
+#mfooter_content #mfooter_left .legal a{
+	text-decoration:none;
+	color:#fff;
+	transition:all 200ms;
+	-moz-transition:all 200ms;
+	-webkit-transition:all 200ms;
+	-o-transition:all 200ms
+}
+#mfooter_content #mfooter_left .legal a:hover{
+	text-decoration:underline
+}
+#mfooter_content #mfooter_left .legal p{
+	margin:15px 0 0;
+	font-size:0.95em;
+	color:#94989c
+}
+#mfooter_content #mfooter_links{
+	overflow:hidden
+}
+#mfooter_content #mfooter_links ul{
+	width:1000px;
+	margin:0 12px
+}
+#mfooter_content #mfooter_links ul li{
+	margin:0 0 20px 10px;
+	display:inline
+}
+#mfooter_content #mfooter_links ul li a{
+	color:#fff;
+	text-decoration:none;
+	transition:color 200ms;
+	-moz-transition:color 200ms;
+	-webkit-transition:color 200ms;
+	-o-transition:color 200ms
+}
+#mfooter_content #mfooter_links ul li a:hover{color:#fff}
+#mfooter_content #mfooter_links ul li.heading{
+	font-size:13px;
+	color:#fff;
+	text-transform:uppercase;
+	margin:0 0 15px;
+	font-family:UniversCondensed,Arial,Helvetica,sans-serif
+}
+#mfooter_content #mfooter_links ul.collections{width:145px}
+#mfooter_content #mfooter_links ul.collections li a{
+	background:transparent url('../images/citizen/list_bullet_arrow.png') 0 -7px no-repeat;
+	padding:0 0 0 20px;
+	font-size:1.2em;
+	display:block
+}
+#mfooter_content #mfooter_links ul.collections li a:hover{
+	background-position:0 -38px
+}
+#mfooter_content #mfooter_links ul.collections li.heading{padding:0}
+#mfooter_content #mfooter_links ul.collections li.heading a{
+	background:none
+}
+.tablet #mfooter_content #footer_links{width:575px}
+#newsletter_signup{color:#474a4e;width:450px;padding:25px 0}
 /*/footer*/
 
 

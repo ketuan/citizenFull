@@ -107,6 +107,7 @@ Default layout, loads most of the pages
             </block>
 
             <block type="page/html_footer" name="footer" as="footer" template="page/html/footer.phtml">
+				<block type="page/switch" name="store_language" as="store_language" template="page/switch/languages.phtml"/>
                 <block type="reports/product_viewed" name="reports.product.viewed" as="recently_viewed" template="reports/product_viewed.phtml">
                     <action method="setColumnCount"><columns>6</columns></action>
                     <action method="setItemLimit"><type>recently_viewed</type><limit>6</limit></action>

@@ -1,3 +1,4 @@
+<div class="content-shadow-top">
 <?php
 $_helper = $this->helper('catalog/output');
 $_productCollection = Mage::getResourceModel('reports/product_collection')
@@ -6,32 +7,41 @@ $_productCollection = Mage::getResourceModel('reports/product_collection')
 ->setOrder('created_at', 'desc');
 ?>
 <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700,300">
-<div class="new_arrival">
-    <h2>
-        <span class="NAHead"><?php echo $this->__("NEW ARRIVALS"); ?></span>
-        <span class="new_tit_bg"></span>
-        <span class="NAHeadSub"><a href="#"><?php echo $this->__("View all New Arrivals"); ?></a></span>
-    </h2>
-    <ul class="new_arrival_product" id="arrival_carousel">
-        <?php foreach($_productCollection as $_product) : ?>
-            <li>
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
-                    <div class="new_img">
-	                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(160,252); ?>" width="160" height="252" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-                    </div>
-                    <div class="new_content">
-                        <h3 class="arrival_name">
-                            <?php echo $_product->getName(); ?>
-                        </h3>
-                        <div class="summary">
-                            <span class="msrp">
-								<?php	echo number_format($_product->getPrice(),0);?>
-                            </span>
-                            <span class="sub_title"> <?php echo $_product->getSku(); ?></span>
-                        </div>
-					</div>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+	<div class="content-shadow-wrap">
+        <div class="content_shadow left"></div>
+        <div class="content_shadow right"></div>
+        <div class="new_arrival">
+            <h2>
+                <span class="NAHead"><?php echo $this->__("NEW ARRIVALS"); ?></span>
+                <span class="new_tit_bg"></span>
+                <span class="NAHeadSub"><a href="#"><?php echo $this->__("View all New Arrivals"); ?></a></span>
+            </h2>
+            <ul class="new_arrival_product" id="arrival_carousel">
+                <?php foreach($_productCollection as $_product) : ?>
+                    <li class="anim_border_wrap">
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
+                            <div class="new_img">
+                                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(160,252); ?>" width="160" height="252" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                            </div>
+                            <div class="new_content">
+                                <h3 class="arrival_name">
+                                    <?php echo $_product->getName(); ?>
+                                </h3>
+                                <div class="summary">
+                                    <span class="msrp">
+                                        <?php	echo number_format($_product->getPrice(),0);?>
+                                    </span>
+                                    <span class="sub_title"> <?php echo $_product->getSku(); ?></span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="anim_border t" style="overflow: hidden;"></div>
+                        <div class="anim_border b" style="overflow: hidden;"></div>
+                        <div class="anim_border l" style="overflow: hidden;"></div>
+                        <div class="anim_border r" style="overflow: hidden;"></div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
 </div>
