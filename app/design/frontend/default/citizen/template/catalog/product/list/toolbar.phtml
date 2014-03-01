@@ -20,7 +20,7 @@
  *
  * @category    design
  * @package     base_default
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
@@ -31,28 +31,47 @@
  * @see Mage_Catalog_Block_Product_List_Toolbar
  */
 ?>
+<?php $sort_list=array('Ngày cập nhật','Tên sản phẩm (A-Z)', 'Tên sản phẩm (Z-A)', 'Giá (thấp -> cao)', 'Giá (cao -> thấp)'); 
+	if($this->isOrderCurrent('position')) $sort=$sort_list[0];
+	if($this->isOrderCurrent('name')&$this->getCurrentDirection() == 'asc') $sort=$sort_list[1];
+	if($this->isOrderCurrent('name')&$this->getCurrentDirection() == 'desc') $sort=$sort_list[2];
+	if($this->isOrderCurrent('price')&$this->getCurrentDirection() == 'asc')	$sort= $sort_list[3];
+	if($this->isOrderCurrent('price')&$this->getCurrentDirection() == 'desc') $sort= $sort_list[4];
+?>
+<?php if( $this->isExpanded() ): ?>
+<div class="pageNumberBox">
+    <p class="amount">
+		<span style="padding-right:10px;"><?php echo $this->__('Result(s) Found:') ?></span><?php echo $this->__('%s', $this->getTotalNum()) ?></strong>
+   </p>
+   <div id="viewBy" class="sorter">           
+        <div id="sortBy">
+            <span><?php echo $this->__('Sort by') ?></span>
+            <?php $currentUrl = Mage::registry('current_category')->getUrl(); ?>
+            <select onchange="setLocation(this.value)">
+            <option value="<?php echo $this->getOrderUrl('entity_id', 'desc') ?>" <?php if($this->isOrderCurrent('entity_id') && $this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif; ?>>
+                <?php echo $this->__('New Arrivals');?>
+            </option>
+            <option value="<?php echo $this->getOrderUrl('price', 'asc') ?>" <?php if($this->isOrderCurrent('price') && $this->getCurrentDirection() == 'asc'): ?> selected="selected"<?php endif; ?>>
+                <?php echo $this->__('Price (low to heigh)'); ?>
+            </option>
+            <option value="<?php echo $this->getOrderUrl('price', 'desc') ?>" <?php if($this->isOrderCurrent('price') && $this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif; ?>>
+				<?php echo $this->__('Price (high to low)'); ?>
+            </option>
+            <option value="<?php echo $this->getOrderUrl('name', 'asc') ?>" <?php if($this->isOrderCurrent('name') && $this->getCurrentDirection() == 'asc'): ?> selected="selected"<?php endif; ?>>
+                <?php echo $this->__('Name (A-Z)'); ?>
+            </option>
+            <option value="<?php echo $this->getOrderUrl('name', 'desc') ?>" <?php if($this->isOrderCurrent('name') && $this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif; ?>>
+                <?php echo $this->__('Name (Z-A)'); ?>
+            </option>
+        </select>
+        </div>
+	</div>
+    <?php endif; ?>
 <?php if($this->getCollection()->getSize()): ?>
-<ul class="main-filter row">
-    <?php if( $this->isExpanded() ): ?>
-    <li class="left">    
-        <ul id"productDataNavLeftTOP">
-            <li class="label col" style="text-transform:uppercase;">
-				<label><?php echo $this->__('Sort Products:') ?></label>
-            </li>
-            <li class="col no_padding" style="padding-top:0;">
-                <select onchange="setLocation(this.value)">
-                <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
-                    <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
-                        <?php echo $this->__($_order) ?>
-                    </option>
-                <?php endforeach; ?>
-                </select>
-            </li>
-        </ul>
-    </li>
-    <?php endif; ?>    
-    <li class="right">    	
-        <?php echo $this->getPagerHtml() ?>    
-    </li>
-</ul>
+ 
+    <div class="pager"> 
+        <?php echo $this->getPagerHtml() ?>
+	    </div>
+	</div>        
 <?php endif ?>
+

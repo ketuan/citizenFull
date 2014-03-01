@@ -32,37 +32,35 @@
  */
 ?>
 <?php if($this->canShowBlock()): ?>
-<div class="leftMenuBox productLeftMenuBox block2-layered-nav" >
-	<ul class="row menu-title no_margin">
-	    <li class="fc-brand fs-medium bg-invert">
-        	<a href="#" class="fc-brand"><?php if(Mage::registry('current_category')) echo Mage::registry('current_category')->getName();else echo $this->__('Search Results');?></a>
-        </li>
-        <li class="bd-invert col str no_margin">
-            <div id="searchLeftMenu" class="leftMenuList leftMenuBg">
-                <div>		
-                    <div id="categoryListMask" style="display:none;"></div>
-                    <div class="categoryNavBox">
-                        <div id="navResults">
-                            <?php //echo $this->getStateHtml() ?>
-                            <?php if($this->canShowOptions()): ?>
-                                
-                                <?php $_filters = $this->getFilters() ?>
-                                <?php foreach ($_filters as $_filter): ?>
-                                    <?php if($_filter->getItemsCount()): ?>                                        
-                                        <div class="navCategory">
-                                            <!--<dl id="narrow-by-list">                                                
-                                                <?php //if($_filter->getName()!='Category'):?><dt><span><?php echo $this->__($_filter->getName()) ?></span></dt><?php //endif?>-->
-                                                <dd class="leftMenuList"><?php echo $_filter->getHtml() ?></dd>
-                                            <!--</dl>-->
-                                        </div>
-                                    <?php endif;?>                                            
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </div>
+<div id="searchLeftMenu" class="block2-layered-nav">
+	<?php if ($this->getLayer()->getState()->getFilters()): ?>
+        <a href="<?php echo $this->getClearUrl() ?>" id="ctl00_MainContent_SearchFilter_ClearAllLink" class="clearAllIcon"></a>
+	<?php endif; ?>
+	<?php //echo $this->getStateHtml() ?>
+    <?php if($this->canShowOptions()): ?>
+		<?php $_filters = $this->getFilters() ?>
+        <ul class="refine_cat filters">   
+        <?php foreach ($_filters as $_filter): ?>
+            <?php if($_filter->getItemsCount()): ?>                                        
+                <li class="heading filter filter_collection">
+                    <span class="plusMin"></span>
+                    <a><?php echo $this->__($_filter->getName()) ?></a>
+                    <div class="refine_content list filter_options multiselect">
+                        <?php echo $_filter->getHtml() ?>
                     </div>
-                </div>
-            </div>
-        </li>
-    </ul>
+                </li>
+            <?php endif;?>                                            
+        <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
 </div>
 <?php endif; ?>
+
+<script type="text/javascript">
+	var $j=jQuery.noConflict();
+	$j(document).ready(function(){
+			$j('.scrollable').jScrollPane({
+				showArrows: true
+			});
+		});
+</script>

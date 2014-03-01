@@ -1,0 +1,24 @@
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+<div class="home-page-cntr">
+<?php $i=0; foreach ($_products->getItems() as $_product): ?>
+    <?php if ($i>4): continue; endif; ?>
+
+<div class="home-page-item">
+        <div class="home-page-img">
+            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+                 <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(65,65); ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>"/>
+            </a>
+            <?php echo $_product->getDescription(); //also getShortDescription ?>
+        </div>
+        <div class="home-page-txt">
+            <p><a class="product-name" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>)"><?php echo $_product->getName() ?></a></p>
+            <?php echo $this->helper('review/product')->getSummaryHtml($_product, 'short') //product review link ?>
+            <?php echo $this->helper('catalog/product')->getPriceHtml($_product) ?>
+            <?php echo $_product->getProductId(); ?>
+            <?php if($_product->getevent_date()) {echo $_product->getevent_date();} ?>
+            
+</div>
+</div>
+<?php $i++; endforeach; ?>
+</div>
+<?php endif; ?>

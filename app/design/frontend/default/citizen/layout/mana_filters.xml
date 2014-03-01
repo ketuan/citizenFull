@@ -72,7 +72,7 @@ examples on what kind of actions can be applied to referenced blocks.
         <reference name="content">
             <block name="category.products">
                 <block name="product_list">
-		           	<!--<block type="mana_filters/state" name="mana.catalog.state" as="mana.state" template="mana/filters/state.phtml"/>-->
+		           	<block type="mana_filters/state" name="mana.catalog.state" as="mana.state" template="mana/filters/state.phtml"/>
                 </block>
             </block>
         </reference>

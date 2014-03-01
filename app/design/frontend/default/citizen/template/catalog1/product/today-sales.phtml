@@ -1,0 +1,251 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<script language="javascript" type="text/javascript">
+	var Timer = function(time, printer, numericChar) {
+    var timerH;
+    var timerM;
+    var timerS;
+    var timerG;
+    var numericSet = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    var printMode;
+    var printerEl;
+    var enabled = false;
+    var timerID;
+
+    // 최적화
+    function init() {
+        if (time.length == 3) {
+            timerH = parseInt(time[0]) >= 0 ? parseInt(time[0]) : 0;
+            timerM = parseInt(time[1]) >= 0 ? parseInt(time[1]) : 0;
+            timerS = parseInt(time[2]) >= 0 ? parseInt(time[2]) : 0;
+        }
+        if (timerH <= 60 && timerH >= 0 && timerM <= 60 && timerM >= 0 && timerS <= 60 && timerS >= 0) {
+            timerG = timerH * 3600 + timerM * 60 + timerS;
+            printMode = typeof (printer) == "object" ? 1 : 0;
+            if (printMode == 1) {
+                printerEl = new Object();
+                printerEl.hours = document.getElementById(printer.hours);
+                printerEl.minites = document.getElementById(printer.minites);
+                printerEl.seconds = document.getElementById(printer.seconds);
+                if (printerEl.hours && printerEl.minites && printerEl.seconds) initNumeric();
+                else return false;
+            } else {
+                printerEl = document.getElementById(printer);
+                if (printerEl) initNumeric();
+                else return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // 숫자 매칭
+    function initNumeric() {
+        var seq;
+        if (numericChar && numericChar.length > 0) {
+            for (seq = 0; seq < 10; seq++) {
+                if (numericChar[seq]) numericSet[seq] = numericChar[seq];
+            }
+        }
+    }
+
+    // 출력형태로 숫자 변환
+    function transNumeric(num) {
+        var numStr;
+        if (num >= 0) numStr = num < 10 ? "0" + num.toString() : num.toString();
+        else numStr = "00";
+        return numericSet[parseInt(numStr.substr(0, 1))] + numericSet[parseInt(numStr.substr(1, 1))];
+    }
+
+    // 시간 출력
+    function printNumeric() {
+        var hoursChar = transNumeric(Math.floor(timerG / 3600));
+        var minitesChar = transNumeric(Math.floor((timerG % 3600) / 60));
+        var secondsChar = transNumeric((timerG % 3600) % 60);
+        if (printMode == 1) {
+            printerEl.hours.innerHTML = hoursChar;
+            printerEl.minites.innerHTML = minitesChar;
+            printerEl.seconds.innerHTML = secondsChar;
+        } else {
+            printerEl = hoursChar + " : " + minitesChar + " : " + secondsChar;
+        }
+    }
+
+    // 실행
+    function startTimer() {
+        if (!enabled) enabled = init();
+        if (enabled) {
+            printNumeric();
+            timerG--;
+            if (timerG > 0) timerID = setTimeout(startTimer, 1000);
+        }
+    }
+
+    // 정지
+    function stopTimer() {
+        if (!enabled) init();
+        if (enabled) clearTimeout(timerID);
+    }
+
+    // 인터페이스
+    this.start = startTimer;
+    this.stop = stopTimer;
+
+}
+</script>
+<?php
+function thu($day)
+{
+	if($day == 'Monday')
+		return "Thứ Hai";
+	if($day == 'Tuesday')
+		return "Thứ Ba";
+	if($day == 'Wednesday')
+		return "Thứ Tư";
+	if($day == 'Thursday')
+		return "Thứ Năm";
+	if($day == 'Friday')
+		return "Thứ Sáu";
+	if($day == 'Saturday')
+		return "Thứ Bảy";
+	else
+		return "Chủ Nhật";
+		
+}
+?>
+	              <div class="conpart">
+                    <div class="content_marketing">
+							<div class="conpart">
+                            <div class="contentPart">
+								<div class="today_sales_product">                                
+    								<?php foreach ($_productCollection as $_product) {
+										if((date('Y-m-d',strtotime($_product->getSpecialFromDate())) == date('Y-m-d',time()))) {?>
+											<div class="today_sales_product_img"><a href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400);?>" width="410"/></a></div>
+											<div class="today_sales_product_info">	
+												<div class="name"><?php echo $_product->getName();?></div>
+												<div class="alert"><span class="alert-label">Ngày:</span><span class="alert-date"><?php echo date('d-m',strtotime($_product->getSpecialFromDate()));?></span></div>
+												<div class="timer_info">
+													<table class="timer" cellpadding="0" cellspacing="0" border="0">
+														<tbody>
+															<tr>
+																<td class="time-left">Thời gian còn lại: </td>
+																<td class="timechar" id="TimerH"></td>
+																<!--<td><img src="<?php //echo $this->getSkinUrl('images/omg/colon.gif')?>" alt=":" /></td>-->
+																<td class="timechar" id="TimerM"></td>
+																<!--<td><img src="<?php //echo $this->getSkinUrl('images/omg/colon.gif')?>" alt=":" /></td>-->
+																<td class="timechar" id="TimerS"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>								
+												<script language="javascript" type="text/javascript">
+													var currentTime = new Date();
+													var timeData = [23 - currentTime.getHours(), 60 - currentTime.getMinutes(), 60 - currentTime.getSeconds()] ; // 이곳에 남은 시간을 입력하세요. (예 - 10시간 50분 30초 > [10, 50, 30])
+													var timerNumeric = [
+															'<span class="num0">0</span>',
+															'<span class="num1">1</span>',
+															'<span class="num2">2</span>',
+															'<span class="num3">3</span>',
+															'<span class="num4">4</span>',
+															'<span class="num5">5</span>',
+															'<span class="num6">6</span>',
+															'<span class="num7">7</span>',
+															'<span class="num8">8</span>',
+															'<span class="num9">9</span>'
+															] ;
+													var todaySaleTimer = new Timer(timeData, {hours:"TimerH", minites:"TimerM", seconds:"TimerS"}, timerNumeric) ;
+													todaySaleTimer.start() ;
+												</script>
+												<div class="price">
+													<!--Giá gốc: <span ><?php //echo "\t".number_format($_product->getPrice(),0,'','.')?> VNĐ </span>--><span class="price-value"><?php echo number_format($_product->getFinalPrice(),0,'','.')?></span><span class="price-label">VND</span>
+												</div>
+												<!--<div class="more_info">TodaySales cơ hội cho những người nhanh tay, giảm ngay: 
+													<?php 
+														/*if(($_product->getPrice()- $_product->getSpecialPrice())>200000){
+															echo round(($_product->getPrice()-$_product->getSpecialPrice())/1000).'K';
+														} 
+														else {
+															echo round((1-$_product->getSpecialPrice()/$_product->getPrice())*100)."%";
+														}*/
+													?>
+													 trong hôm nay</div>-->
+												<div class="buy"><a href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->getSkinUrl('images/omg/mua.png')?>"/></a></div>
+											</div>
+									<?php break;
+										}
+									}?>
+								</div>
+								<div class="today_sales_lich"></div>
+                                <div class="fixClearborderMar">
+                                    <ul class="market_product">
+                                    <?php 
+    								$i=0; foreach ($_productCollection as $_product){ ?>
+                                        <li>
+											<div class="divpadRel <?php if((date('Y-m-d',strtotime($_product->getSpecialFromDate())) != date('Y-m-d',time())) && strtotime($_product->getSpecialFromDate())!=0) echo 'not-today-sales'?>">												<div class="today_sales_day"><span class="thu"><?php echo thu(date('l',strtotime($_product->getSpecialFromDate())));?></span><div class="ngay"><span class="label-ngay">Ngày</span><span class="gia-tri-ngay"><?php echo date('d-m-Y',strtotime($_product->getSpecialFromDate()));?></span></div></div>
+												<div class="img_relpro" align="center"><a title="<?php echo $pro['name']?>" href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(220);?>" width="220" height="220" /></a></div>
+												<div class="name-relpro"><?php echo $_product->getName()?></div>												                                        <div class="price_discount"><strong>
+											<div class="sale_off_icon_4">
+												<div class="sale_off_percen">
+													<?php 
+														if(($_product->getPrice()-$_product->getSpecialPrice())>200000){
+															echo round(($_product->getPrice()-$_product->getSpecialPrice())/1000).'K';
+														} 
+														else {
+															echo round((1-$_product->getSpecialPrice()/$_product->getPrice())*100)."%";
+														}
+													?>
+												</div>
+											</div>	
+											<span style="text-decoration:line-through;">
+												<?php echo number_format($_product->getPrice(),0,'','.');?>
+											</span>
+										</strong></div>                                         
+												<div class="items_price"><?php echo number_format($_product->getSpecialPrice(),0,'','.')?> VND</div>
+                                  			</div>
+                                        </li> 
+                                    <?php 							
+										}	
+									?>                                      
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                 </div>
+                   

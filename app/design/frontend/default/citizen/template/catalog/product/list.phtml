@@ -39,7 +39,9 @@
 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
 <?php else: ?>
 <div class="category-products">
-    <?php echo $this->getToolbarHtml() ?>
+	<div id="watch_refine_header">
+   		<?php echo $this->getToolbarHtml() ?>
+    </div>
     <?php // List mode ?>
     <?php if($this->getMode()!='grid'): ?>
     <?php $_iterator = 0; ?>
@@ -89,44 +91,31 @@
     <?php $_columnCount = $this->getColumnCount(); ?>
     <?php $i=0; foreach ($_productCollection as $_product): ?>
         <?php if ($i++%$_columnCount==0): ?>
-        <ul class="main-list row">
+        <ul class="main-list row new_arrival_product">
 			<?php endif ?>
-            <li class="left<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
-	        	<div class="bd-light">
-                	<span style="display:none;" id="link_<?php echo $_product->getSku()?>"><?php echo $_product->getProductUrl() ?></span>
-					<span class="row cursorlink imgprod">
-	                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(190,230); ?>" width="190" height="230" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="lazy" id="image_<?php echo $_product->getSku()?>" /></a>
+            <li class="anim_border_wrap <?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+	        	<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                	<span style="display:none;" id="link_<?php echo $_product->getSku()?>">
+						<?php echo $_product->getProductUrl() ?>
                     </span>
-                    <span class="row main-swatch">
-                    <?php
-                        if($_product->getTypeId() == "configurable"):
-                            $conf = Mage::getModel('catalog/product_type_configurable')->setProduct($_product);
-                            $simple_collection = $conf->getUsedProductCollection()->addAttributeToSelect('*')->addFilterByRequiredOptions();
-							$colors = array();
-                            foreach($simple_collection as $simple_product){
-                                if($simple_product->getColor()){
-                                    $colors[$simple_product->getId()] = $simple_product->getColor();//Mage::getModel('catalog/product')
-                                                    //->load($simple_product->getId())
-                                                   // ->getAttributeText('color');
-								}
-							}
-							$colors = array_unique($colors);
-							foreach ($colors as $key=>$color) {
-								$simple_product = Mage::getModel('catalog/product')->load($key);
-                                ?>
-
-                                	<a href="javascript:showSwatchData('<?php echo $_product->getSku()?>','<?php echo $this->helper('catalog/image')->init($simple_product, 'small_image')->resize(190,230); ?>','<?php echo $simple_product->getAttributeText('manufacturer'); ?>','<?php echo strip_tags($simple_product->getName());?>','<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(). number_format($simple_product->getFinalPrice(),2)?>','<?php echo $_product->getProductUrl()?>')"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'amconf/images/'.$color .'.jpg'?>" width="10" height="10" alt=""></a>
-                                <?php
-                         }							
-                        endif;
-                    ?>
-                    </span>
-                    <p class="row" id="text_<?php echo $_product->getSku();?>">
-                        <span clas="row fw-bold" style="text-transform:uppercase;"><?php echo $_product->getAttributeText('manufacturer'); ?></span>
-                        <span class="row pfname"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></span>                       
-                        <span class="row fw-bold"><?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(). number_format($_product->getFinalPrice(),2);?></span>
-                    </p>
-	            </div>                    
+					<div class="new_img">
+	                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(190,230); ?>" width="190" height="230" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="lazy" id="image_<?php echo $_product->getSku()?>" />
+                    </div>
+                    <div class="new_content">
+                        <h3 class="arrival_name">
+                        	<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                        </h3>                   
+                        <span class="row fw-bold">
+							<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(). number_format($_product->getFinalPrice(),2);?>
+                        </span>
+                        <span><?php echo $_product->getSku();?></span>                        
+                        <p class="row" id="text_<?php echo $_product->getSku();?>"></p>
+                    </div>
+	            </a>
+                <div class="anim_border t" style="overflow: hidden;"></div>
+                <div class="anim_border b" style="overflow: hidden;"></div>
+                <div class="anim_border l" style="overflow: hidden;"></div>
+                <div class="anim_border r" style="overflow: hidden;"></div>                  
            </li>
         <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
         </ul>

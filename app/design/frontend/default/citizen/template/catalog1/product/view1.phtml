@@ -1,0 +1,195 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+    <div class="product-essential">
+    <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+
+        <div class="product-shop">
+            <div class="product-name">
+                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+            </div> 
+
+            <?php //echo $this->getReviewsSummaryHtml($_product, false, true)?> 
+            <?php echo $this->getChildHtml('alert_urls') ?>
+			 <?php if ($_product->getShortDescription()):?>
+                <div class="short-description">
+                    <h2><?php echo $this->__('Quick Overview') ?></h2>
+                    <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                </div>
+            <?php endif;?>
+			 <?php echo $this->getChildHtml('product_type_data') ?> 
+			<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+				<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+			<?php endif;?>
+            
+			<?php echo $this->getChildHtml('addtocart') ?>
+			
+            <?php echo $this->getTierPriceHtml() ?>
+    
+            <?php if (!$this->hasOptions()):?>
+                <div class="add-to-box">
+                    <?php if($_product->isSaleable()): ?>
+                       
+                        <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                            <!--<span class="or"><?php echo $this->__('OR') ?></span>-->
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <?php echo $this->getChildHtml('addto') ?>
+                </div>
+            <?php else:?>
+                <?php echo $this->getChildHtml('addto') ?>
+            <?php endif; ?>
+			
+            <div class="prod_bottom_share"> 
+				<div class="css_email"> <?php if ($this->canEmailToFriend()): ?>
+						<p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo "EMAIL A FRIEND";//$this->__('Email to a Friend') ?></a></p>
+					<?php endif; ?></div>
+				<div class="css_bookmark"><a href="http://www.facebook.com/sharer.php?src=bm&t=<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>&u=<?php echo  $this->helper('core/url')->getCurrentUrl(); ?>">SHARE/BOOKMARK <img src="<?php echo Mage::getBaseUrl('skin'); ?>frontend/default/default/images/facebook_small.png"></a></div>
+				<div class="css_tweet"><a href="http://www.addtoany.com/add_to/twitter?linkname=<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> &linknote=<?php echo urlencode ($_product->getShortDescription());?>&linkurl=<?php echo  $this->helper('core/url')->getCurrentUrl(); ?>">TWEET <img src="<?php echo Mage::getBaseUrl('skin'); ?>frontend/default/default/images/tweet_small.png"></a></div>  
+				 
+			</div>
+				
+
+            <?php echo $this->getChildHtml('other');?>
+
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+            <?php endif;?>
+
+        </div>
+
+        <div class="product-img-box">
+            <?php echo $this->getChildHtml('media') ?>
+        </div>
+        
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(){
+                    if (this.validator.validate()) {
+                            this.form.submit();
+                    }
+            }.bind(productAddToCartForm);
+    //]]>
+    </script>
+    </div>
+	<a name="tab"></a>
+	 <div id="tabs_container">
+					  
+					  <!-- These are the tabs -->
+					  <ul class="tabs">
+						<li class="active">
+						  <a href="#tab" rel="#tab_1_contents" class="tab">SẢN PHẨM</a>
+						</li>
+						<li><a href="#tab" rel="#tab_2_contents" class="tab">VẬN CHUYỂN</a></li>
+						<li><a href="#tab" rel="#tab_3_contents" class="tab">ĐỔI, TRẢ HÀNG</a></li>
+					  </ul>
+					  
+					  <!-- This is used so the contents don't appear to the 
+						   right of the tabs -->
+					  <div class="clear"></div>
+					  
+					  <!-- This is a div that hold all the tabbed contents -->
+					  <div class="tab_contents_container">
+					
+						<!-- Tab 1 Contents -->
+						<div id="tab_1_contents" class="tab_contents tab_contents_active">
+						 <div class="product-collateral">
+							<?php echo $this->getChildHtml('description') ?>
+							<?php echo $this->getChildHtml('additional') ?>
+							<?php echo $this->getChildHtml('related_products') ?>
+							<?php echo $this->getChildHtml('product_additional_data') ?>
+							<?php echo $this->getChildHtml('share_bookmarks') ?>
+						</div>
+						</div>
+					
+						<!-- Tab 2 Contents -->
+						<div id="tab_2_contents" class="tab_contents">
+							<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('info_delivery')->toHtml() ?>					
+						</div>
+					
+						<!-- Tab 3 Contents -->
+						<div id="tab_3_contents" class="tab_contents">
+							<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('info_return')->toHtml() ?>		
+						</div>
+					
+					  </div>
+					</div>
+		
+	</div>
+   
+ <script language="javascript">  
+var $j = jQuery.noConflict(); 
+	// Load this script when page loads
+$j(document).ready(function(){
+	var price1=$j('.product-shop .old-price > .price-label');
+	var price2=$j('.product-shop .special-price >.price-label');
+	if(price1)
+		price1.show();
+	if(price2)	
+		price2.show();
+ // Set up a listener so that when anything with a class of 'tab' 
+ // is clicked, this function is run.
+ $j('.tab').click(function () {
+
+  // Remove the 'active' class from the active tab.
+  $j('#tabs_container > .tabs > li.active')
+	  .removeClass('active');
+	  
+  // Add the 'active' class to the clicked tab.
+  $j(this).parent().addClass('active');
+
+  // Remove the 'tab_contents_active' class from the visible tab contents.
+  $j('#tabs_container > .tab_contents_container > div.tab_contents_active')
+	  .removeClass('tab_contents_active');
+
+  // Add the 'tab_contents_active' class to the associated tab contents.
+  $j(this.rel).addClass('tab_contents_active');
+
+ });
+});
+</script>

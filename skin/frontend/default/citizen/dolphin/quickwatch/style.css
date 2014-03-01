@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+.dqwatchContainer{position: absolute; top: 10px; width: 94%; text-align: center; height: 35px;}
+.products-grid li.item, .products-list li.item {overflow: hidden;position: relative;}
+.page-empty{padding: 5px;}
+.product-view .product-shop{width: 540px;}

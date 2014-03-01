@@ -17,11 +17,21 @@
 <?php
 	$num=5;
 ?>
-<ul class="menu-category">
+<ol class="filter-item-list <?php if(count($this->getItems())>$num) echo ' scrollable'; else echo ' unscroll'?>">
 <?php foreach ($this->getItems() as $_item): ?>
-    <li class="row col fs-small no_margin">
-	    <a href="<?php echo $this->urlEscape($_item->getReplaceUrl()) ?>" title="<?php echo $_item->getLabel() ?>"><?php echo $_item->getLabel() ?></a>    
+    <li <?php if ($_item->getMSelected()): ?>class="selected-ln-item"<?php else:?> class="select-ln-item" <?php endif; ?>>
+        <?php // MANA BEGIN ?>
+        <?php if ($_item->getMSelected()): ?>
+        	<div class="selected-filter-item"><span></span><?php echo $_item->getLabel() ?></div>
+        <?php else : ?>
+	        <?php if ($_item->getCount() > 0): ?>
+	        	<div class="select-filter-item"><a href="<?php echo $this->urlEscape($_item->getReplaceUrl()) ?>" title="<?php echo $_item->getLabel() ?>"><span></span><?php echo $_item->getLabel() ?></a></div>
+	        <?php else: ?><div class="non-select-filter-item"><span></span><?php echo $_item->getLabel() ?></div>
+	        <?php endif; ?>
+        <?php endif; ?>
+        <?php // MANA END ?>
+        <em>(<?php echo $_item->getCount() ?>)</em>
     </li>
 <?php endforeach ?>
-</ul>
+</ol>
 <?php echo Mage::helper('mana_core')->getNamedHtml('mana_filters/markup', 'after_items', array('block' => $this)) ?>

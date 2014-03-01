@@ -1,0 +1,85 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php $_product = $this->getProduct() ?>
+
+<?php if($_product->isSaleable()): ?>
+<?php if(!$_product->isGrouped()): ?>
+    <div class="add-to-cart">
+    	<div class="stepBox singleProductItem">
+        	<div class="stepNumber step1">1</div>
+            <div class="stepContent">
+            	<div class="itemImage" style="padding-bottom:45px;">
+                	<div><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(64,43)?>" width="64" height="43"/></div>
+                </div>
+                <div class="itemName"><?php echo $_product->getName();?></div>
+                <div class="itemPrice"><?php echo $this->getPriceHtml($_product);?></div>
+                <div class="div_qty_cart">
+						<div type="integertextbox" class="inputDigital" errorhandler="" changehandler="">
+                        	<input type="text" childtype="Textbox" name="qty" id="qty" maxlength="12" value="<?php echo $this->getMinimalQty($_product) ?>" title="<?php echo $this->__('Qty') ?>" class="inputDigitalNumber" />
+                            <div childtype="IncreaseButton" class="inputDigitalAdd" onclick="clickBtn()"></div>
+                            <div childtype="ReduceButton" class="inputDigitalCut" onclick="clickBtn2()"></div>
+                        </div>                                  
+                </div>
+             </div>
+         </div>
+		<div class="clearFloatNoHeight"></div>         
+		<div class="stepBox" style="background:#eee;height:128px;"> 
+        	<div class="stepNumber step2">2</div>
+            <div class="stepContent">    
+                <?php echo $this->getChildHtml('addto') ?>            
+               <div class="cart_div_button"> 
+                   <input type="button" title="<?php echo $this->__('Add to Cart') ?>" class="proaddBtn"  onclick="productAddToCartForm.submit()" value="<?php //echo $this->__('Add to Cart') ?>">
+                </div>
+             </div>
+         </div>
+    </div>
+        <script type="text/javascript">
+    //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(){
+                    if (this.validator.validate()) {
+                            this.form.submit();
+                    }
+            }.bind(productAddToCartForm);
+			function clickBtn()
+			{
+				qty.value = Number(qty.value)+1;				
+			}
+			function clickBtn2()
+			{
+				if(qty.value <=<?php echo $this->getMinimalQty($_product) ?>)
+					return;
+				else
+					qty.value = Number(qty.value) - 1;						
+			}			
+    //]]>
+    </script>
+	<?php else: ?>
+		<?php echo $this->getChildHtml('grouped_products')?>         
+	<?php endif; ?>         
+<?php endif; ?>

@@ -16,30 +16,24 @@
 ?>
 <?php
 	$num = 5;
-	//echo $this->getName();
 ?>
-<ul class="menu-facet row no-margin">
-	<li class="row col fs-small" id="<?php echo str_replace(' ','',$this->getName()).'_title'?>" >
-        
-		<span class="row"><a href="javascript:toggleFacet('<?php echo str_replace(' ','',$this->getName())?>')" class="fc-brand"><?php echo $this->__('Refine by').' '.$this->getName()?></a></span>
-        <ul	class="filter-item-list " id="<?php echo str_replace(' ','',$this->getName())?>">        
-        <?php foreach ($this->getItems() as $_item): ?>
-        
-            <li <?php if ($_item->getMSelected()): ?>class="selected-ln-item row"<?php else :?> class="select-ln-item row"<?php endif; ?>>
-                <?php // MANA BEGIN ?>
-                <?php if ($_item->getMSelected()): ?>
-                    <a href="<?php echo $_item->getRemoveUrl()?>"><div class="selected-filter-item"><span></span><?php echo $_item->getLabel() ?></div></a>
-                <?php else : ?>
-                    <?php if ($_item->getCount() > 0): ?>
-                        <div class="select-filter-item"><a href="<?php echo $this->urlEscape($_item->getUrl()) ?>" title="<?php echo $_item->getLabel() ?>"><span></span><?php echo $_item->getLabel() ?></a></div>
-                    <?php else: ?><div class="non-select-filter-item"><span></span><?php echo $_item->getLabel() ?></div>
-                    <?php endif; ?>
+<div class="content">
+    <ul class="filter-item-list <?php if(count($this->getItems())>$num) echo ' scrollable'; else echo ' unscroll'?>">
+    <?php foreach ($this->getItems() as $_item): ?>
+        <li <?php if ($_item->getMSelected()): ?>class="selected-ln-item"<?php else :?> class="select-ln-item"<?php endif; ?>>
+            <?php // MANA BEGIN ?>
+            <?php if ($_item->getMSelected()): ?>
+                <a href="<?php echo $_item->getRemoveUrl()?>"><div class="selected-filter-item"><span></span><?php echo $_item->getLabel() ?></div></a>
+            <?php else : ?>
+                <?php if ($_item->getCount() > 0): ?>
+                    <div class="select-filter-item"><a href="<?php echo $this->urlEscape($_item->getUrl()) ?>" title="<?php echo $_item->getLabel() ?>"><span></span><?php echo $_item->getLabel() ?></a></div>
+                <?php else: ?><div class="non-select-filter-item"><span></span><?php echo $_item->getLabel() ?></div>
                 <?php endif; ?>
-                <?php // MANA END ?>
-                <!--<em>(<?php //echo $_item->getCount() ?>)</em>-->
-            </li>
-        <?php endforeach ?>
-        </ul>
-    </li>
-</ul>
+            <?php endif; ?>
+            <?php // MANA END ?>
+            <em>(<?php echo $_item->getCount() ?>)</em>
+        </li>
+    <?php endforeach ?>
+    </ul>
+</div>
 <?php echo Mage::helper('mana_core')->getNamedHtml('mana_filters/markup', 'after_items', array('block' => $this)) ?>

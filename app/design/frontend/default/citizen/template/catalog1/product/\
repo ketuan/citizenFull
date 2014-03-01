@@ -1,0 +1,335 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+ 	
+?>
+<?php 
+$_productCollection=$this->getLoadedProductCollection(); 
+$storeId = Mage::app()->getStore()->getId();
+?>
+<?php 
+	$_coreHelper = $this->helper('core');
+    $_weeeHelper = $this->helper('weee');
+    $_taxHelper  = $this->helper('tax');  
+    $_simplePricesTax = ($_taxHelper->displayPriceIncludingTax() || $_taxHelper->displayBothPrices());
+     
+	 
+?>
+<?php $catId2 = Mage::getModel('catalog/layer')->getCurrentCategory()->getId(); ?> 
+<?php
+/**
+ * @author Mau Phuong <phuong_mv@hotmail.com>
+ * GuruWebSoft www.omegamart.vn
+ * BestSeller Test
+ * */
+$visibility     = array(
+                      Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
+                      Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
+                  );
+
+$storeId        = Mage::app()->getStore()->getId();
+$_productCollection2 = Mage::getResourceModel('reports/product_collection')
+                              ->addAttributeToSelect('*')
+							  ->addCategoryFilter(Mage::getModel('catalog/category')->load($catId2))
+                              ->addOrderedQty()
+                              ->addAttributeToFilter('visibility', $visibility)                              
+                              ->setStoreId($storeId)
+                              ->addStoreFilter($storeId)
+                              ->setOrder('ordered_qty', 'asc')
+                              ->setPageSize(4);                            
+?>	
+<?php echo $this->getToolbarHtml() ?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="category-products"> 
+    <?php // List mode ?>
+    <?php if($this->getMode()!='grid'): ?>
+    <?php $_iterator = 0; ?>
+    <ol class="products-list" id="products-list">
+    <?php foreach ($_productCollection as $_product): ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+	<?php // Deal ?>
+       <div class="deal">
+                <div class="deal-title">
+                        <h1 class="deal-name"><?php echo "Diu dang mua thu cung mu thoi trang"?></h1>
+                        <h2 class="product-name"><?php echo $this->htmlEscape($_product->getName()) ?>"</h2>
+                </div>
+		<div class="deal-info">
+			<div class="leftcol">
+				<div class="media">
+					<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(420); ?>" width="420" height="420" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" /></a>
+
+				</div>
+				<div class="info">
+					<?php echo nl2br($this->htmlEscape($_product->getShortDescription())) ?>
+				</div>
+			</div>
+			     <?php $_regularPrice = $_taxHelper->getPrice($_product, $_product->getPrice(), $_simplePricesTax) ?>
+                             <?php $_finalPrice = $_taxHelper->getPrice($_product, $_product->getFinalPrice()) ?>
+			<div class="rightcol">
+				<div class="price_tag">
+					<div class="price_tag_inner">
+						<div class="amount"><?php echo $_finalPrice ?></div>
+						<?php if($_product->isSaleable()): ?>
+        			                	<p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn_buy" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                    				<?php else: ?>
+                        				<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    				<?php endif; ?>
+						</div>
+				</div>
+				<div class="deal_discount">
+					<dl>
+						<dt>Gia goc</dt><dd><?php echo $_regularPrice; ?></dd>
+					</dl>
+					<dl class="discount">
+						<dt>Giam gia</dt><dd><?php echo $_finalPrice;?></dd>
+					</dl>
+					<dl class="save">
+                                                <dt>Tiet kiem</dt><dd><?php echo $_regularPrice-$_finalPrice;?></dd>
+                                        </dl>
+				</div>
+				<div class="bought"><h3>Da co: 100 Nguoi mua</h3></div>
+				<div class="remaining_time">
+					<p class="timer_text">Con lai </p>
+					<script type="text/javascript">countdown(11,12,25,00,00,1)</script>
+					<div id="countdown"></div>
+					<span class="days">99 days:<?php $futureDate= $_product->getSpecialToDate();?></span>
+					<span class="hours"></span>
+					<span class="minutes"></span>
+					<span class="seconds"></span>
+				</div>
+			</div>
+		</div>
+        </div>          
+
+            <?php // Product Image ?>
+
+            <?php // Product description ?>
+            <div class="product-shop">
+                <div class="f-fix">
+                    <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                    <?php endif; ?>
+<?php /*
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <div class="desc std">
+                        <?php echo nl2br($this->htmlEscape($_product->getShortDescription())) ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="link-more"><?php echo $this->__('Learn More') ?></a>
+                    </div>
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+*/ ?>
+        </li>
+    <?php endforeach; ?>
+    </ol>
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+    <?php else: ?>
+
+    <?php // Grid Mode ?>
+
+    <?php $_collectionSize = $_productCollection->count(); ?>
+    <?php $_columnCount = $this->getColumnCount();
+	$_columnCount = 5;
+	?>
+    <?php $i=0; foreach ($_productCollection as $_product):  ;?>
+        <?php if ($i++%$_columnCount==0): ?>	
+			
+        <ul class="products-grid">
+        <?php endif ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+				<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo strip_tags ($_product->short_description) ?>" class="product-image"> 
+					<img style="float:left; position:absolute; " src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(172); ?>" width="172" height="172" alt="<?php echo strip_tags ($_product->short_description) ?>" />
+					<?php $_regularPrice = $_taxHelper->getPrice($_product, $_product->getPrice(), $_simplePricesTax) ?>
+					<?php $_finalPrice = $_taxHelper->getPrice($_product, $_product->getFinalPrice()) ?>
+					<?php 
+						if(!$_regularPrice)
+							$percent=0;
+						else
+							$percent= (int)(100*($_regularPrice-$_finalPrice)/$_regularPrice); 
+						$percent=$percent-$percent%5; 
+					?> 
+					<?php if (!$_product->isGrouped() && $percent): ?>  
+						<div class="sale_off div_percent_<?php echo "$percent"; ?>">  </div> 
+					 <?php  endif;?>
+				</a>
+                 <div class="product-brand"><?php echo $this->getBrandHtml($_product); ?></div>
+				<?php //if($storeId==3) :?>
+					<div class="omegagift-sku-box">
+						<?php echo "Mã: ".$_product->getSku()?>
+					</div>
+				<?php //endif?>	
+				<div class="div_name">
+					<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo strip_tags($_product->short_description) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h2>
+					<?php if($_product->getRatingSummary()): ?>
+					<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+					<?php endif; ?>
+					<?php if($_regularPrice) :?>
+						<?php echo $this->getPriceHtml($_product, true) ?>
+					<?php endif?>	
+					<div class="actions">
+						<?php if($_product->isSaleable()): ?>
+							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+						<?php else: ?>
+							<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+						<?php endif; ?>
+						<ul class="add-to-links">
+							<?php if ($this->helper('wishlist')->isAllow()) : ?>
+								<li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+							<?php endif; ?>
+							<?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+								<li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+							<?php endif; ?>
+						</ul>
+					</div>
+				</div>
+            </li>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+        <?php endif ?>
+        <?php endforeach ?>
+
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+    <?php endif; ?>
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+	<?php if ($storeId !=3) :?>
+		<div class="bestseller_product_list">
+			<div class="bestseller_product_list_header">
+				&nbsp;
+			</div>
+			<div class="bestseller_product_list_items">
+				<?php foreach($_productCollection2 as $product):?>  				
+					<div class="item">
+						<div class="img">
+							<a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) .$product->url_key.".html"?>" title="<?php echo $product->name ?>">
+							<img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(175,175); ?>" alt="<?php echo $product->name ?>" title="<?php echo $product->name ?>"/></a>
+						</div>
+						<div class="brand">
+							<?php echo $this->getBrandHtml($product)?>
+						</div>
+						<div class="name">
+							<?php echo $product->name?>
+						</div>
+						<div class="description">
+							<?php echo strip_tags ($product->short_description) ?>
+						</div>
+					</div>
+				<?php endforeach; ?>
+
+			</div>
+		</div>
+	<?php endif?>		
+</div>
+<?php endif; ?>
+<script type="text/javascript">
+function countdown_clock(year, month, day, hour, minute, format)
+         {
+         //I chose a div as the container for the timer, but
+         //it can be an input tag inside a form, or anything
+         //who's displayed content can be changed through
+         //client-side scripting.
+         html_code = '<div id="countdown"></div>';
+         
+         document.write(html_code);
+         
+         countdown(year, month, day, hour, minute, format);                
+         }
+         
+function countdown(year, month, day, hour, minute, format)
+         {
+         Today = new Date();
+         Todays_Year = Today.getFullYear() - 2000;
+         Todays_Month = Today.getMonth();                  
+         
+         //Convert both today's date and the target date into miliseconds.                           
+         Todays_Date = (new Date(Todays_Year, Todays_Month, Today.getDate(), 
+                                 Today.getHours(), Today.getMinutes(), Today.getSeconds())).getTime();                                 
+         Target_Date = (new Date(year, month - 1, day, hour, minute, 00)).getTime();                  
+         
+         //Find their difference, and convert that into seconds.                  
+         Time_Left = Math.round((Target_Date - Todays_Date) / 1000);
+         
+         if(Time_Left < 0)
+            Time_Left = 0;
+         
+         var innerHTML = '';
+         
+         switch(format)
+               {
+               case 0:
+                    //The simplest way to display the time left.
+                    innerHTML = Time_Left + ' seconds';
+                    break;
+               case 1:
+                    //More datailed.
+                    days = Math.floor(Time_Left / (60 * 60 * 24));
+                    Time_Left %= (60 * 60 * 24);
+                    hours = Math.floor(Time_Left / (60 * 60));
+                    Time_Left %= (60 * 60);
+                    minutes = Math.floor(Time_Left / 60);
+                    Time_Left %= 60;
+                    seconds = Time_Left;
+                    
+                    dps = 's'; hps = 's'; mps = 's'; sps = 's';
+                    //ps is short for plural suffix.
+                    if(days == 1) dps ='';
+                    if(hours == 1) hps ='';
+                    if(minutes == 1) mps ='';
+                    if(seconds == 1) sps ='';
+                    
+                    innerHTML = days + ' day' + dps + ' ';
+                    innerHTML += hours + ' hour' + hps + ' ';
+                    innerHTML += minutes + ' minute' + mps + ' and ';
+                    innerHTML += seconds + ' second' + sps;
+                    break;
+               default: 
+                    innerHTML = Time_Left + ' seconds';
+               }                   
+                    
+            document.getElementById('countdown').innerHTML = innerHTML;     
+               
+         //Recursive call, keeps the clock ticking.
+         setTimeout('countdown(' + year + ',' + month + ',' + day + ',' + hour + ',' + minute + ',' + format + ');', 1000);
+}
+</script>

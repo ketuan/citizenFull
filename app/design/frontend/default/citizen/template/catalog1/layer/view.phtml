@@ -1,0 +1,256 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+ $cur_url= $this->helper('core/url')->getCurrentUrl();
+ //$_index=strpos($cur_url,'?');
+// $_index_cat=strpos($cur_url,'?cat');
+ 
+ //if($_index&& !$_index_cat)$cur_url=substr($cur_url,0,$_index);
+ 
+?>
+ <form method="GET" name="brandfrm" action="<?php echo $cur_url;?>">
+ 
+<div class="block block-layered-nav">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Shop by') ?></span></strong>
+    </div> 
+    <div class="block-content"> 
+        <?php //echo $this->getStateHtml() ?>
+        <?php // if($this->canShowOptions()): ?>
+            <p class="block-subtitle"><?php echo $this->__('Shopping Options') ?></p>
+            <dl id="narrow-by-list">
+				
+		 <?php  //echo Mage::registry('current_category')->getId();
+		 	//$manufacturers = $this->getBrandsByCode( );	  
+		//if(in_array($_item->getFilterVar(),array('mevabebrand','myphambrand', 'thietbicanhanbrand', 'thucphamchucangbrand','thietbicanhanbrand')) ){
+		?> 
+		 <div class="filter_title">Giá</div>  
+		      
+		  <input type="hidden" id="price"   name="price" style="width:210px;border:0; color:#f6931f; font-weight:bold;" /> 		  
+		  <div id="price-slider"  class="ui-slider ui-slider-horizontal ui-widget ui-widget-content"></div>
+		   <input style="text-align:left; width:70px; border:0px;color:#9A9A9C" type="text" id="text_price_min" > 
+		   <input style="text-align:right; width:73px; border:0px;color:#9A9A9C" type="text" id="text_price_max" > 
+			 
+			 <?php if($this->canShowBlock()): ?>
+                <?php $_filters = $this->getFilters(); $scroll_pan=0; ?>
+                <?php foreach ($_filters as $_filter): ?>
+                <?php if($_filter->getItemsCount()&&$this->checkItemDisplay($_filter->getItems()) ): ?>
+				 <?php $ind=1;$chk=1;   ?> 
+					 <div class="filter_title"><?php echo $_filter->getName(); ?> </div> 
+						<!-- root element for scrollable -->
+						<div class="scrolldiv">
+						<?php if ($_filter->getItemsCount()>6){ ?>
+					    	<div class="scrollable" id="scrollable<?php echo $scroll_pan++; ?>">  
+						 <?php } else{ ?>
+						 	<div class="unscroll" >  
+						  <?php }   ?>
+						   <!-- root element for the items -->
+						 
+  							  
+					 	<!--<div class="<?php echo ($_filter->getItemsCount()>5)?"filter_list":"nomal_list";?>">   --> 
+								<?php foreach ($_filter->getItems() as $_item): 
+								
+								 $att_code= $_item->getFilterVar();  
+								 if($att_code=='cat')  $att_code="category";
+								 $att_val=$this->getRequest()->getParam($att_code) ;  
+								?>
+								 <input type="checkbox" 
+								 	<?php 
+										if($att_code=='category') 
+											echo 'onclick="onCatChecked(this)"'; 
+										else echo 'onclick="onAttChecked(this)"'
+									;?>  class="css_brand_check"  
+                                    id="chk<?php echo $att_code.$chk; $chk++; ?>" name="<?php echo $att_code; ?>[]" 
+                                    <?php if($att_val&&in_array( $_item->getValueString(),$att_val)) echo 'checked="checked"'; ?> 
+                                    value="<?php echo $_item->getValueString() ; ?>">
+                                    <label class="check_label_option" style="padding-left:3px;"><?php echo $_item->getLabel(); ?> 
+                                    </label>
+                                    <br>
+								  
+							 <?php  endforeach ?>  
+							 </div>   
+							 <input type="hidden" name="att_filter_name[]" id="brand_name" value="<?php echo $att_code; ?>"> 
+				 		 
+					  </div> 
+                
+                <?php endif; ?>
+                <?php endforeach; ?>
+			 <?php endif; ?> 	
+			<input type="hidden" name="limit" id="limit" value="<?php echo $this->getRequest()->getParam('limit'); ?>"> 
+			<input type="hidden" name="p"  value="<?php echo $this->getRequest()->getParam('p'); ?>">
+			<input type="hidden" name="cat"  value="<?php echo $this->getRequest()->getParam('cat'); ?>">
+        	<input type="hidden" name="q"  value="<?php echo $this->getRequest()->getParam('q'); ?>">
+			<input type="hidden" name="tagId"  value="<?php echo $this->getRequest()->getParam('tagId'); ?>">
+			<input type="hidden" name="pagetype"  value="<?php echo $this->getRequest()->getParam('pagetype'); ?>"> 
+        <?php //endif; ?>
+    </dl>
+    </div>
+    </div>
+   </form>    
+ 
+<script type="text/javascript">decorateDataList('narrow-by-list');  
+			var $j = jQuery.noConflict(); 
+
+			$j(document).ready(function(){   
+
+			 
+			  	$j(".pager>.pages > ol > li>a ").click(function(){
+					return true;
+					$j("input[name=p]").val($j(this).html());
+					$j("form[name=brandfrm]").submit(); 
+					//alert($j(this).html());
+					return false;
+				});
+				$j("#price-slider").slider({ 
+							range: true, 
+							min: <?php echo $this->getMinPrice();?>,
+							max: <?php echo ($this->getMaxPrice()*1.1);?>,
+							step:10000,
+							<?php $price=$this->getRequest()->getParam('price'); 
+							if ($price) { 
+							 $_list = explode(',', $price); 
+							 echo "values: [ ".$_list[2].", ".$_list[1]."], ";
+							}else echo "values: [".$this->getMinPrice().", ".($this->getMaxPrice()*1.1)."], "; 
+							?> 
+							change: function(event, ui) {
+								//$j("#price").val('$' + ui.value);  
+								min=ui.values[0];
+								max=ui.values[1];
+								if(min==max) min=0;
+								else 	if(min>max){
+									t=min;
+									min=max;
+									max=t;
+								}
+								$j("#text_price_min").val( $j("#price-slider").slider("values",0));	
+								$j("#text_price_max").val( $j("#price-slider").slider("values",1));
+								 $j('#text_price_min').priceFormat({
+										prefix: ' ',
+										limit: 10,
+										thousandsSeparator: '.',
+										centsLimit: 3
+									});	
+									 $j('#text_price_max').priceFormat({
+										prefix: ' ',
+										limit: 10,
+										thousandsSeparator: '.',
+										centsLimit: 3
+									});	
+								 $j("input[name=price]").val('1,'+max+','+min);
+								 $j("form[name=brandfrm]").submit();
+								 //	window.location=window.location+'?price=1,'+max+','+min;				
+			 
+							},
+							slide: function(event, ui) {
+								//$j("#price").val('$' + ui.value);  
+								min=ui.values[0];
+								max=ui.values[1];
+								if(min==max) min=0;
+								else 	 if(min>max){
+									t=min;
+									min=max;
+									max=t;
+								}
+								
+								 $j("#text_price_min").val( $j("#price-slider").slider("values",0));	
+								 $j("#text_price_max").val( $j("#price-slider").slider("values",1));
+								  $j('#text_price_min').priceFormat({
+										prefix: '',
+										limit: 10,
+										thousandsSeparator: '.',
+										centsLimit: 3
+									});	
+									 $j('#text_price_max').priceFormat({
+										prefix: '',
+										limit: 10,
+										thousandsSeparator: '.',
+										centsLimit: 3
+									});	
+								 				 
+			 
+							}
+						});
+						
+					 
+						$j("#text_price_min").val( $j("#price-slider").slider("values",0));	
+						$j("#text_price_max").val( $j("#price-slider").slider("values",1));
+						 $j('#text_price_min').priceFormat({
+							prefix: '',
+							limit: 10,
+							thousandsSeparator: '.',
+							centsLimit: 3
+						});	
+						 $j('#text_price_max').priceFormat({
+							prefix: '',
+							limit: 10,
+							thousandsSeparator: '.',
+							centsLimit: 3
+						});	
+						$j("input[name=price]").val('1,'+$j("#price-slider").slider("values",1)+','+$j("#price-slider").slider("values",0));
+					 //$j("#amount").val('$' + $j("#price-slider").slider("values",0)); 
+					 // alert('fdf');
+					 
+					 
+					function isCheckedById(id)
+					{
+						var checked = $j("input[name="+id+"]:checked").length;
+						if (checked == 0)
+						{
+							return false;
+						}
+						else
+						{
+							return true;
+						}
+					}
+			 });
+			 function onCatChecked(cat){ 
+						var obj=$j("input[name=category[]]:checked");
+						 var count = obj.length;
+						 if(cat.name=='category[]')
+						 for(i=0;i<count;i++){
+						 	item=obj[i];  
+							 if(item.id==cat.id) continue;
+							 item.checked=false;
+						} 
+						 
+						$j("form[name=brandfrm]").submit();
+				 
+					} 
+				 function onAttChecked(cat){  
+						 
+						$j("form[name=brandfrm]").submit();
+				 
+					} 	
+			
+			</script>
+ 
