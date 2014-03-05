@@ -33,9 +33,11 @@
 ?>
 <?php if($this->canShowBlock()): ?>
 <div id="searchLeftMenu" class="block2-layered-nav">
-	<?php if ($this->getLayer()->getState()->getFilters()): ?>
-        <a href="<?php echo $this->getClearUrl() ?>" id="ctl00_MainContent_SearchFilter_ClearAllLink" class="clearAllIcon"></a>
-	<?php endif; ?>
+	<?php //if ($this->getLayer()->getState()->getFilters()): ?>
+        <a href="<?php echo $this->getClearUrl() ?>" id="ctl00_MainContent_SearchFilter_ClearAllLink" class="clearAllIcon">
+        	<?php echo $this->__("Clear All");?>
+        </a>
+	<?php //endif; ?>
 	<?php //echo $this->getStateHtml() ?>
     <?php if($this->canShowOptions()): ?>
 		<?php $_filters = $this->getFilters() ?>

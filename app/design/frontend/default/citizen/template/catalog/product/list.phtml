@@ -42,6 +42,7 @@
 	<div id="watch_refine_header">
    		<?php echo $this->getToolbarHtml() ?>
     </div>
+    <?php echo $this->getChildHtml('mana.state');?>
     <?php // List mode ?>
     <?php if($this->getMode()!='grid'): ?>
     <?php $_iterator = 0; ?>
@@ -115,7 +116,12 @@
                 <div class="anim_border t" style="overflow: hidden;"></div>
                 <div class="anim_border b" style="overflow: hidden;"></div>
                 <div class="anim_border l" style="overflow: hidden;"></div>
-                <div class="anim_border r" style="overflow: hidden;"></div>                  
+                <div class="anim_border r" style="overflow: hidden;"></div>
+                <?php //if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                    <!--<a href="<?php //echo $_compareUrl ?>" class="link-compare">
+                        <?php //echo $this->__('Add to Compare') ?>
+                    </a>-->
+	            <?php //endif; ?>                  
            </li>
         <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
         </ul>

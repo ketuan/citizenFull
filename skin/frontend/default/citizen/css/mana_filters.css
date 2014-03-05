@@ -31,7 +31,7 @@
 .refine_content {
 	font-size: 13px;
 	font-family: Helvetica,Arial,sans-serif;
-	display: none;
+	/*display: none;*/
 	width: 100%;
 	color: #74838E;
 }
@@ -60,15 +60,6 @@
 	overflow: hidden;
 	width: 0;
 	font-size: 0;
-}
-.clearAllIcon {
-	width: 59px;
-	height: 11px;
-	background: url(../images/omg/multiSelectionImages.gif) no-repeat right 0px;
-	display: block;
-	position: absolute;
-	right: 9px;
-	top: -3px;
 }
 .leftMenuBox{
 	opacity:1 !important;
@@ -192,16 +183,27 @@ ol.category{
 	float:left;
 	color: #7B3043;
 }
-
+.no_filters {
+	text-align: center;
+	padding: 6px 0;
+	margin: 0 0 8px;
+}
 .searchFilters {
-	background: #F0F0F0 url(../images/omg/multiSelectionFilterBg.gif) repeat-y -672px 0;
-	width: 760px;
+	background-color: #192a36;
+	padding: 10px 20px 2px;
+	color: #fff;
+	font-size: 12px;
 	overflow: hidden;
-	margin-top: 2px;
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	height: 35px;
+	width: 960px;
 }
 .searchFilters .filterClearBtn {
 	width: 80px;
 	padding: 8px 0 3px 0;
+	display: none;
 }
 .vMiddle, .vHeight {
 	display: table-cell;
@@ -219,13 +221,23 @@ ol.category{
 	cursor: pointer;
 }
 .clearAllIcon {
-	width: 59px;
-	height: 11px;
-	background: url(../images/omg/multiSelectionImages.gif) no-repeat right 0px;
 	display: block;
 	position: absolute;
-	right: 9px;
-	top: -3px;
+	right: 300px;
+	top: 15px;
+	z-index: 100;
+	color: #FFF;
+	text-decoration: none;
+	text-transform: uppercase;
+	border: 3px solid #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding: 5px 10px;
+}
+.clearAllIcon:hover{
+	background: #74838E;
+	cursor: pointer;
 }
 .searchFilters .filterClearBtn .clearAllIcon {
 	background-position: right -50px;
@@ -237,45 +249,19 @@ ol.category{
 	margin: 5px 0 2px 3px;
 }
 .searchFilters .vHeight {
-	width: 672px;
-	text-align: left;
-	padding: 3px 0 0 0px;
 }
 .searchFilters ul {
-	display: inline-block;
-	_display: inline;
-	_zoom: 1;
-	background: url(../images/omg/multiSelectionFilterBg.gif) repeat-y 0 0;
-	width: 100%;
 }
 .searchFilters ul li {
-	padding: 0 10px 0 7px;
-	display: inline-block;
+	float:left;
+	margin-right: 15px;
 }
 .searchFilters ul li a {
-	display: inline-block;
-	height: 31px;
-	line-height: 31px;
-	_padding: 4px 0 0 0;
-	_height: 26px;
-}
-.lastBlankLine {
-	height: 5px;
-	background-color: white;
-	margin-top: -4px;
-	font-size: 0;
-	line-height: 0;
-	overflow: hidden;
-	width: 100%;
+	font-size: 1.2em;
+	line-height: 29px;
+	color: #a3aab2;
+	cursor: pointer;
 	float: left;
-	position: relative;
-}
-.searchFilters ul li.lastBlankLine {
-	width: 100%;
-	height: 3px;
-	background: #F0F0F0;
-	padding: 0;
-	margin-top: -3px;
 }
 .displayNone {
 	display: none;
@@ -284,9 +270,11 @@ ol.category{
 	width: 16px;
 	height: 16px;
 	display: inline-block;
-	background: url(../images/omg/multiSelectionImages.gif) no-repeat right -100px;
+	background: transparent url('../images/citizen/clear_filter_icon.png') left center no-repeat;
 	vertical-align: middle;
-	margin: 0 0 3px 2px;
+	margin-right:3px;
+	float:left;
+	margin-top:6px;
 }
 .pageNumberArrowDown, .pageNumberArrowUp, .lightGreyArrowDown, .lightGreyArrowUp {
 	height: 7px;
