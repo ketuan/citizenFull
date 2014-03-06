@@ -32,7 +32,11 @@
         <label for="qty"><?php echo $this->__('Qty:') ?></label>
         <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
         <?php endif; ?>
-        <div id="addToBasket"><img id="addToBasketImg" src="<?php echo $this->getSkinUrl('images/addtobasket.gif')?>" onclick="productAddToCartForm.submit(this)" alt="Add to Basket" style="display: block;"></div>
+        <div id="addToBasket">
+        	<a class="site_btn" onclick="productAddToCartForm.submit(this)" title="<?php echo $this->__('Add To Cart')?>">
+            	<?php echo $this->__('BUY NOW');?>
+            </a>
+        </div>
         <!--<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>-->
         <?php echo $this->getChildHtml('', true, true) ?>
     </div>

@@ -16,7 +16,7 @@ $_productCollection = Mage::getResourceModel('reports/product_collection')
                 <span class="new_tit_bg"></span>
                 <span class="NAHeadSub"><a href="#"><?php echo $this->__("View all New Arrivals"); ?></a></span>
             </h2>
-            <ul class="new_arrival_product" id="arrival_carousel">
+            <ul class="new_arrival_product product_list" id="arrival_carousel">
                 <?php $i = 1; foreach($_productCollection as $_product) : ?>
                     <li class="anim_border_wrap">
                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
@@ -33,6 +33,26 @@ $_productCollection = Mage::getResourceModel('reports/product_collection')
                                     </span>
                                     <span class="sub_title"> <?php echo $_product->getSku(); ?></span>
                                 </div>
+                                <div class="hover_bottom" style="bottom: -36px;">
+                                    <div class="favorite">
+                                        <?php
+                                            $resource = Mage::getSingleton('core/resource');
+                                            $readConnection = $resource->getConnection('core_read');
+                                            $wishlist = $readConnection->fetchAll('SELECT product_id, count(*) as total FROM wishlist_item GROUP BY product_id');
+                                            foreach($wishlist as $item){
+                                                $wish[$item['product_id']]=$item['total'];
+                                            }
+                                            if($wish[$_product->getId()]){
+                                                echo $wish[$_product->getId()];
+                                            }
+                                            else
+                                            {
+                                                echo '0';
+                                            }
+                                        ?>
+                                    </div>
+                                    <div class="social"></div>
+                                </div>	
                             </div>
                         </a>
                         <div class="anim_border t" style="overflow: hidden;"></div>

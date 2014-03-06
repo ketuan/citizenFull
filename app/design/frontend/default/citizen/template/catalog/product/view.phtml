@@ -40,30 +40,29 @@
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <div class="product-view">
     <div class="product-essential">
-    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-        <div class="no-display">
-            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-            <input type="hidden" name="related_product" id="related-products-field" value="" />
-        </div>
-        <div class="product-img-box" id="product_media_content">
-            <?php echo $this->getChildHtml('media') ?>
-        </div>
-        <div class="product-shop">
-            <div class="left detail_top">
-            	<ul class="cont-infoblock left">
-                	<li class="row">
-						<div class="fc-brand fs-xxlarge no_margin" itemprop="brand" style="text-transform:uppercase;"><?php echo $_product->getAttributeText('manufacturer'); ?>
-                        </div>
-                        <div class="product-name">
-                            <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-                        </div>
-                        <div class="product-sku">
-                            <span><?php echo $_product->getSku(); ?></span>
-                        </div>                
+    	<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+            <div class="content_shadow left"></div>
+            <div class="content_shadow right"></div>
+            <div class="showcase_wrapper ecodrive">
+                <div class="product-img-box" id="product_media_content">
+                    <?php echo $this->getChildHtml('media') ?>
+                </div>
+                <div class="product-shop">
+                    <div id="watch_summary">
+                        <h1 class="product-name">
+                            <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                        </h1>
+                        <h2 class="product-sku">
+                            <?php echo $this->__('Model:').' '.$_product->getSku(); ?>
+                        </h2>                
                         <?php if ($_product->getShortDescription()):?>
-                            <div class="short-description">
-                                <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
-                            </div>
+                            <p class="short-description">
+                                <?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
+                            </p>
                         <?php endif;?>
         
                         <?php //echo $this->getChildHtml('alert_urls') ?>
@@ -74,9 +73,6 @@
                             <div class="add-to-box">
                                 <?php if($_product->isSaleable()): ?>
                                     <?php echo $this->getChildHtml('addtocart') ?>
-                                    <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                                        <span class="or"><?php echo $this->__('OR') ?></span>
-                                    <?php endif; ?>
                                 <?php endif; ?>
                                 <?php echo $this->getChildHtml('addto') ?>
                             </div>
@@ -92,233 +88,89 @@
                         <?php if ($_product->isSaleable() && $this->hasOptions()):?>
                             <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
                         <?php endif;?>
-                    </li>
-                </ul>                   
+                     </div>                 
+                    <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                        <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                    <?php endif;?>
+                </div>
             </div>
-            <div class="left review_top">
-            	<?php echo $this->getChildHtml('alert_urls');?>
-                <?php //echo $this->getReviewsSummaryHtml($_product, false, true)?>
-            </div>
-            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-            <?php endif;?>
-        </div>
-    </form>
-    <script type="text/javascript">
-    //<![CDATA[
-        var productAddToCartForm = new VarienForm('product_addtocart_form');
-        productAddToCartForm.submit = function(button, url) {
-            if (this.validator.validate()) {
-                var form = this.form;
-                var oldUrl = form.action;
-
-                if (url) {
-                   form.action = url;
-                }
-                var e = null;
-                try {
-                    this.form.submit();
-                } catch (e) {
-                }
-                this.form.action = oldUrl;
-                if (e) {
-                    throw e;
-                }
-
-                if (button && button != 'undefined') {
-                    button.disabled = true;
-                }
-            }
-        }.bind(productAddToCartForm);
-
-        productAddToCartForm.submitLight = function(button, url){
-            if(this.validator) {
-                var nv = Validation.methods;
-                delete Validation.methods['required-entry'];
-                delete Validation.methods['validate-one-required'];
-                delete Validation.methods['validate-one-required-by-name'];
-                // Remove custom datetime validators
-                for (var methodName in Validation.methods) {
-                    if (methodName.match(/^validate-datetime-.*/i)) {
-                        delete Validation.methods[methodName];
-                    }
-                }
-
+        </form>
+        <script type="text/javascript">
+        //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
                 if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+    
                     if (url) {
-                        this.form.action = url;
+                       form.action = url;
                     }
-                    this.form.submit();
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+    
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
                 }
-                Object.extend(Validation.methods, nv);
-            }
-        }.bind(productAddToCartForm);
-    //]]>
-    </script>
+            }.bind(productAddToCartForm);
+    
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+    
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        //]]>
+        </script>
     </div>
     <div class="bottom-view">
-        <div class="share-box">
-            <div class="share-left left">
-                <!-- AddThis Button BEGIN -->
-                <div class="addthis_toolbox addthis_default_style ">
-                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                    <a class="addthis_button_tweet"></a>
-                    <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-                    <a class="addthis_counter addthis_pill_style"></a>
+        <div id="watch_info">
+            <div class="content">
+            	<div class="inner_content_shadow left"></div>
+                <div class="inner_content_shadow right"></div>
+                <div class="top_row">
+                	<div class="share-box">
+                    	
+                    </div>
                 </div>
-                <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-528d7bae3c9d7285"></script>
-                <!-- AddThis Button END -->
-            </div>
-            <div class="share-right right">
-					<ul>
-						<li><img src="<?php echo $this->getSkinUrl('images/cont-email-ic.gif')?>" alt="Email a Friend"></li>
-						<li><a href="javascript:ajaxEmailaFriend()">Email This Page</a></li>
-						<li><img src="<?php echo $this->getSkinUrl('images/cont-print-ic.gif')?>" alt="Print This Page"></li>
-						<li><a href="javascript:printPage()">Print This Page</a></li>
-						<li><img src="<?php echo $this->getSkinUrl('images/cont-bookmark-ic.gif')?>" alt="Bookmark"></li>
-						<li><a href="javascript:bookmarkPage()">Bookmark</a></li>
-					</ul>				
+                <div class="features_area">
+			    	<h3><?php echo $this->__('Watch Features');?></h3>
+                </div>
             </div>
         </div>
         <div class="product-collateral">
-            <div class="tab_infor">
-                <ul class="nav nav-tabs" id="myTab">
-                    <li class="active"><a href="#delivery" data-toggle="tab">Delivery</a></li>
-                    <li><a href="#detail" data-toggle="tab">Detail</a></li>
-                    <li><a href="#size_chart" data-toggle="tab">Review</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="delivery">
-                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('delivery')->toHtml(); ?>
-                    </div>
-                    <div class="tab-pane" id="detail">
-                        <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
-                            <div class="box-collateral <?php echo "box-{$alias}"?>">
-                                <?php if ($title = $this->getChildData($alias, 'title')):?>
-                                    <h2><?php echo $this->escapeHtml($title); ?></h2>
-                                <?php endif;?>
-                                <?php echo $html; ?>
-                            </div>
-                        <?php endforeach;?>
-                    </div>
-                    <div class="tab-pane" id="size_chart">
-                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('size_chart')->toHtml(); ?>
-                    </div>
-                </div>
-                <div class="img_tab_info"></div>
-            </div>
-            <script type="text/javascript" src="<?php echo $this->helper('core/js')->getJsUrl().'carousel/jquery.jcarousel.min.js';?>"></script>
-            <?php echo $this->getChildHtml('upsell_products') ?>
-            <?php echo $this->getChildHtml('product_additional_data') ?>
-        </div>
-        <div class="allternative_product">
-            <?php
-            if ($_product) {
-                // get collection of categories this product is associated with
-                $categories =$_product->getCategoryCollection()
-                    //  ->setPage(1, 1)
-                    //->addFieldToFilter(‘level’,"3")
-                    //->addFieldToFilter(‘parent_id’,"3")
-                    ->setOrder("level")
-                    ->load();
-
-                // if the product is associated with any category
-                if ($categories->count())
-                    foreach ($categories as $_category)
-                    {
-                        $cur_category = Mage::getModel('catalog/category')->load($_category->getId());
-                ?>
-                        <div class="alternative_title" style="clear:both">
-                            <h2>ALTERNATIVE <?=$cur_category->getName()?></h2>
-                        </div>
-                        <button class="prev"><<</button>
-                        <button class="next">>></button>
-                        <div class="allternative_content">
-                <?php
-                        $products = Mage::getResourceModel('catalog/product_collection')
-                        ->addCategoryFilter($_category)
-                        ->addAttributeToSelect('small_image');
-                ?>
-                         <ul class="allternative_ul">
-                <?php
-                        foreach ( $products as $productModel )
-                        {
-                            $_product = Mage::getModel('catalog/product')->load($productModel->getId());
-                            $width=167; $height=150;
-                            $_imageUrl =  $this->helper('catalog/image')->init($productModel, 'small_image')->resize($width, $height);
-                ?>
-                            <li >
-                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
-                                    <img src=<?=$_imageUrl ?> width="<?=$width?>" height="<?=$height?>"/>
-                                    <span class="arrival_brand">
-                                        <?php echo $_product->getAttributeText('manufacturer');?>
-                                    </span>
-                                    <h5>
-                                        <?php echo $this->htmlEscape($_product->getName())?>
-                                    </h5>
-                                    <?php echo $this->getPriceHtml($_product, true); ?>
-                                </a>
-                            </li>
-                <?php
-                        }
-                ?>
-                    </ul>
-                    </div>
-                <?php
-                    }
-                }
-            ?>
-            <script>
-                var $kt3 = jQuery.noConflict();
-                $kt3(document).ready(function() {
-                    $kt3(".allternative_product").jCarouselLite({
-                        btnNext: ".next",
-                        btnPrev: ".prev",
-                        scroll: 5,
-                        auto: 3000,
-                        speed: 2000,
-                        visible: 5
-                    });
-                    /*$kt(".auto .new_arrival_product").jCarouselLite({
-                     auto: 800,
-                     speed: 2000
-                     });*/
-                });
-            </script>
-        </div>
-        <div class="review_box">
-            <h2 class="title"><?php echo $this->__('Customer Reviews') ?></h2>
-            <div class="review_cus left">
-                <?php echo $this->getChildHtml('reviews') ?>
-            </div>
-            <div class="review_form left">
-                <div class="review_pro_form">
-                    We'd love to have your feedback with a product review if you have purchased this item. Please let us have your feedback - good or not so good
-                    <span class="writereviewlink">
-                        <a href="javascript:void(0);" class="show_form_btn">
-                            <img src="<?php echo $this->getSkinUrl('images/add_product_review.gif') ?>">
-                        </a>
-                    </span>
-                    <!--<a href="#" onclick="popWin('<?php /*echo $this->helper('catalog/product_review')->getReviewsUrl() */?>','review','width=500,height=500,resizable=yes,scrollbars=yes')">
-                        <?php /*echo $this->__('Review Item') */?>
-                    </a>-->
-                    <div class="show_form_review">
-                        <?php  echo $this->getLayout()->createBlock('review/form')->setBlockId('product.review.form')->toHtml(); ?>
-                    </div>
-                </div>
-                <div class="review_service_form">
-
-                </div>
-            </div>
-            <script>
-                var $kt_rvf = jQuery.noConflict();
-                $kt_rvf(document).ready(function(){
-                    $kt_rvf('.show_form_btn').click(function(){
-                        $kt_rvf('.show_form_review').slideToggle(400);
-                    });
-                });
-            </script>
+	        <div class="top_row">
+				<h3>Explore more from the<br>Men's Straps Family</h3>
+				<div class="collection_logo">
+                	<img src=<?php echo $this->getSkinUrl().'images/citizen/collection_logo_small_ecodrive.png' ?> alt="logo" />
+				</div>
+			</div>
+            <?php echo $this->getChildHtml('related_products') ?>
+            <?php //echo $this->getChildHtml('product_additional_data') ?>
         </div>
     </div>
 </div>

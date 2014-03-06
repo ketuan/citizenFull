@@ -759,11 +759,6 @@ text-transform: uppercase;
 	float: left;
 	background:url('../images/addtobasket.gif') no-repeat;
 }
-#addToBasket {
-	cursor: pointer;
-	height: 30px;
-	vertical-align: middle;
-}
 /* Footer */
 .footer li {
 	border:none;
