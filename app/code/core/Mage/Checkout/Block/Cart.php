@@ -179,4 +179,25 @@ class Mage_Checkout_Block_Cart extends Mage_Checkout_Block_Cart_Abstract
 
         return parent::getItems();
     }
+	
+	/*KT ADD*/
+	public function _prepareLayout()
+	{
+		parent::_prepareLayout();
+		$breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
+		if ($breadcrumbs) {
+			$title = $this->__('your shopping cart');
+	 
+			$breadcrumbs->addCrumb('home', array(
+					'label' => $this->__('Home'),
+					'title' => $this->__('Go to Home Page'),
+					'link' => Mage::getBaseUrl()
+			))->addCrumb('item', array(
+					'label' => $title,
+					'title' => $title,
+			));
+		}
+		return $this;
+	}
+	/*/KT ADD*/
 }

@@ -52,7 +52,7 @@ Default layout, loads most of the pages
             <action method="addLink" translate="label title" module="customer"><label>My Account</label><url helper="customer/getAccountUrl"/><title>My Account</title><prepare/><urlParams/><position>10</position></action>
 			<remove name="checkout_cart_link" />
             <block type="checkout/links" name="checkout_cart_link_custom">
-                <action method="addCartLink"></action>
+                <action method="addCartLink" translate="label title"><label>Cart</label><name>Cart</name></action>
             </block>
         </reference>
     </default>

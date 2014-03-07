@@ -153,24 +153,68 @@
             	<div class="inner_content_shadow left"></div>
                 <div class="inner_content_shadow right"></div>
                 <div class="top_row">
+                	<a href="#setting_instructions_overlay" id="setting_instructions_btn" class="site_btn_light info_btn setting cboxElement" title="Setting Instructions">
+                    	<span></span>setting instructions
+                   	</a>
                 	<div class="share-box">
-                    	
+                    	<a href="#" class="site_btn_light info_btn combined_share">
+                        	<span></span>Share This
+                        </a>
+                        <div class="share_btn_wrap">
+                            <div class="share_btn">
+                                <div class="point"></div>
+                                <?php echo $this->getLayout()->createBlock('sharingtool/share')->setBlockId('addthis_sharetool')->toHtml(); ?>
+                            </div>
+                    	</div>
                     </div>
                 </div>
                 <div class="features_area">
 			    	<h3><?php echo $this->__('Watch Features');?></h3>
+                    <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+                        <div class="box-collateral <?php echo "box-{$alias}"?>">
+                            <?php if ($title = $this->getChildData($alias, 'title')):?>
+                            <h2><?php echo $this->escapeHtml($title); ?></h2>
+                            <?php endif;?>
+                            <?php echo $html; ?>
+                        </div>
+                	<?php endforeach;?>
                 </div>
             </div>
         </div>
         <div class="product-collateral">
+        	 <?php 
+			   $categories = $_product->getCategoryIds();
+			   foreach($categories as $k => $_category_id):
+			   $_category = Mage::getModel('catalog/category')->load($_category_id);
+			   endforeach; 
+       		?>
 	        <div class="top_row">
-				<h3>Explore more from the<br>Men's Straps Family</h3>
+				<h3>Explore more from the<br><?php echo $_category->getName(); ?> Watch</h3>
 				<div class="collection_logo">
                 	<img src=<?php echo $this->getSkinUrl().'images/citizen/collection_logo_small_ecodrive.png' ?> alt="logo" />
 				</div>
 			</div>
-            <?php echo $this->getChildHtml('related_products') ?>
-            <?php //echo $this->getChildHtml('product_additional_data') ?>
+            <?php //echo $this->getChildHtml('related_products') ?>
+            <div class="product_in_cate">
+			<?php
+				$categoryid = $_category->getID();
+			
+				$category = new Mage_Catalog_Model_Category();
+				$category->load($categoryid);
+				$collection = $category->getProductCollection();
+				$collection->addAttributeToSelect('*');
+				
+				$collection->setPageSize(9)->setCurPage(1);
+			
+				foreach ($collection as $_product) { ?>
+					<a href="<?php echo $_product->getProductUrl() ?>">
+						<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(72,113); ?>" width="72" height="113" alt="" />
+					</a>
+				<?php } ?>
+                <div id="toolbar-bottom">
+					<?php echo $this->getToolbarHtml(); ?>
+                </div>
+        	</div>
         </div>
     </div>
 </div>

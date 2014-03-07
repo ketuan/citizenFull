@@ -34,9 +34,9 @@ Default layout, loads most of the pages
 
     <default>
         <reference name="top.links">
-            <!--<block type="wishlist/links" name="wishlist_link" />
-            <action method="addLinkBlock"><blockName>wishlist_link</blockName></action>-->
-			<action method="addLink" translate="label title" module="wishlist"><label>Favorites</label><path>favorites</path><title>Favorites</title><prepare>true</prepare><urlParams/><position>2</position></action>
+           	<block type="wishlist/links" name="wishlist_link" />
+            <action method="addLinkBlock"><blockName>wishlist_link</blockName><name>wishlist</name></action>
+			
         </reference>
 
         <!-- Mage_Wishlist -->

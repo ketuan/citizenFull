@@ -33,18 +33,7 @@
 ?>
 <div class="cart">
     <div class="page-title title-buttons">
-        <h1><?php echo $this->__('Your bag') ?></h1>
-        <?php if(!$this->hasError()): ?>
-        <ul class="checkout-types">
-            <li class="cart_url"><a href="<?php echo $this->getUrl('checkout/cart')?>" title="your bag"><span><?php //echo $this->__('YOUR BAG')?></span></a></li>
-            <li class="account_url"><a href="<?php echo $this->getUrl('customer/account')?>" title="your detail"><span><?php //echo $this->__('YOUR DETAILS')?></span></a></li>
-            <?php foreach ($this->getMethods('top_methods') as $method): ?>
-                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-                <li><?php echo $methodHtml; ?></li>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </ul>
-        <?php endif; ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cart_contact')->toHtml() ?>
     </div>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('form_before') ?>
@@ -76,13 +65,14 @@
                 <thead>
                     <tr>
                         <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product Details') ?></span></th>
-                        <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
-                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
-                        <?php endif ?>
+                        
                         <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
                         <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Item Price') ?></span></th>
                         <th class="a-center" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Total') ?></th>
                         <th rowspan="<?php echo $mergedCells; ?>" class="a-center">&nbsp;</th>
+                        <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
+                        <?php endif ?>
                     </tr>
                     <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
                     <tr>
@@ -132,6 +122,7 @@
                 <?php endforeach ?>
                 </tbody>
             </table>
+            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
             <script type="text/javascript">decorateTable('shopping-cart-table')</script>
         </fieldset>
     </form>

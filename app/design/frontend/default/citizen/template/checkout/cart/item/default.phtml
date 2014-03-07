@@ -30,53 +30,15 @@ $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
 $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
 <tr>
-    <td class="product_detail"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->resize(90, 81); ?>" width="90" height="81" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?>
-        <ul>
-            <li class="cart_name_pro">
-                <h2 class="product-name">
-                    <?php if ($this->hasProductUrl()):?>
-                        <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->htmlEscape($this->getProductName()) ?></a>
-                    <?php else: ?>
-                        <?php echo $this->htmlEscape($this->getProductName()) ?>
-                    <?php endif; ?>
-                </h2>
-            </li>
-            <li class="cart_sku_pro">
-                <span><?php echo $_item->getSku(); ?></span>
-            </li><!--
-            <li class="remove_item">
-                <a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove itemssss')?></a>
-            </li>-->
-            <li class="cart_pro_option">
-                <?php if ($_options = $this->getOptionList()):?>
-                <dl class="item-options">
-                    <?php foreach ($_options as $_option) : ?>
-                    <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
-                    <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
-                    <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $_formatedOptionValue['value'] ?>
-                        <?php if (isset($_formatedOptionValue['full_view'])): ?>
-                        <div class="truncated_full_value">
-                            <dl class="item-options">
-                                <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
-                                <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
-                            </dl>
-                        </div>
-                        <?php endif; ?>
-                    </dd>
-                    <?php endforeach; ?>
-                </dl>
-                <?php endif;?>
-                <?php if ($messages = $this->getMessages()): ?>
-                <?php foreach ($messages as $message): ?>
-                    <p class="item-msg <?php echo $message['type'] ?>">* <?php echo $this->escapeHtml($message['text']) ?></p>
-                <?php endforeach; ?>
-                <?php endif; ?>
-                <?php $addInfoBlock = $this->getProductAdditionalInformationBlock(); ?>
-                <?php if ($addInfoBlock): ?>
-                    <?php echo $addInfoBlock->setItem($_item)->toHtml() ?>
-                <?php endif;?>
-            </li>
-        </ul>
+    <td class="product_detail"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->resize(64, 112); ?>" width="64" height="112" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?>
+
+        <h2 class="product-name">
+            <?php if ($this->hasProductUrl()):?>
+                <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->htmlEscape($this->getProductName()) ?></a>
+            <?php else: ?>
+                <?php echo $this->htmlEscape($this->getProductName()) ?>
+            <?php endif; ?>
+        </h2>
     </td>
     <td class="a-center cart_qty">
         <ul>
@@ -101,13 +63,6 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <a href="<?php /*echo $this->getConfigureUrl() */?>" title="<?php /*echo $this->__('Edit item parameters') */?>"><?php /*echo $this->__('Edit') */?></a>
         <?php /*endif */?>
     </td>-->
-    <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
-    <td class="a-center">
-        <?php if ($isVisibleProduct): ?>
-            <a href="<?php echo $this->helper('wishlist')->getMoveFromCartUrl($_item->getId()); ?>" class="link-wishlist use-ajax"><?php echo $this->__('Move'); ?></a>
-        <?php endif ?>
-    </td>
-    <?php endif ?>
 
     <?php if ($canApplyMsrp): ?>
         <td class="a-right item_price "<?php if ($this->helper('tax')->displayCartBothPrices()): ?> colspan="2"<?php endif; ?>>
@@ -300,7 +255,12 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif; ?>
     </td>
     <?php endif; ?>
-    <!--<td class="a-center"><a href="<?php /*echo $this->getDeleteUrl()*/?>" title="<?php /*echo $this->__('Remove item')*/?>" class="btn-remove btn-remove2"><?php /*echo $this->__('Remove')*/?></a></td>-->
-    <td class="a-center">&nbsp;</td>
-
+    <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+    <td class="a-center">
+        <?php if ($isVisibleProduct): ?>
+            <a href="<?php echo $this->helper('wishlist')->getMoveFromCartUrl($_item->getId()); ?>" class="link-wishlist use-ajax"><?php echo $this->__('Move'); ?></a>
+        <?php endif ?>
+    </td>
+    <?php endif ?>
+    <td class="a-center"><a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove')?></a></td>
 </tr>
