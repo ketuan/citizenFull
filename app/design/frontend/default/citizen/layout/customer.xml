@@ -49,7 +49,7 @@ Default layout, loads most of the pages
     <default>
         <!-- Mage_Customer -->
         <reference name="top.links">
-            <action method="addLink" translate="label title" module="customer"><label>My Account</label><url helper="customer/getAccountUrl"/><title>My Account</title><prepare/><urlParams/><position>10</position></action>
+            <action method="addLink" translate="label title" module="customer"><label>My Account</label><url helper="customer/getAccountUrl"/><title>My Account</title><prepare/><urlParams/><position>50</position></action>
 			<remove name="checkout_cart_link" />
             <block type="checkout/links" name="checkout_cart_link_custom">
                 <action method="addCartLink" translate="label title"><label>Cart</label><name>Cart</name></action>
@@ -217,10 +217,13 @@ Customer account pages, rendered for all tabs in dashboard
         <remove name="sale.reorder.sidebar"/-->
         <!-- Mage_Customer -->
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setTemplate"><template>page/2columns-left-acc.phtml</template></action>
         </reference>
 
         <reference name="content">
+			<block type="cms/block" name="cart_contact">
+				<action method="setBlockId"><block_id>cart_contact</block_id></action>
+			</block> 
             <block type="page/html_wrapper" name="my.account.wrapper" translate="label">
                 <label>My Account Wrapper</label>
                 <action method="setElementClass"><value>my-account</value></action>
@@ -229,11 +232,16 @@ Customer account pages, rendered for all tabs in dashboard
 
         <reference name="left">
             <block type="customer/account_navigation" name="customer_account_navigation" before="-" template="customer/account/navigation.phtml">
-                <!--<action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>-->
-                <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action>
-                <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
-
+                <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Your Account &amp; Orders</label></action>
+                <!--<action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action>-->
+                <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Your Address</label></action>
+				<action method="addLink" translate="label title" module="customer"><label>Log Out</label><url helper="customer/getLogoutUrl"/><title>Logout</title><prepare/><urlParams/><position>100</position></action>
+				
             </block>
+			<block type="cms/block" name="Promo_de">
+					<action method="setBlockId"><block_id>left_account</block_id></action>
+				</block> 
+			<remove name="block.newsletter" />
            <!-- <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml">
                 <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
                 <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
@@ -254,7 +262,7 @@ Customer account home dashboard layout
         <update handle="customer_account"/>
         <!-- Mage_Customer -->
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setTemplate"><template>page/2columns-left-acc.phtml</template></action>
         </reference>
         <reference name="my.account.wrapper">
             <block type="customer/account_dashboard" name="customer_account_dashboard" template="customer/account/dashboard.phtml">
@@ -263,6 +271,7 @@ Customer account home dashboard layout
                 <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info" template="customer/account/dashboard/info.phtml"/>
                 <block type="customer/account_dashboard_newsletter" name="customer_account_dashboard_newsletter" as="newsletter" template="customer/account/dashboard/newsletter.phtml"/>
                 <block type="customer/account_dashboard_address" name="customer_account_dashboard_address" as="address" template="customer/account/dashboard/address.phtml"/>
+				<block type="customer/orders" name="customer_orders" as="orders" template="customer/orders.phtml"/>
             </block>
         </reference>
 

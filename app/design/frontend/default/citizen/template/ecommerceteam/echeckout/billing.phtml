@@ -20,7 +20,7 @@ $checkoutMethod       = $helper->getCheckoutModel()->getCheckoutMethod();
     <ul class="form-list address-form-list">
         <?php if ($this->customerHasAddresses()): ?>
         <li>
-            <label style="text-align:left;width:auto;float:none;" for="billing-address-select"><?php echo $this->__('Select a billing address from your address book.') ?></label>
+            <label style="text-align:left;width:auto;float:left;padding: 5px 0px;" for="billing-address-select"><?php echo $this->__('Select a billing address from your address book.') ?></label>
             <div class="input-box address-select-box">
                 <?php echo $this->getAddressesHtmlSelect('billing') ?>
             </div>
@@ -45,13 +45,13 @@ $checkoutMethod       = $helper->getCheckoutModel()->getCheckoutMethod();
 
                         <li <?php if(!$this->isThreeColsMode()):?>class="fields"<?php endif;?> id="register-customer-password" <?php if($allowedGuestCheckout && $checkoutMethod != 'register'):?>style="display:none;"<?php endif;?>>
                             <div class="field">
-                                <label for="billing_customer_password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                                <label for="billing_customer_password" class="required"><?php echo $this->__('Password') ?></label>
                                 <div class="input-box">
                                     <input type="password" name="billing[password]" id="billing_customer_password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
                                 </div>
                             </div>
                             <div class="field">
-                                <label for="billing_confirm_password" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                                <label for="billing_confirm_password" class="required"><?php echo $this->__('Confirm Password') ?></label>
                                 <div class="input-box">
                                     <input type="password" name="billing[confirmation]" title="<?php echo $this->__('Confirm Password') ?>" id="billing_confirm_password" class="input-text required-entry validate-cpassword" />
                                 </div>

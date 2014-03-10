@@ -25,6 +25,7 @@
  */
 ?>
 <div class="welcome-msg">
-    <p class="hello"><?php echo $this->__('Hello, %s.', $this->htmlEscape($this->getCustomerName())) ?> Not you? <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>" title="log out">Click here to sign out.</a></p>
-    <!--<p><?php /*echo $this->__('From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.') */?></p>-->
+	<?php $customer = Mage::getSingleton('customer/session')->getCustomer();?>
+    <p class="name"><?php echo $this->__('%s', $this->htmlEscape($this->getCustomerName())) ?></p>
+    <p class="email"><?php echo $this->__('%s', $this->htmlEscape($customer->getEmail())); ?></p>
 </div>

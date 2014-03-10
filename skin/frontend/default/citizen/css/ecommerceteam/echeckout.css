@@ -44,11 +44,13 @@
     zoom:1;
 }
 #easycheckout-form-wrap .address-form-list label {
-    display:inline;
-    float:left;
-    width:130px;
-    text-align:right;
-    margin-right:15px;
+    display: inline;
+	float: left;
+	width: 105px;
+	text-align: left;
+	margin-right: 15px;
+	color: #000000;
+	padding-top: 13px;
 }
 #easycheckout-form-wrap .address-form-list .field {
     width:100%;
@@ -65,10 +67,17 @@
     padding:5px 15px;
 
 }
+.billing-address h2{
+	margin-bottom:5px;
+}
 #easycheckout-shipping-payment-step {
     width:100%;
     margin-bottom:10px;
     position:relative;
+}
+#easycheckout-shipping-payment-step{
+	width:100%;
+	margin-bottom:10px;
 }
 #easycheckout-shipping-payment-step td.methods-separator {
     width:10px;
@@ -80,11 +89,17 @@
 #easycheckout-form-wrap .address-form-list .fields .field {
     width:49%;
 }
+#easycheckout-form-wrap .address-form-list .fields .field.country label{
+	padding: 0px;
+}
+#easycheckout-form-wrap .address-form-list .fields .field.country select{
+	width:200px;
+}
 #easycheckout-form-wrap .address-form-list .fields .field .input-box {
     width:260px;
     display:inline;
     clear:none;
-    float:right;
+    float:left;
     margin-right:20px;
 }
 #easycheckout-form-wrap .address-form-list .input-box input.input-text{
@@ -291,12 +306,16 @@
     margin-right:5px;
     overflow:hidden;
 }
+.discount-form label{
+	margin-top: 3px;
+}
 .discount-form .field{
     float:left;
 }
 #easycheckout-form-wrap{
-    background: #ffffff !important;
-    padding: 10px;
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 20px;
 }
 #easycheckout-form-wrap a.already_login{
     color: #000;
@@ -350,10 +369,27 @@ input#coupon-code{
     clear: both;
 }
 .submit-btn-wrapper button span{
-    border: none;
-    background-color: #BFD229;
-    text-transform: uppercase;
-    padding: 5px 15px;
+    -moz-box-shadow: inset 0px 1px 0px 0px #2a3c57!important;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #2a3c57!important;
+	box-shadow: inset 0px 1px 0px 0px #2a3c57!important;
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #04070e), color-stop(1, #04070e) )!important;
+	background: -moz-linear-gradient( center top, #04070e 5%, #04070e 100% )!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#04070e', endColorstr='#04070e')!important;
+	background-color: #04070e!important;
+	-moz-border-radius: 5px!important;
+	-webkit-border-radius: 5px!important;
+	border-radius: 5px!important;
+	border: 1px solid #000000!important;
+	display: inline-block!important;
+	color: #ffffff!important;
+	font-family: arial!important;
+	font-size: 15px!important;
+	font-weight: normal!important;
+	padding: 11px 25px!important;
+	text-decoration: none!important;
+	cursor: pointer!important;
+	height: 20px;
+	line-height: 19px;
 }
 .submit-btn-wrapper button span:hover{
     background-color: #99a821;

@@ -45,11 +45,11 @@ class Mage_Checkout_Block_Links extends Mage_Core_Block_Template
             $count = $this->getSummaryQty() ? $this->getSummaryQty()
                 : $this->helper('checkout/cart')->getSummaryCount();
             if ($count == 1) {
-                $text = $this->__('My Cart <span>%s</span> item', $count);
+                $text = $this->__('Cart <span>[%s]</span>', $count);
             } elseif ($count > 0) {
-                $text = $this->__('My Cart <span>%s</span> items', $count);
+                $text = $this->__('Cart <span>[%s]</span>', $count);
             } else {
-                $text = $this->__('My Cart');
+                $text = $this->__('Cart');
             }
 
             $parentBlock->removeLinkByUrl($this->getUrl('checkout/cart'));

@@ -64,15 +64,15 @@
             <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
                 <thead>
                     <tr>
+						<th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span>Watch</span></th>
                         <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product Details') ?></span></th>
-                        
-                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
                         <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Item Price') ?></span></th>
+						 <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
                         <th class="a-center" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Total') ?></th>
-                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center">&nbsp;</th>
                         <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
                         <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
                         <?php endif ?>
+						<th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Remove');?></th>
                     </tr>
                     <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
                     <tr>
@@ -122,13 +122,18 @@
                 <?php endforeach ?>
                 </tbody>
             </table>
-            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
+			<div class="cart_shadow"></div>
+            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update">
+				<span><?php echo $this->__('Update Cart'); ?></span>
+			</button>
             <script type="text/javascript">decorateTable('shopping-cart-table')</script>
         </fieldset>
     </form>
-    <?php echo $this->getChildHtml('coupon'); ?>
+    <?php //echo $this->getChildHtml('coupon'); ?>
     <?php if($this->getContinueShoppingUrl()): ?>
-    <button type="button" title="<?php echo $this->__('Continue Shopping'); ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><?php echo $this->__('Continue Shopping') ?></span></button>
+    <button type="button" title="<?php echo $this->__('Continue Shopping'); ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')">
+		<span><?php echo $this->__('← Continue Shopping') ?></span>
+	</button>
     <?php endif; ?>
     <div class="cart-collaterals">
         <!--<div class="col2-set">

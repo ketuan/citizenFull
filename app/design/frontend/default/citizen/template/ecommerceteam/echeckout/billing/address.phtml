@@ -11,13 +11,13 @@
 <ul>
     <li class="fields">
         <div class="field name-firstname">
-            <label for="billing:firstname" class="required"><em>*</em><?php echo $this->__('First Name') ?></label>
+            <label for="billing:firstname" class="required"><?php echo $this->__('First Name') ?></label>
             <div class="input-box">
                 <input type="text" id="billing:firstname" name="billing[firstname]" value="<?php echo $this->getAddress()->getFirstname(); ?>" title="<?php echo $this->__('First Name') ?>" class="input-text required-entry" />
             </div>
         </div>
         <div class="field name-lastname">
-            <label for="billing:lastname" class="required"><em>*</em><?php echo $this->__('Last Name') ?></label>
+            <label for="billing:lastname" class="required"><?php echo $this->__('Last Name') ?></label>
             <div class="input-box">
                 <input type="text" id="billing:lastname" name="billing[lastname]" value="<?php echo $this->getAddress()->getLastname(); ?>" title="<?php echo $this->__('Last Name') ?>" class="input-text required-entry" />
             </div>
@@ -26,14 +26,14 @@
     <li class="fields">
         <?php if(!$this->isCustomerLoggedIn()): ?>
         <div class="field">
-            <label for="billing:email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+            <label for="billing:email" class="required"><?php echo $this->__('Email Address') ?></label>
             <div class="input-box">
                 <input type="text" name="billing[email]" id="billing:email" value="<?php echo $this->htmlEscape($this->getAddress()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
             </div>
         </div>
         <?php else:?>
         <div class="field">
-            <label class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+            <label class="required"><?php echo $this->__('Email Address') ?></label>
             <div class="input-box">
                 <input type="text" readonly="readonly" value="<?php echo $this->htmlEscape(Mage::getSingleton('customer/session')->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text readonly" />
             </div>
@@ -48,7 +48,7 @@
     </li>
     <li class="fields">
         <div class="field">
-            <label for="billing:street1" class="required"><em>*</em><?php echo $this->__('Street line') ?> 1</label>
+            <label for="billing:street1" class="required"><?php echo $this->__('Street line') ?> 1</label>
             <div class="input-box">
                 <input type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet(1)) ?>" class="input-text required-entry" />
             </div>
@@ -62,13 +62,13 @@
     </li>
     <li class="fields">
         <div class="field">
-            <label for="billing:city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+            <label for="billing:city" class="required"><?php echo $this->__('City') ?></label>
             <div class="input-box">
                 <input type="text" title="<?php echo $this->__('City') ?>" name="billing[city]" value="<?php echo $this->htmlEscape($this->getAddress()->getCity()) ?>" class="input-text required-entry" id="billing:city" />
             </div>
         </div>
         <div class="field">
-            <label for="billing:region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+            <label for="billing:region_id" class="required"><?php echo $this->__('State/Province') ?></label>
             <div class="input-box">
                 <select id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
                     <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
@@ -84,13 +84,13 @@
     </li>
     <li class="fields">
         <div class="field">
-            <label for="billing:postcode" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+            <label for="billing:postcode" class="required"><?php echo $this->__('Zip/Postal Code') ?></label>
             <div class="input-box">
                 <input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->htmlEscape($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international required-entry" />
             </div>
         </div>
-        <div class="field">
-            <label for="billing:country_id" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+        <div class="field country">
+            <label for="billing:country_id" class="required"><?php echo $this->__('Country') ?></label>
             <div class="input-box">
                 <?php echo $this->getCountryHtmlSelect('billing') ?>
             </div>
@@ -99,7 +99,7 @@
 
     <li class="fields">
         <div class="field">
-            <label for="billing:telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+            <label for="billing:telephone" class="required"><?php echo $this->__('Telephone') ?></label>
             <div class="input-box">
                 <input type="text" name="billing[telephone]" value="<?php echo $this->htmlEscape($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text required-entry" id="billing:telephone" />
             </div>

@@ -26,7 +26,7 @@
 ?>
 <div class="block block-account">
     <div class="block-title">
-        <strong><span><?php echo $this->__('My Account'); ?></span></strong>
+        <strong><span><?php echo $this->__('Manage Account'); ?></span></strong>
     </div>
     <div class="block-content">
         <ul>
@@ -46,6 +46,7 @@
                 unset($_links['newsletter']); /* Gift Card Link */
                 unset($_links['reviews']);
                 unset($_links['wishlist']);
+                unset($_links['orders']);
             ?>
             <?php foreach ($_links as $_link): ?>
                 <?php $_last = ($_index++ >= $_count); ?>
