@@ -1,0 +1,100 @@
+<!--@subject  {{var store.getFrontendName()}}: Xác nhận đăng ký nhận Bản tin! @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.png\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$order.getCustomerName()":"Customer Name",
+"var store.getFrontendName()":"Store Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var invoice.increment_id":"Invoice Id",
+"var order.increment_id":"Order Id",
+"var order.billing_address.format('html')":"Billing Address",
+"var payment_html":"Payment Details",
+"var order.shipping_address.format('html')":"Shipping Address",
+"var order.shipping_description":"Shipping Description",
+"layout area=\"frontend\" handle=\"sales_email_order_invoice_items\" invoice=$invoice order=$order":"Invoice Items Grid",
+"var comment":"Invoice Comment"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="padding:0px;margin:0px;font-family:Georgia,Helvetica,Arial;font-size:12px;color:#5e5959;">
+<table cellspacing="0" border="0" cellpadding="0" align="center" bgcolor="#f6f6f6">
+<tr>
+	<td bgcolor="#4c4847" width="100%" style="color:#fff;padding:3px;text-align:center;font-size:10px">Để đảm bảo thư của chúng tôi vào hộp inbox của Quý khách hàng, xin vui lòng thêm <a href="mailto:info@omegamart.vn" style="color:#4f9cc6" target="_blank">info@omegamart.vn</a> vào danh sách liên lạc</td>
+</tr>
+<tr>
+	<td width="750">
+        <!-- [ header starts here] -->
+        <table align="center" width="100%">
+            <tr>
+                <td style="padding:20px 50px 10px 50px;" width="100%"><a href="sales/{{store url=""}}"><img src="sales/{{skin url="images/logo_email.png" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+        <!-- [ middle starts here] -->
+        	<tr>
+            	<td style="padding:10px 50px 10px 50px;">
+			        <table width="104%">
+			            <tr>
+            			    <td style="border:1px solid #efebec;padding:15px 15px 15px 15px;"><p>Bạn vừa đăng ký nhận thông tin khuyến mãi mới nhất từ <strong>{{var store.getFrontendName()}}</strong> - trang web mua sắm trực tuyến hàng đầu Việt Nam. Bạn sẽ nhận được các bản tin cập nhật về sản phẩm mới, những đợt giảm giá bất ngờ cùng các chương trình quà tặng thú vị đặc biệt dành cho bạn. </p>
+            			      <p>Xin gửi tặng bạn 01 Phiếu Coupon trị giá <span style="color:#F90;">100,000đ </span> khi mua hàng tại <strong>{{var store.getFrontendName()}}</strong>. Tạo tài khoản đơn giản, nhanh chóng tại <a href="http://omegamart.vn/customer/account/create/" style="color:#F90;">đây</a>, bắt đầu mua sắm và sử dụng mã giảm giá của bạn: <span  style="color:#F90;">NIGOL</span>  khi tiến hành thanh toán. </p>
+            			      <ol>
+            			        <li>Coupon chỉ có hiệu lực trong vòng 7 ngày</li>
+            			        <li>Giá trị tối thiểu của đơn hàng khi sử dụng Coupon:<strong> </strong>600,000đ</li>
+            			        <li>Coupon chỉ được sử dụng 1 lần và không áp dụng với các khuyến mãi khác.                            </li>
+            			      </ol>
+            			      <p>Hãy bắt đầu với những sản phẩm chính hãng giá <strong>RẺ NHẤT THỊ TRƯỜNG</strong> bằng cách tham gia tích lũy điểm thưởng <a href="http://omegamart.vn/quy-dinh-o-point.html" style="color:#F90;">O-Point</a> và nhận các phiếu giảm giá hấp dẫn <a href="http://omegamart.vn/quy-dinh-o-point.html#o-coupon" style="color:#F90;">O-Coupon</a> tại <a href="http://www.omegamart.vn/o-club" style="color:#F90;">Omega Club</a>.</p>
+            			      <p>Chúc bạn mua sắm vui vẻ!</p>
+            			      <p>&nbsp;</p>
+            			      <p>Thân ái tạm biệt,</p>
+<h3 style="border-bottom:2px solid #eee; font-size:12px; padding-bottom:1px; "><strong>OMEGA TEAM</strong></h3>
+<p><em>Đây là email tự động của hệ thống, Quý khách vui lòng không liên lạc qua địa chỉ này. Mọi thắc mắc, xin Quý khách liên hệ Trung tâm Chăm sóc Khách hàng<br />
+  OmegaMart 82 Trung Hòa – Cầu Giấy – Hà Nội</em><br />
+  <em>Tel: +</em><em>84 04.62-33-55-88        </em><br />
+  <em>Fax: +84 04.62-353-999</em><br />
+  <em>Email: info@omegamart.vn</em><br />
+  <em>Website: </em><a href="http://www.omegamart.vn"><em>www.omegamart.vn</em></a></p>
+<p style="border-bottom:2px solid #eee; font-size:1.05em; padding-bottom:1px; ">&nbsp;</p>
+	                    </p>
+                	</td>
+                   </tr>
+                   <tr>
+                       <td style="padding:10px 0 20px 0" width="100%">
+                            <table align="center" style="font-size:10px">
+                                <tbody>
+                                	<tr>
+                                    	<td align="center">
+                                        	<a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="http://www.facebook.com/omegamartvn" target="_blank"><img alt="" src="http://www.fagms.net/images/4415/I-4415-dfyhyjkrhp-socFacebook.png">
+												<span style="vertical-align:top">Like us on Facebook</span>
+											</a>
+<a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="http://twitter.com/omegamartvn" target="_blank"><img alt="" src="http://www.fagms.net/images/4415/I-4415-etfvejkpmi-socTwitter.png">
+<span style="vertical-align:top">Follow us on
+Twitter</span></a></td>
+                                    </tr>
+<tr>
+                                        <td align="center"><a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="http://tumblr.com/omegamartvn" target="_blank"><img alt="" src="http://25.media.tumblr.com/tumblr_lypiy9r1Og1qad6xjo1_100.png">
+        <span style="vertical-align:top">Follow us on Tumblr</span>
+</a>
+<a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="htt://plus.google.com/omegamartvn" target="_blank"><img alt="" src="http://30.media.tumblr.com/tumblr_lypixxdUZK1qad6xjo1_100.png">
+        <span style="vertical-align:top">Add us on Google+</span>
+</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">@ 2012 <strong>{{var store.getFrontendName()}}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">OMEGA Investment Joint Stock Company<br> 
+                                          82 Trung Hòa, Cầu Giấy, Hà Nội
+<br>
+Việt Nam<br>
+ Phone: 04-62-55-33-88 </td>
+                                    </tr>
+                                </tbody></table>
+                            </td>
+                        </tr>
+                </table>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>

@@ -4730,6 +4730,7 @@ a.btn-remove{
 	margin:0 0 10px;
 	clear:both;
 	padding:0px;
+	text-align: left;
 }
 #footer_content #footer_links ul li a{
 	color:#74838e;
@@ -4863,6 +4864,24 @@ a.btn-remove{
 }
 .tablet #mfooter_content #footer_links{width:575px}
 #newsletter_signup{color:#474a4e;width:450px;padding:25px 0}
+
+#locale_selector {
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	padding: 21px 0 2px;
+	background: transparent url('../images/citizen/locale_selector_bg.png') center center repeat-x;
+	color: #999;
+	text-transform: uppercase;
+	font-family: UniversCondensed,Arial,Helvetica,sans-serif;
+	font-size: 1.4em;
+}
+#locale_selector select {
+	margin: 0 7px;
+	height: 18px;
+	width: 104px;
+	margin-top: -3px;
+}
 /*/footer*/
 
 

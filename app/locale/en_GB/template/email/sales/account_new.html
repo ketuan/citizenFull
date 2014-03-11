@@ -1,0 +1,101 @@
+<!--@subject  {{var store.getFrontendName()}}: Hóa đơn # {{var invoice.increment_id}} cho Đơn hàng # {{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$order.getCustomerName()":"Customer Name",
+"var store.getFrontendName()":"Store Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var invoice.increment_id":"Invoice Id",
+"var order.increment_id":"Order Id",
+"var order.billing_address.format('html')":"Billing Address",
+"var payment_html":"Payment Details",
+"var order.shipping_address.format('html')":"Shipping Address",
+"var order.shipping_description":"Shipping Description",
+"layout area=\"frontend\" handle=\"sales_email_order_invoice_items\" invoice=$invoice order=$order":"Invoice Items Grid",
+"var comment":"Invoice Comment"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="padding:0px;margin:0px;font-family:Georgia,Helvetica,Arial;font-size:12px;color:#5e5959;">
+<table cellspacing="0" border="0" cellpadding="0" align="center" bgcolor="#f6f6f6">
+<tr>
+	<td bgcolor="#4c4847" width="100%" style="color:#fff;padding:3px;text-align:center;font-size:10px">To ensure that future mailings are sent to your inbox, please add <a href="mailto:customer@kara.vn" style="color:#4f9cc6" target="_blank">info@omegamart.vn</a> to your contact list.</td>
+</tr>
+<tr>
+	<td width="750">
+        <!-- [ header starts here] -->
+        <table align="center" width="100%">
+            <tr>
+                <td style="padding:20px 50px 10px 50px;" width="100%"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+        <!-- [ middle starts here] -->
+        	<tr>
+            	<td style="padding:10px 50px 10px 50px;">
+			        <table width="100%">
+			            <tr>
+            			    <td style="border:1px solid #efebec;padding:15px 15px 15px 15px;">
+		                    <p><strong>Xin chào Quý khách {{htmlescape var=$customer.name}}</strong>,<br/>
+Chào mừng Quý khách đến với {{var store.getFrontendName()}}. Để đăng nhập khi truy cập vào website của Công ty chúng tôi, Quý khách chỉ cần nhấp chuột <a href="{{store url="customer="customer"/account/"}}" style="color:#1E7EC8;">Đăng nhập</a> hoặc <a href="{{store url="customer="customer"/account/"}}" style="color:#1E7EC8;">Tài khoản</a> phía trên của các trang, sau đó điền thông tin địa chỉ email và mật khẩu.</p>
+                            <p style="border:1px solid #BEBCB7; padding:13px 18px; background:#F8F7F5; "> Sau đây là thông tin về tài khoản của Quý khách:<br/>
+                              E-mail: {{var customer.email}}<br/>
+                              Mật khẩu: {{htmlescape var=$customer.password}}</p>
+                            <p>&nbsp;</p>
+                            <p>Khi đăng nhập vào tài khoản, Quý khách có thể thực hiện các thao tác sau:</p>
+                            <ul>
+                              <li>Kiểm tra thông tin giỏ hàng và thực hiện thanh toán</li>
+                              <li> Kiểm tra trạng thái đơn hàng</li>
+                              <li>Xem các đơn hàng trước đó</li>
+                              <li> Thay đổi thông tin tài khoản</li>
+                              <li>Thay đổi mật khẩu truy cập</li>
+                              <li>Lưu các địa chỉ để chuyển hàng</li>
+                            </ul>
+                            <p>KARA xin gửi Quý Khách mã giảm giá (Coupon) là: <strong>NIGOL</strong> . Trị giá Coupon là 50,000 VNĐ. Quý khách có thể dùng mã giảm giá này khi đặt đơn hàng trực tiếp trên KARA.vn.</p>
+                            <p>Nếu Quý khách có câu hỏi hay thắc mắc về tài khoản và các vấn đề khác, xin vui lòng liên hệ với chúng tôi tại địa chỉ email: <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> hoặc gọi theo số {{config path='general/store_information/phone'}}.</p>
+                            <p>Xin chân thành cảm ơn Quý khách!</p>
+                            <p><strong>{{var store.getFrontendName()}}</strong></p>
+	                    </p>
+                	</td>
+                   </tr>
+                   <tr>
+                       <td style="padding:10px 0 20px 0" width="100%">
+                            <table align="center" style="font-size:10px">
+                                <tbody>
+                                	<tr>
+                                    	<td align="center">
+                                        	<a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="http://www.facebook.com/omegamartvn" target="_blank"><img alt="" src="http://www.fagms.net/images/4415/I-4415-dfyhyjkrhp-socFacebook.png">
+												<span style="vertical-align:top">Like us on Facebook</span>
+											</a>
+<a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="http://twitter.com/omegamartvn" target="_blank"><img alt="" src="http://www.fagms.net/images/4415/I-4415-etfvejkpmi-socTwitter.png">
+<span style="vertical-align:top">Follow us on
+Twitter</span></a></td>
+                                    </tr>
+<tr>
+                                        <td align="center"><a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="http://tumblr.com/omegamartvn" target="_blank"><img alt="" src="http://25.media.tumblr.com/tumblr_lypiy9r1Og1qad6xjo1_100.png">
+        <span style="vertical-align:top">Follow us on Tumblr</span>
+</a>
+<a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="htt://plus.google.com/omegamartvn" target="_blank"><img alt="" src="http://30.media.tumblr.com/tumblr_lypixxdUZK1qad6xjo1_100.png">
+        <span style="vertical-align:top">Add us on Google+</span>
+</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">@ 2012 OMEGAMART.VN</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">OMEGA Investment Joint Stock Company<br> 
+                                          82 Trung Hòa, Cầu Giấy, Hà Nội
+<br>
+Việt Nam<br>
+ Phone: 04-62-55-33-88 </td>
+                                    </tr>
+                                </tbody></table>
+                            </td>
+                        </tr>
+                </table>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>

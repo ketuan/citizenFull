@@ -732,7 +732,11 @@ text-transform: uppercase;
 .menu-facet li.fs-close{background:url(../images/menu-arrow-bg.gif) no-repeat scroll 0 4px transparent!important;}
 .menu-facet li.fs-close ul{display:none!important;}
 .menu-facet li.fs-open{background:url(../images/menu-arrow-down-bg.gif) no-repeat scroll 0 4px transparent!important;}
-.menu-category li,.menu-facet li{background:url(../images/menu-arrow-bg.gif) no-repeat 0 4px;padding:3px 10px;float:left;}
+.menu-facet li{background:url(../images/menu-arrow-bg.gif) no-repeat 0 4px;padding:3px 10px;float:left;}
+.menu-category li{
+	padding:3px 20px 3px 0px;
+	float:left;
+}
 .leftMenuBox a{color:white;}
 
 /* Footer */

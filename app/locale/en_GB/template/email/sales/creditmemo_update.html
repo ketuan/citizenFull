@@ -1,0 +1,50 @@
+<!--@subject {{var store.getFrontendName()}}: Credit Memo # {{var creditmemo.increment_id}} update @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$order.getCustomerName()":"Customer Name",
+"var order.increment_id":"Order Id",
+"var order.getStatusLabel()":"Order Status",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var comment":"Credit Memo Comment",
+"var store.getFrontendName()":"Store Name"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="font:12px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:12px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+<tr>
+    <td align="center" valign="top">
+        <!-- [ header starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+        <tr>
+            <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+        </tr>
+        </table>
+
+        <!-- [ middle starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+        <tr>
+            <td valign="top">
+                <p>
+                    <strong>Chào Quý khách {{htmlescape var=$order.getCustomerName()}}</strong>,<br/>
+                    Đơn hàng # {{var order.increment_id}} của Quý khách vừa được <br/>
+                    <strong>{{var order.getStatusLabel()}}</strong>.
+                </p>
+                <p>Bạn có thể kiểm tra trạng thái đơn đặt hàng bằng cách truy cập <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;">Tài khoản</a>.</p>
+                <p>{{var comment}}</p>
+                <p>
+                    Mọi thắc mắc, xin Quý khách liên hệ với chúng tôi qua địa chỉ email:
+                    <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a>
+                    hoặc gọi số: {{config path='general/store_information/phone'}}.
+                </p>
+                <p>Xin chân thành cảm ơn Quý khách,<br/><strong>{{var store.getFrontendName()}}</strong></p>
+            </td>
+        </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>

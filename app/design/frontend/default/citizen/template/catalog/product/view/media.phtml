@@ -43,13 +43,13 @@
             <div id="multiplePointTagged" class style="display:block;"></div>
             <div id="pdpTop" class="vMiddle">
                 <a href="<?php echo $this->helper('catalog/image')->init($_product, 'image')?>" class="MagicZoomPlus" id="pdp" target="_blank" style="position:relative; display:inline-block;text-decoration:initial; outline:0px; margin:auto; width:530px;visibility: visible; opacity:1;">
-                    <img itemprop="image" alt="<?php echo $_product->getName();?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(282,425)?>" width="282" height="425" style="opacity: 1;" rel="zoom-width:450px; zoom-height:477px">
+                    <img itemprop="image" alt="<?php echo $_product->getName();?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(282,425)?>" width="282" height="425" style="opacity: 1;" rel="zoom-width:450px; zoom-height:477px;right-click:true">
                     <span class="vHeight"></span>
                     <div class="MagicZoomLoading" style="opacity: 0.75; display: none; overflow: hidden; position: absolute; visibility: hidden; z-index: 20; max-width: 530px; left: 135px; top: 195px;">Loading zoom..</div>				                                               
                 </a>
             </div>
             <div class="clearFloatNoHeight"></div>			
-                <style> #pdp .MagicZoomPup{margin-left:0px;}</style>                                                
+                <style> #pdp .MagicZoomPup{margin-left:0px;background: #fff;}</style>                                                
         </div>
     </div>        
     <?php endif?>     

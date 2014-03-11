@@ -27,7 +27,8 @@ function initMagicZoomPlus() {
                   'selectors-effect-speed':200,
                   'selectors-class':'selected',
                   'opacity-reverse':'false',
-                  'opacity':40
+                  'opacity':40,
+				  'right-click':true,
     }; // set display style to MagicZoomPlus
 }
 

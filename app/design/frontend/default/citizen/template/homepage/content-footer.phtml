@@ -6,7 +6,7 @@
                 <iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/kimchiquan&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowtransparency="true"></iframe>
             </div>
             <div class="twitter_follow">
-                <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/follow_button.1392079123.html#_=1393578575309&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=CitizenEcoDrive&amp;show_count=true&amp;show_screen_name=false&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 159px; height: 20px;"></iframe>
+          	<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/follow_button.1392079123.html#_=1393578575309&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=azmagento&amp;show_count=true&amp;show_screen_name=false&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 159px; height: 20px;"></iframe>
                 <script>!function(d, s, id) {
                     var js, fjs = d.getElementsByTagName(s)[0];
                     if (!d.getElementById(id)) {
@@ -20,17 +20,31 @@
         </div>
     </div>
     <div class="watch_ticker">
+    	<?php
+			$resource = Mage::getSingleton('core/resource');
+			$readConnection = $resource->getConnection('core_read');
+			$wishlist = $readConnection->fetchAll('SELECT product_id, count(*) as total FROM wishlist_item GROUP BY product_id ORDER BY total DESC LIMIT 1');
+			foreach($wishlist as $item){
+				foreach($item as $k=>$v){
+					$wish[$k] = $v;
+				}
+			}
+			$proId = $wish['product_id'];
+			$totalWish = $wish['total'];
+			$obj = Mage::getModel('catalog/product');
+			$_productWish = $obj->load($proId); 
+		?>
         <ul>
             <li class="ticker_item">
                 <a href="#" title="">
                     <div class="fav_count">
-                        <div><span class="count">1253 </span>people favorited:</div>
+                        <div><span class="count"><?php echo $totalWish; ?> </span> people favorited:</div>
                     </div>
                    	<div class="img_wrapper">
-                        <img src="http://c01.coacdn.com/watches/AT4007-54E_thumb.png">
+                         <img src="<?php echo $this->helper('catalog/image')->init($_productWish, 'small_image')->resize(57,89); ?>" alt="<?php echo $this->htmlEscape($_productWish['name']) ?>"/>
                     </div>
                     <div class="info">
-                        <span>AT4007-54E</span>
+                        <span><?php echo $_productWish->getSku(); ?></span>
                     </div>
                 </a>
             </li>
@@ -38,7 +52,7 @@
     </div>
     <div class="view_all">
         <div class="content">
-        	<a href="http://www.citizenwatch.com/en-us/watches/find-a-watch" title="Find a Watch">Find a Watch</a>
+        	<a href="#" title="Find a Watch">Find a Watch</a>
         </div>
     </div>
 </div>

@@ -1,0 +1,140 @@
+<!--@subject  {{var store.getFrontendName()}}: Hóa đơn # {{var invoice.increment_id}} cho Đơn hàng # {{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$order.getCustomerName()":"Customer Name",
+"var store.getFrontendName()":"Store Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var invoice.increment_id":"Invoice Id",
+"var order.increment_id":"Order Id",
+"var order.billing_address.format('html')":"Billing Address",
+"var payment_html":"Payment Details",
+"var order.shipping_address.format('html')":"Shipping Address",
+"var order.shipping_description":"Shipping Description",
+"layout area=\"frontend\" handle=\"sales_email_order_invoice_items\" invoice=$invoice order=$order":"Invoice Items Grid",
+"var comment":"Invoice Comment"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="padding:0px;margin:0px;font-family:Georgia,Helvetica,Arial;font-size:12px;color:#5e5959;">
+<table cellspacing="0" border="0" cellpadding="0" align="center" bgcolor="#f6f6f6">
+<tr>
+	<td bgcolor="#4c4847" width="100%" style="color:#fff;padding:3px;text-align:center;font-size:10px">To ensure that future mailings are sent to your inbox, please add <a href="mailto:customer@kara.vn" style="color:#4f9cc6" target="_blank">customer@kara.vn</a> to your contact list.</td>
+</tr>
+<tr>
+	<td width="750">
+        <!-- [ header starts here] -->
+        <table align="center" width="100%">
+            <tr>
+                <td style="padding:20px 50px 10px 50px;" width="100%"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+        <!-- [ middle starts here] -->
+        	<tr>
+            	<td style="padding:10px 50px 10px 50px;">
+			        <table width="100%">
+			            <tr>
+            			    <td style="border:1px solid #efebec;padding:15px 15px 15px 15px;">
+		                    <p><strong>Xin chào Quý khách {{htmlescape var=$order.getCustomerName()}}</strong>,<br/>
+                            </p>
+                            <p>Cảm ơn Quý khách đã đặt hàng tại <strong>{{var store.getFrontendName()}}</strong>. <strong>KARA</strong> đang tiến hành xử lý đơn hàng theo đúng yêu cầu của Quý Khách. <strong>KARA</strong> sẽ gửi thông báo cho  Quý khách khi gói hàng được chuyển phát qua email kèm theo liên kết để Quý khách tiện theo dõi trực tiếp tình trạng gói hàng của mình.
+                              Quý khách có thể kiểm tra trạng thái đơn đặt hàng bằng cách <a href="{{store url="customer="customer"/account/"}}" style="color:#1E7EC8;">đăng nhập tài khoản</a>.
+                              Mọi thắc mắc, xin vui lòng  liên hệ với KARA theo địa chỉ email: <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> hoặc gọi cho <strong>KARA</strong> <span class="nobr">{{config path='general/store_information/phone'}}</span> vào tất cả các ngày trong tuần, từ 8h - 17h. </p>
+                            <p>Dưới đây là thông tin đơn đặt hàng của Quý khách (Xin vui lòng xem lại đơn đặt hàng, nếu có điều gì không đúng, xin Quý khách liên hệ ngay với <strong>KARA</strong>)!</p>
+                            <h3 style="border-bottom:2px solid #eee; font-size:1.05em; padding-bottom:1px; ">Mã số đơn hàng #{{var order.increment_id}} <small>(đặt ngày {{var order.getCreatedAtFormated('long')}})</small><small></small></h3>
+		                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+		                        <thead>
+        			                <tr>
+                    			        <th align="left" width="48.5%" bgcolor="#CCCCCC" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">Người thanh toán:</th>
+			                            <th width="3%"></th>
+            			                <th align="left" width="48.5%" bgcolor="#CCCCCC" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">Phương thức thanh toán:</th>
+                        			</tr>
+		                        </thead>
+        	                <tbody>
+            		            <tr>
+                    		        <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+		                                {{var order.billing_address.format('html')}}
+                            		</td>
+        		                    <td>&nbsp;</td>
+                		            <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                        		        {{var payment_html}}
+		                            </td>
+        		                </tr>
+                	        </tbody>
+                    	</table>
+	                    <br/>
+    	                {{depend order.getIsNotVirtual()}}
+        	            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            	            <thead>
+                	        	<tr>
+                    		        <th align="left" width="48.5%" bgcolor="#CCCCCC" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">Người nhận hàng:</th>
+		                            <th width="3%"></th>
+        	                    <th align="left" width="48.5%" bgcolor="#CCCCCC" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">Phương thức vận chuyển:</th>
+            		            </tr>
+                    	    </thead>
+                        	<tbody>
+		                        <tr>
+        		                    <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                		                {{var order.shipping_address.format('html')}}
+                        		        &nbsp;
+		                            </td>
+        		                    <td>&nbsp;</td>
+                		            <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                        		        {{var order.shipping_description}}&nbsp;
+		                            </td>
+        		                </tr>
+                	        </tbody>
+                    	</table>
+	                    <p><br/>
+	                    {{/depend}}
+                    {{layout handle="sales_email_order_items" order=$order}}
+                    <br/>
+                    {{var order.getEmailCustomerNote()}}
+                        Xin chân thành cảm ơn Quý khách,<br/>
+                        </p>
+	                    <p><strong>{{var store.getFrontendName()}}</strong></p>
+	                    </p>
+                	</td>
+                   </tr>
+                   <tr>
+                       <td style="padding:10px 0 20px 0" width="100%">
+                            <table align="center" style="font-size:10px">
+                                <tbody>
+                                	<tr>
+                                    	<td align="center">
+                                        	<a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="http://www.facebook.com/omegamartvn" target="_blank"><img alt="" src="http://www.fagms.net/images/4415/I-4415-dfyhyjkrhp-socFacebook.png">
+												<span style="vertical-align:top">Like us on Facebook</span>
+											</a>
+<a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="http://twitter.com/omegamartvn" target="_blank"><img alt="" src="http://www.fagms.net/images/4415/I-4415-etfvejkpmi-socTwitter.png">
+<span style="vertical-align:top">Follow us on
+Twitter</span></a></td>
+                                    </tr>
+<tr>
+                                        <td align="center"><a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="http://tumblr.com/omegamartvn" target="_blank"><img alt="" src="http://25.media.tumblr.com/tumblr_lypiy9r1Og1qad6xjo1_100.png">
+        <span style="vertical-align:top">Follow us on Tumblr</span>
+</a>
+<a style="display:block;float:left;width:200px;min-height:24px;line-height:24px;text-decoration:none;color:#5e5959" href="htt://plus.google.com/omegamartvn" target="_blank"><img alt="" src="http://30.media.tumblr.com/tumblr_lypixxdUZK1qad6xjo1_100.png">
+        <span style="vertical-align:top">Add us on Google+</span>
+</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">@ 2012 KARA.VN</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">OMEGA Investment Joint Stock Company<br> 
+                                          82 Trung Hòa, Cầu Giấy, Hà Nội
+<br>
+Việt Nam<br>
+ Phone: 04-62-55-33-88 </td>
+                                    </tr>
+                                </tbody></table>
+                            </td>
+                        </tr>
+                </table>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
