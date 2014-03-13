@@ -20,7 +20,7 @@
 		<remove name="group_navigation" />
 		<remove name="page_end"/>		
 		<reference name="root">
-            <action method="setTemplate"><template>page/3columns_shirt.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
 			<action method="setIsHandle"><applied>1</applied></action>
 			<remove name="header"/>
 			<remove name="footer"/>
@@ -41,7 +41,7 @@
 		<remove name="group_navigation" />
 		<remove name="page_end"/>		
 		<reference name="root">
-            <action method="setTemplate"><template>page/3columns_shoes.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
 			<action method="setIsHandle"><applied>1</applied></action>
 			<remove name="header"/>
 			<remove name="footer"/>

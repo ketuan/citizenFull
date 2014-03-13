@@ -52,7 +52,7 @@ $j(function() {
 		}
 		var baseUrl = MP.QuickShop.BASE_URL + mypath;
 		
-		var _qsHref = "<a id=\"em_quickshop_handler\" href=\"#\" style=\"visibility:hidden;position:absolute;top:0;left:0;z-index:1000\"><img  alt=\"quickshop\" src=\""+MP.QuickShop.QS_IMG+"\" /></a>";
+		var _qsHref = "<a id=\"em_quickshop_handler\" href=\"#\" style=\"visibility:hidden;position:absolute;top:0;left:0;z-index:1000\"><span class='site_btn quickview_btn'>Quick View</span></a>";
 		$j(document.body).append(_qsHref);
 		
 		var qsHandlerImg = $j('#em_quickshop_handler img');
@@ -78,8 +78,8 @@ $j(function() {
 				var o = $j(this).offset();
 				$j('#em_quickshop_handler').attr('href',reloadurl).show()
 					.css({
-						'top': o.top+($j(this).height() - qsHandlerImg.height())/2+'px',
-						'left': o.left+($j(this).width() + 26 - qsHandlerImg.width())/2+'px',
+						'top': o.top+($j(this).height() + 110 - qsHandlerImg.height())/2+'px',
+						'left': o.left+($j(this).width() - 85 - qsHandlerImg.width())/2+'px',
 						'visibility': 'visible'
 					});
 			});

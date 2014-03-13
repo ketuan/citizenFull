@@ -61,8 +61,19 @@
 <script type="text/javascript">
 	var $j=jQuery.noConflict();
 	$j(document).ready(function(){
-			$j('.scrollable').jScrollPane({
-				showArrows: true
+		//$j('.scrollable').jScrollPane({
+			//showArrows: true
+		//});		
+		//left show/hide
+		$j('.refine_content').hide();
+		$j('.heading > a').click(function(){
+			var t = $j(this);
+			// toggle hidden div
+			t.next().toggle('slow', function(){
+				var icon = ($j(this).is(':hidden')) ? 'plusMin' : 'close';
+				// update image src
+				t.prev().attr('class', icon );
 			});
-		});
+		})
+	})
 </script>

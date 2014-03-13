@@ -22,6 +22,14 @@
 	margin: 8px 6px;
 	vertical-align: top;
 }
+.refine_cat .close{
+	background: url(../images/citizen/plus-minus.png) transparent no-repeat -16px -16px;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin: 8px 6px;
+	vertical-align: top;
+}
 .refine_cat li.heading{
 	overflow:hidden;
 }

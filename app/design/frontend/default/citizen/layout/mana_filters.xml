@@ -24,8 +24,7 @@ examples on what kind of actions can be applied to referenced blocks.
 		    <!--<action method="addJs"><script>mana/jquery.min.js</script></action>	-->
 			<action method="addCss"><stylesheet>css/mana_filters.css</stylesheet></action>
 		    <action method="addJs"><script>mana/eliteCore.min.js</script></action>			
-	</reference>	
-			
+		</reference>			
 	</default>
 	<catalog_category_layered> <!-- find all category pages with layered navigation -->
 		<reference name="head">
@@ -63,7 +62,7 @@ examples on what kind of actions can be applied to referenced blocks.
         <reference name="content">
             <block name="category.products">
                 <block name="product_list">
-		           	<!--<block type="mana_filters/state" name="mana.catalog.state" as="mana.state" template="mana/filters/state.phtml"/>	-->										
+		           	<block type="mana_filters/state" name="mana.catalog.state" as="mana.state" template="mana/filters/state.phtml"/>								
                 </block>
             </block>
         </reference>				

@@ -46,7 +46,7 @@
        <div id="viewBy" class="sorter">           
             <div id="sortBy">
                 <span><?php echo $this->__('Sort by') ?></span>
-                <?php $currentUrl = Mage::registry('current_category')->getUrl(); ?>
+                <?php //$currentUrl = Mage::registry('current_category')->getUrl(); ?>
                 <select onchange="setLocation(this.value)">
                 <option value="<?php echo $this->getOrderUrl('entity_id', 'desc') ?>" <?php if($this->isOrderCurrent('entity_id') && $this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif; ?>>
                     <?php echo $this->__('New Arrivals');?>
@@ -70,7 +70,7 @@
 <?php if($this->getCollection()->getSize()): ?>
     <div class="pager"> 
         <?php echo $this->getPagerHtml() ?>
-	    </div>
-	</div>        
+	</div>
+</div>        
 <?php endif ?>
 

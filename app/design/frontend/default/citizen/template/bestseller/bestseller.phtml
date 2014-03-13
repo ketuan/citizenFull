@@ -48,8 +48,8 @@
                     <div class="productImgDivWrap new_img">
                         <p class="showImg">
                             <span class="quickViewBtn quickViewBtnShowing" style="display: none;"></span>
-                            <a href="<?php echo $this->getBaseUrl().$_product['url_path']; ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
-                                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(($this->getImageHeight()) ? $this->getImageHeight() : 135,($this->getImageWidth()) ? $this->getImageWidth() : 135); ?>" alt="<?php echo $this->htmlEscape($_product['name']) ?>"/>
+                            <a href="<?php echo $this->getBaseUrl().$_product['url_path']; ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="vMiddle">
+                                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(($this->getImageHeight()) ? $this->getImageHeight() : 135,($this->getImageWidth()) ? $this->getImageWidth() : 135); ?>" alt="<?php echo $this->htmlEscape($_product['name']) ?>" class="imgClass"/>
                             </a>
                         </p>      
                     </div>

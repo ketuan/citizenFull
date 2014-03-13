@@ -51,6 +51,7 @@ Default layout, loads most of the pages
                 <action method="setImgAlt" translate="alt" module="catalog"><alt>Our customer service is available 24/7. Call us at (555) 555-0123.</alt></action>
                 <action method="setLinkUrl"><url>checkout/cart</url></action>
             </block>-->
+			<block type="catalog/navigation" name="catalog.leftnav" after="currency" template="catalog/navigation/left.phtml"/>
         </reference>
         <reference name="right">
             <block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
@@ -76,6 +77,7 @@ Category default layout
 			<remove name="currency"/>
 			<remove name="left.newsletter"/>
             <block type="catalog/navigation" name="catalog.leftnav" after="currency" template="catalog/navigation/left.phtml"/>
+			 <block type="mana_filters/view" name="mana.catalog.leftnav" before="-" template="mana/filters/view.phtml"/>
         </reference>
         <reference name="content">
             <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">

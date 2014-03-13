@@ -25,35 +25,79 @@
  */
 ?>
 <?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
-<h2 class="subtitle"><?php echo $this->__('New Products') ?></h2>
-<?php $_columnCount = $this->getColumnCount(); ?>
-    <?php $i=0; foreach ($_products->getItems() as $_product): ?>
-        <?php if ($i++%$_columnCount==0): ?>
-        <ul class="products-grid">
-        <?php endif ?>
-            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135) ?>" width="135" height="135" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" /></a>
-                <h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h3>
-                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-                <?php echo $this->getPriceHtml($_product, true, '-new') ?>
-                <div class="actions">
-                    <?php if($_product->isSaleable()): ?>
-                        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-                    <?php else: ?>
-                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                    <?php endif; ?>
-                    <ul class="add-to-links">
-                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                            <li><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-                        <?php endif; ?>
-                        <?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
-                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
-                        <?php endif; ?>
-                    </ul>
-                </div>
-            </li>
-        <?php if ($i%$_columnCount==0 || $i==count($_products)): ?>
-        </ul>
-        <?php endif ?>
-    <?php endforeach; ?>
-<?php endif; ?>
+<div class="new_product">
+    <div class="category-products">
+        <div id="watch_refine_header">
+            <?php 
+                $toolbar = $this->getToolbarBlock();
+                $toolbar->setCollection($this->getProductCollection());
+                echo $toolbar->toHtml();
+            ?>
+        </div>
+        <?php echo $this->getChildHtml('mana.state');?>
+        <!--<h2 class="subtitle"><?php //echo $this->__('New Products') ?></h2>-->
+        <?php $_columnCount = $this->getColumnCount(); ?>
+            <?php $i=0; foreach ($_products->getItems() as $_product): ?>
+                <?php if ($i++%$_columnCount==0): ?>
+                <ul class="main-list row product_list">
+                <?php endif ?>
+                    <li class="anim_border_wrap<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                        <div class="productImgDivWrap new_img">
+                            <p class="showImg">
+                                <span class="quickViewBtn quickViewBtnShowing" style="display: none;"></span>
+                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="vMiddle">
+                                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(184) ?>" width="184" height="184" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" class="imgClass"/>
+                                </a>
+                                <span class="vHeight"></span>
+                             </p>
+                        </div>
+                        <div class="new_content">
+                            <h3 class="arrival_name">
+                                <?php echo $this->htmlEscape($_product->getName()) ?>
+                            </h3>
+                            <div class="summary">
+                                <span class="msrp">
+                                    <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(). number_format($_product->getFinalPrice(),2);?>
+                                </span>
+                                <span class="sub_title"><?php echo $_product->getSku();?></span>    
+                            </div>
+                            <div class="hover_bottom" style="bottom: -36px;">
+                                <div class="favorite">
+                                    <?php
+                                        $resource = Mage::getSingleton('core/resource');
+                                        $readConnection = $resource->getConnection('core_read');
+                                        $wishlist = $readConnection->fetchAll('SELECT product_id, count(*) as total FROM wishlist_item GROUP BY product_id');
+                                        foreach($wishlist as $item){
+                                            $wish[$item['product_id']]=$item['total'];
+                                        }
+                                        if($wish[$_product->getId()]){
+                                            echo $wish[$_product->getId()];
+                                        }
+                                        else
+                                        {
+                                            echo '0';
+                                        }
+                                    ?>
+                                </div>
+                                <div class="social"></div>
+                            </div>
+                        </div>
+                        <div class="anim_border t" style="overflow: hidden;"></div>
+                        <div class="anim_border b" style="overflow: hidden;"></div>
+                        <div class="anim_border l" style="overflow: hidden;"></div>
+                        <div class="anim_border r" style="overflow: hidden;"></div>
+                    </li>
+                <?php if ($i%$_columnCount==0 || $i==count($_products)): ?>
+                </ul>
+                <?php endif ?>
+            <?php endforeach; ?>
+            <div class="toolbar-bottom">
+                <?php 
+                    $toolbar = $this->getToolbarBlock();
+                    $toolbar->setCollection($this->getProductCollection());
+                    echo $toolbar->toHtml();
+                ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
